@@ -228,7 +228,7 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="Common\template.txt" />
-    <None Include="README.md" />
+    <Content Include="README.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
