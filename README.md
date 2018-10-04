@@ -8,7 +8,7 @@ This project includes seven folders, namely Algorithms, Common, Encoding, POF, P
            |
            |-- Encoding: class of chromosome, and some methods are provided, include crossover and mutation operator
            |
-MOEAPlat-- |-- POF: include some POFs, and also provide methods to generate POF of some problems
+           |-- POF: include some POFs, and also provide methods to generate POF of some problems
            |
            |-- Problems: provide some MOPs implementation
            |
