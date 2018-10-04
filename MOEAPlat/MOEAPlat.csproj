@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8CAE6280-7B6C-4478-A5D7-E27F8E5E7540}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>MOEAPlat</RootNamespace>
+    <AssemblyName>MOEAPlat</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Algorithms\BiGE.cs" />
+    <Compile Include="Algorithms\IBEA.cs" />
+    <Compile Include="Algorithms\MOEAD.cs" />
+    <Compile Include="Algorithms\MOEADD.cs" />
+    <Compile Include="Algorithms\MOEADM2M.cs" />
+    <Compile Include="Algorithms\MOEADNBI.cs" />
+    <Compile Include="Algorithms\MOEADTPN.cs" />
+    <Compile Include="Algorithms\MultiObjectiveSolver.cs" />
+    <Compile Include="Algorithms\NSGA2.cs" />
+    <Compile Include="Algorithms\NSGA3.cs" />
+    <Compile Include="Algorithms\NSGAMPBI.cs" />
+    <Compile Include="Algorithms\RVEA.cs" />
+    <Compile Include="Algorithms\SPEA2.cs" />
+    <Compile Include="Algorithms\SPEAR.cs" />
+    <Compile Include="Algorithms\TDEA.cs" />
+    <Compile Include="Algorithms\VaEA.cs" />
+    <Compile Include="Common\Controller.cs" />
+    <Compile Include="Common\FileTool.cs" />
+    <Compile Include="Common\GlobalValue.cs" />
+    <Compile Include="Common\Matrix.cs" />
+    <Compile Include="Common\NSGA.cs" />
+    <Compile Include="Common\pair.cs" />
+    <Compile Include="Common\point.cs" />
+    <Compile Include="Common\Sorting.cs" />
+    <Compile Include="Common\QulityIndicatorToolFunction.cs" />
+    <Compile Include="Common\Tool.cs" />
+    <Compile Include="Common\UniPointsGenerator.cs" />
+    <Compile Include="Encoding\MoChromosome.cs" />
+    <Compile Include="Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlotDialog\MOPAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlotDialog\MOPAdd.Designer.cs">
+      <DependentUpon>MOPAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlotDialog\plotFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlotDialog\plotFrm.Designer.cs">
+      <DependentUpon>plotFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="POF\POF.cs" />
+    <Compile Include="Problems\AbstractMOP.cs" />
+    <Compile Include="Problems\CDP.cs" />
+    <Compile Include="Problems\CDTLZ2_M.cs" />
+    <Compile Include="Problems\Contrained MOP\CTP1.cs" />
+    <Compile Include="Problems\DTLZ\DTLZ1_M.cs" />
+    <Compile Include="Problems\DTLZ\DTLZ2_M.cs" />
+    <Compile Include="Problems\DTLZ\DTLZ3_M.cs" />
+    <Compile Include="Problems\DTLZ\DTLZ4_M.cs" />
+    <Compile Include="Problems\DTLZ\DTLZ5_M.cs" />
+    <Compile Include="Problems\DTLZ\DTLZ6_M.cs" />
+    <Compile Include="Problems\DTLZ\DTLZ7_M.cs" />
+    <Compile Include="Problems\F1.cs" />
+    <Compile Include="Problems\F2.cs" />
+    <Compile Include="Problems\F3.cs" />
+    <Compile Include="Problems\F4.cs" />
+    <Compile Include="Problems\F5.cs" />
+    <Compile Include="Problems\F6.cs" />
+    <Compile Include="Problems\mF4.cs" />
+    <Compile Include="Problems\MOP\MOP1.cs" />
+    <Compile Include="Problems\MOP\MOP2.cs" />
+    <Compile Include="Problems\MOP\MOP3.cs" />
+    <Compile Include="Problems\MOP\MOP4.cs" />
+    <Compile Include="Problems\MOP\MOP5.cs" />
+    <Compile Include="Problems\MOP\MOP6.cs" />
+    <Compile Include="Problems\MOP\MOP7.cs" />
+    <Compile Include="Problems\MultiObjectiveProblem.cs" />
+    <Compile Include="Problems\Contrained MOP\OSY.cs" />
+    <Compile Include="Problems\POL.cs" />
+    <Compile Include="Problems\SCH.cs" />
+    <Compile Include="Problems\Contrained MOP\SRN.cs" />
+    <Compile Include="Problems\TF2.cs" />
+    <Compile Include="Problems\TF4.cs" />
+    <Compile Include="Problems\TF5.cs" />
+    <Compile Include="Problems\Contrained MOP\TNK.cs" />
+    <Compile Include="Problems\UF\UF1.cs" />
+    <Compile Include="Problems\UF\UF10.cs" />
+    <Compile Include="Problems\UF\UF2.cs" />
+    <Compile Include="Problems\UF\UF3.cs" />
+    <Compile Include="Problems\UF\UF4.cs" />
+    <Compile Include="Problems\UF\UF5.cs" />
+    <Compile Include="Problems\UF\UF6.cs" />
+    <Compile Include="Problems\UF\UF7.cs" />
+    <Compile Include="Problems\UF\UF8.cs" />
+    <Compile Include="Problems\UF\UF9.cs" />
+    <Compile Include="Problems\WFG\Shapes.cs" />
+    <Compile Include="Problems\WFG\Transformations.cs" />
+    <Compile Include="Problems\WFG\WFG.cs" />
+    <Compile Include="Problems\WFG\WFG1_M.cs" />
+    <Compile Include="Problems\WFG\WFG2_M.cs" />
+    <Compile Include="Problems\WFG\WFG3_M.cs" />
+    <Compile Include="Problems\WFG\WFG4_M.cs" />
+    <Compile Include="Problems\WFG\WFG5_M.cs" />
+    <Compile Include="Problems\WFG\WFG6_M.cs" />
+    <Compile Include="Problems\WFG\WFG7_M.cs" />
+    <Compile Include="Problems\WFG\WFG8_M.cs" />
+    <Compile Include="Problems\WFG\WFG9_M.cs" />
+    <Compile Include="Problems\ZDT\ZDT1.cs" />
+    <Compile Include="Problems\ZDT\ZDT2.cs" />
+    <Compile Include="Problems\ZDT\ZDT3.cs" />
+    <Compile Include="Problems\ZDT\ZDT4.cs" />
+    <Compile Include="Problems\ZDT\ZDT6.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QualityIndicator\QulityIndicator.cs" />
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlotDialog\MOPAdd.resx">
+      <DependentUpon>MOPAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlotDialog\plotFrm.resx">
+      <DependentUpon>plotFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="POF\APOF\F1" />
+    <None Include="POF\APOF\F2" />
+    <None Include="POF\APOF\F3" />
+    <None Include="POF\APOF\F4" />
+    <None Include="POF\APOF\F5" />
+    <None Include="POF\APOF\F6" />
+    <None Include="POF\APOF\SCH" />
+    <None Include="POF\APOF\TF5" />
+    <None Include="POF\APOF\TF4" />
+    <None Include="POF\APOF\TF2" />
+    <None Include="POF\APOF\mF4" />
+    <None Include="POF\APOF\MOP1" />
+    <None Include="POF\APOF\MOP2" />
+    <None Include="POF\APOF\MOP3" />
+    <None Include="POF\APOF\MOP4" />
+    <None Include="POF\APOF\MOP5" />
+    <None Include="POF\APOF\MOP6" />
+    <None Include="POF\APOF\MOP7" />
+    <None Include="POF\APOF\POL" />
+    <None Include="POF\APOF\UF1" />
+    <None Include="POF\APOF\UF10" />
+    <None Include="POF\APOF\UF2" />
+    <None Include="POF\APOF\UF3" />
+    <None Include="POF\APOF\UF4" />
+    <None Include="POF\APOF\UF5" />
+    <None Include="POF\APOF\UF6" />
+    <None Include="POF\APOF\UF7" />
+    <None Include="POF\APOF\UF8" />
+    <None Include="POF\APOF\UF9" />
+    <None Include="POF\APOF\WFG3_2" />
+    <None Include="POF\APOF\ZDT1" />
+    <None Include="POF\APOF\ZDT2" />
+    <None Include="POF\APOF\ZDT3" />
+    <None Include="POF\APOF\ZDT4" />
+    <None Include="POF\APOF\ZDT6" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Common\template.txt" />
+    <None Include="README.md" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

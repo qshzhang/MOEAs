@@ -1,0 +1,53 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using MOEAPlat.Encoding;
+
+namespace MOEAPlat.Problems
+{
+    public class #FuncName# : AbstractMOP
+    {
+        private static #FuncName# instance;
+        public #FuncName#(int pd)
+        {
+            this.parDimension = pd;
+            init();
+        }
+        public override void evaluate(MoChromosome chromosome)
+        {
+            double[] sp = chromosome.realGenes;
+            double[] obj = chromosome.objectivesValue;
+
+            for (int i = 0; i < this.parDimension; i++)
+                sp[i] = domain[i, 0] + sp[i] * (domain[i, 1] - domain[i, 0]); 
+
+            #ObjectiveFunctionAddRegion#
+
+            for (int i = 0; i < this.parDimension; i++)
+                sp[i] = (sp[i] - domain[i,0]) / (domain[i, 1] - domain[i, 0]);
+        }
+
+        public override void init()
+        {
+            this.domain = new double[this.parDimension,2];
+            for (int i = 0; i < parDimension; i++)
+            {
+                domain[i,0] = 0;
+                domain[i,1] = 1;
+            }
+            this.objDimension = 2;
+            this.range = new double[objDimension,2];
+        }
+
+        public static #FuncName# getInstance(int pd)
+        {
+            if (instance == null)
+            {
+                instance = new #FuncName#(pd);
+                instance.name = "#FuncName#";
+            }
+            return instance;
+        }
+    }
+}

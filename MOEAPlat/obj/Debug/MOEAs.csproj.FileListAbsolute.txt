@@ -1,0 +1,12 @@
+D:\Code\github\MOEAPlat\MOEAPlat\bin\Debug\MOEAPlat.exe.config
+D:\Code\github\MOEAPlat\MOEAPlat\bin\Debug\MOEAPlat.exe
+D:\Code\github\MOEAPlat\MOEAPlat\bin\Debug\MOEAPlat.pdb
+D:\Code\github\MOEAPlat\MOEAPlat\obj\Debug\MOEAs.csprojResolveAssemblyReference.cache
+D:\Code\github\MOEAPlat\MOEAPlat\obj\Debug\MOEAPlat.Main.resources
+D:\Code\github\MOEAPlat\MOEAPlat\obj\Debug\MOEAPlat.PlotDialog.MOPAdd.resources
+D:\Code\github\MOEAPlat\MOEAPlat\obj\Debug\MOEAPlat.PlotDialog.plotFrm.resources
+D:\Code\github\MOEAPlat\MOEAPlat\obj\Debug\MOEAPlat.Properties.Resources.resources
+D:\Code\github\MOEAPlat\MOEAPlat\obj\Debug\MOEAs.csproj.GenerateResource.Cache
+D:\Code\github\MOEAPlat\MOEAPlat\obj\Debug\MOEAs.csproj.CoreCompileInputs.cache
+D:\Code\github\MOEAPlat\MOEAPlat\obj\Debug\MOEAPlat.exe
+D:\Code\github\MOEAPlat\MOEAPlat\obj\Debug\MOEAPlat.pdb
