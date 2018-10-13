@@ -9,29 +9,33 @@ using System.Text;
 
 namespace MOEAPlat.Algorithms
 {
+    /// <summary>
+    /// Base class, all MOEA should extend it.
+    /// This class provide some common functions to implement MOEA
+    /// </summary>
     public abstract class MultiObjectiveSolver
     {
-        protected MultiObjectiveProblem mop;
-        protected int ItrCounter = 1;
-        public int TotalItrNum;
-        public int div;
-        protected int popsize;
-        public int neighbourSize;
-        protected int numObjectives;
-        protected int parDimension;
+        protected MultiObjectiveProblem mop; //a multi-objective problem instance
+        protected int ItrCounter = 1; //number of iteration
+        public int TotalItrNum; //total iteration number
+        public int div; 
+        protected int popsize; //population size
+        public int neighbourSize; //neighbor size
+        protected int numObjectives; //number of objectives
+        protected int parDimension; //dimensions of decision variables
 
-        protected int cneqNum;
-        protected int ceqNum;
+        protected int cneqNum; //number of inequality constraints
+        protected int ceqNum; //number of equality constraints
 
         protected string pofPath = "APOF\\";
 
         protected List<int[]> neighbourTable;
 
-        public double[] idealpoint;
-        public double[] narpoint;
-        protected List<double[]> weights;
+        public double[] idealpoint; //ideal point
+        public double[] narpoint; 
+        protected List<double[]> weights; //weight vectors
 
-        protected List<double[]> Transweights;
+        protected List<double[]> Transweights; //transformed weight vectors
 
         protected Boolean stoped = false;
 
@@ -39,7 +43,7 @@ namespace MOEAPlat.Algorithms
 
         public List<double[]> pofData = new List<double[]>();
 
-        public List<MoChromosome> mainpop = new List<MoChromosome>();
+        public List<MoChromosome> mainpop = new List<MoChromosome>(); //individuals
 
         Random random = new Random();
 
@@ -50,6 +54,10 @@ namespace MOEAPlat.Algorithms
             stoped = true;
         }
 
+        /// <summary>
+        /// solve a MOP
+        /// </summary>
+        /// <param name="problem">MOP instance</param>
         public void solve(MultiObjectiveProblem problem)
         {
             this.setMultiObjectiveProblem(problem);
@@ -60,17 +68,27 @@ namespace MOEAPlat.Algorithms
             this.doSolve();
             this.stoped = true;
         }
-        public void setMultiObjectiveProblem(MultiObjectiveProblem problem)
+
+        private void setMultiObjectiveProblem(MultiObjectiveProblem problem)
         {
             this.mop = problem;
         }
 
+        /// <summary>
+        /// evaluate the objective value for a individual
+        /// </summary>
+        /// <param name="chromosmoe">an individual</param>
         public void evaluate(MoChromosome chromosmoe)
         {
             MultiObjectiveProblem multiObjectiveProblem = mop;
             multiObjectiveProblem.evaluate(chromosmoe);
         }
 
+        /// <summary>
+        /// generate a individual
+        /// </summary>
+        /// <param name="type">encoding mode: 0-real number coding; 1-binary coding</param>
+        /// <returns>an individual</returns>
         public MoChromosome createChromosome(int type = 0) //ref MoChromosome chromosome
         {
             MoChromosome chromosome = new MoChromosome();
@@ -104,12 +122,21 @@ namespace MOEAPlat.Algorithms
             return chromosome;
         }
 
+        /// <summary>
+        /// determine whether iteration ends
+        /// </summary>
+        /// <returns></returns>
         protected Boolean terminated()
         {
             // condition on the iteration.
             return (this.ItrCounter > this.TotalItrNum);
         }
 
+        /// <summary>
+        /// get length of standard objective vector
+        /// </summary>
+        /// <param name="individual">an individual</param>
+        /// <returns></returns>
         public double ObjectiveLen(MoChromosome mo)
         {
             double[] arr = new double[this.numObjectives];
@@ -120,6 +147,12 @@ namespace MOEAPlat.Algorithms
             return Tool.VectorLen(arr);
         }
 
+        /// <summary>
+        /// distance between two vectors
+        /// </summary>
+        /// <param name="weight1"></param>
+        /// <param name="weight2"></param>
+        /// <returns></returns>
         public double distance(double[] weight1, double[] weight2)
         {
             double sum = 0;
@@ -130,6 +163,12 @@ namespace MOEAPlat.Algorithms
             return Math.Sqrt(sum);
         }
 
+        /// <summary>
+        /// vertical distance from an individual to the ith weight vector
+        /// </summary>
+        /// <param name="idx">index of weight vectors</param>
+        /// <param name="individual">an individual</param>
+        /// <returns></returns>
         protected double getParDist(int idx, MoChromosome var)
         {
 
@@ -150,6 +189,10 @@ namespace MOEAPlat.Algorithms
             return Math.Sqrt(d2);
         }
 
+        /// <summary>
+        /// transformed the weight vectors
+        /// the detail can find in essay "MOEA/D with Adaptive Weight Adjustment"
+        /// </summary>
         protected void getTransweight()
         {
             if (this.Transweights == null)
@@ -184,7 +227,13 @@ namespace MOEAPlat.Algorithms
             }
         }
 
-
+        /// <summary>
+        /// tehe angle between a weight vector and an individuals
+        /// </summary>
+        /// <param name="idx">the index of weight vectors</param>
+        /// <param name="individual">an individuals</param>
+        /// <param name="flag">is objective vector need standard</param>
+        /// <returns></returns>
         protected double getAngle(int idx, MoChromosome var, Boolean flag = false)
         {
             double[] namda = this.weights[idx];
@@ -208,6 +257,13 @@ namespace MOEAPlat.Algorithms
             return Math.Acos(mul / (Math.Sqrt(a * b)));
         }
 
+        /// <summary>
+        /// Techebyshev approach
+        /// </summary>
+        /// <param name="idx">the index of weight vector</param>
+        /// <param name="individual">an individuals</param>
+        /// <param name="flag"></param>
+        /// <returns></returns>
         protected double techScalarObj(int idx, MoChromosome var, Boolean flag = false)
         {
             double[] namda = this.Transweights[idx];
@@ -234,6 +290,12 @@ namespace MOEAPlat.Algorithms
             return max_fun;
         }
 
+        /// <summary>
+        /// weighted sum approach
+        /// </summary>
+        /// <param name="idx"></param>
+        /// <param name="individual"></param>
+        /// <returns></returns>
         protected double wsScalarObj(int idx, MoChromosome var)
         {
             double[] namda = this.weights[idx];
@@ -245,6 +307,13 @@ namespace MOEAPlat.Algorithms
             return sum;
         }
 
+        /// <summary>
+        /// penalty-based intersection approach
+        /// </summary>
+        /// <param name="idx"></param>
+        /// <param name="individual"></param>
+        /// <param name="flag"></param>
+        /// <returns></returns>
         protected double pbiScalarObj(int idx, MoChromosome var, Boolean flag = false)
         {
 
@@ -279,8 +348,12 @@ namespace MOEAPlat.Algorithms
             return d1 + 5 * Math.Sqrt(d2);
         }
 
+        /// <summary>
+        /// update ideal point
+        /// </summary>
+        /// <param name="individual"></param>
         protected void updateReference(MoChromosome indiv)
-        {//update ideal point
+        {
             for (int j = 0; j < indiv.objectivesValue.Length; j++)
             {
                 if (indiv.objectivesValue[j] < idealpoint[j])
@@ -360,6 +433,10 @@ namespace MOEAPlat.Algorithms
 
         }
 
+        /// <summary>
+        /// get all objective vector in the population
+        /// </summary>
+        /// <returns></returns>
         public List<double[]> getObjective()
         {
             List<double[]> objs = new List<double[]>();
@@ -382,10 +459,16 @@ namespace MOEAPlat.Algorithms
             return sum;
         }
 
+        /// <summary>
+        /// Differential Evolution based approach to generate offspring
+        /// </summary>
+        /// <param name="idx">the index of individual</param>
+        /// <param name="flag"></param>
+        /// <returns></returns>
         protected MoChromosome DECrossover(int i, Boolean flag = false)
-        {//Differential Evolution
+        {
             int k, l;
-            if(flag == true && random.NextDouble()<0.5)
+            if(true == flag && random.NextDouble()<0.5)
             {
                 do
                     k = neighbourTable[i][random.Next(this.neighbourSize)];
@@ -419,8 +502,14 @@ namespace MOEAPlat.Algorithms
             return offSpring;
         }
 
+        /// <summary>
+        /// SBX Crossover to generate a offspring
+        /// </summary>
+        /// <param name="idx"></param>
+        /// <param name="flag"></param>
+        /// <returns></returns>
         protected MoChromosome SBXCrossover(int i, Boolean flag = false)
-        {//SBXCrossover
+        {
             int k = 0;
             if (flag == true && random.NextDouble() < 0.5)
             {

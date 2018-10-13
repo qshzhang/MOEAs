@@ -10,3 +10,15 @@ D:\Code\github\MOEAs\MOEAPlat\obj\Debug\CSMOEAs.csproj.GenerateResource.Cache
 D:\Code\github\MOEAs\MOEAPlat\obj\Debug\CSMOEAs.csproj.CoreCompileInputs.cache
 D:\Code\github\MOEAs\MOEAPlat\obj\Debug\MOEAPlat.exe
 D:\Code\github\MOEAs\MOEAPlat\obj\Debug\MOEAPlat.pdb
+D:\Code\github\MOEAs\CSMOEAs\obj\Debug\CSMOEAs.csprojResolveAssemblyReference.cache
+D:\Code\github\MOEAs\CSMOEAs\obj\Debug\MOEAPlat.Main.resources
+D:\Code\github\MOEAs\CSMOEAs\obj\Debug\MOEAPlat.PlotDialog.MOPAdd.resources
+D:\Code\github\MOEAs\CSMOEAs\obj\Debug\MOEAPlat.PlotDialog.plotFrm.resources
+D:\Code\github\MOEAs\CSMOEAs\obj\Debug\MOEAPlat.Properties.Resources.resources
+D:\Code\github\MOEAs\CSMOEAs\obj\Debug\CSMOEAs.csproj.GenerateResource.Cache
+D:\Code\github\MOEAs\CSMOEAs\obj\Debug\CSMOEAs.csproj.CoreCompileInputs.cache
+D:\Code\github\MOEAs\CSMOEAs\obj\Debug\MOEAPlat.exe
+D:\Code\github\MOEAs\CSMOEAs\obj\Debug\MOEAPlat.pdb
+D:\Code\github\MOEAs\CSMOEAs\bin\Debug\MOEAPlat.exe.config
+D:\Code\github\MOEAs\CSMOEAs\bin\Debug\MOEAPlat.exe
+D:\Code\github\MOEAs\CSMOEAs\bin\Debug\MOEAPlat.pdb
