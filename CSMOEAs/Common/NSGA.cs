@@ -8,7 +8,7 @@ namespace MOEAPlat.Common
 {
     public static class NSGA
     {
-        public static Boolean isFeasibleSolutions(MoChromosome mo)
+        public static Boolean IsFeasibleSolutions(MoChromosome mo)
         {
             for(int i = 0;i < mo.cneqValue.Length; i++)
             {
@@ -21,7 +21,7 @@ namespace MOEAPlat.Common
             return true;
         }
 
-        public static double getCVValue(MoChromosome mo)
+        public static double GetCVValue(MoChromosome mo)
         {
             double cv = 0;
             foreach(double e in mo.cneqValue)
@@ -35,7 +35,7 @@ namespace MOEAPlat.Common
             return cv;
         }
 
-        public static List<List<MoChromosome>> fastConstrainedNonDominatedSort(List<MoChromosome> individuals)
+        public static List<List<MoChromosome>> FastConstrainedNonDominatedSort(List<MoChromosome> individuals)
         {
             List<List<int>> dominationFronts = new List<List<int>>();
 
@@ -54,13 +54,13 @@ namespace MOEAPlat.Common
                 t = 0;
                 foreach (MoChromosome individualQ in individuals)
                 {
-                    if (individualP.contrained_dominates(individualQ))
+                    if (individualP.ContrainedDominates(individualQ))
                     {
                         individual2DominatedIndividuals[s].Add(t);
                     }
                     else
                     {
-                        if (individualQ.contrained_dominates(individualP))
+                        if (individualQ.ContrainedDominates(individualP))
                         {
                             individual2NumberOfDominatingIndividuals[s] =
                                   individual2NumberOfDominatingIndividuals[s] + 1;
@@ -72,7 +72,7 @@ namespace MOEAPlat.Common
                 if (individual2NumberOfDominatingIndividuals[s] == 0)
                 {
                     // p belongs to the first front
-                    individualP.setRank(1);
+                    individualP.SetRank(1);
                     if (dominationFronts.Count == 0)
                     {
                         List<int> firstDominationFront = new List<int>();
@@ -101,7 +101,7 @@ namespace MOEAPlat.Common
                               individual2NumberOfDominatingIndividuals[individualQ] - 1;
                         if (individual2NumberOfDominatingIndividuals[individualQ] == 0)
                         {
-                            individuals[individualQ].setRank(i + 1);
+                            individuals[individualQ].SetRank(i + 1);
                             nextDominationFront.Add(individualQ);
                         }
                     }
@@ -133,7 +133,7 @@ namespace MOEAPlat.Common
 
 
 
-        public static List<List<MoChromosome>> fastNonDominatedSort(List<MoChromosome> individuals)
+        public static List<List<MoChromosome>> FastNonDominatedSort(List<MoChromosome> individuals)
         {
             List<List<int>> dominationFronts = new List<List<int>>();
 
@@ -152,13 +152,13 @@ namespace MOEAPlat.Common
                 t = 0;
                 foreach (MoChromosome individualQ in individuals)
                 {
-                    if (individualP.dominates(individualQ))
+                    if (individualP.Dominates(individualQ))
                     {
                         individual2DominatedIndividuals[s].Add(t);
                     }
                     else
                     {
-                        if (individualQ.dominates(individualP))
+                        if (individualQ.Dominates(individualP))
                         {
                             individual2NumberOfDominatingIndividuals[s] =
                                   individual2NumberOfDominatingIndividuals[s] + 1;
@@ -170,7 +170,7 @@ namespace MOEAPlat.Common
                 if (individual2NumberOfDominatingIndividuals[s] == 0)
                 {
                     // p belongs to the first front
-                    individualP.setRank(1);
+                    individualP.SetRank(1);
                     if (dominationFronts.Count == 0)
                     {
                         List<int> firstDominationFront = new List<int>();
@@ -199,7 +199,7 @@ namespace MOEAPlat.Common
                               individual2NumberOfDominatingIndividuals[individualQ] - 1;
                         if (individual2NumberOfDominatingIndividuals[individualQ] == 0)
                         {
-                            individuals[individualQ].setRank(i + 1);
+                            individuals[individualQ].SetRank(i + 1);
                             nextDominationFront.Add(individualQ);
                         }
                     }
@@ -238,7 +238,7 @@ namespace MOEAPlat.Common
                 for(int j = 0;j < list.Count; j++)
                 {
                     if (i == j) continue;
-                    if (list[j].dominates(list[i]))
+                    if (list[j].Dominates(list[i]))
                     {
                         flag = false;
                         break;
@@ -250,13 +250,13 @@ namespace MOEAPlat.Common
         }
 
 
-        public static void crowdingDistanceAssignment(List<MoChromosome> individuals)
+        public static void CrowdingDistanceAssignment(List<MoChromosome> individuals)
         {
 
             foreach (MoChromosome individual in individuals)
             {
                 // initialize crowding distance
-                individual.setCrowdingDistance(0);
+                individual.SetCrowdingDistance(0);
             }
 
             int numberOfObjectives = individuals[0].objectDimension;
@@ -268,21 +268,21 @@ namespace MOEAPlat.Common
                 Array.Sort(sortedIndividuals, new FitnessValueComparator(m));
 
                 // so that boundary points are always selected
-                sortedIndividuals[0].setCrowdingDistance(Double.MaxValue);
-                sortedIndividuals[sortedIndividuals.Length - 1].setCrowdingDistance(Double.MaxValue);
+                sortedIndividuals[0].SetCrowdingDistance(Double.MaxValue);
+                sortedIndividuals[sortedIndividuals.Length - 1].SetCrowdingDistance(Double.MaxValue);
 
                 // If minimal and maximal fitness value for this objective are equal,
                 // do not change crowding distance 
-                if (sortedIndividuals[0].getFitnessValue(m) != sortedIndividuals[sortedIndividuals.Length - 1].getFitnessValue(m))
+                if (sortedIndividuals[0].GetFitnessValue(m) != sortedIndividuals[sortedIndividuals.Length - 1].GetFitnessValue(m))
                 {
                     for (int i = 1; i < sortedIndividuals.Length - 1; i++)
                     {
-                        double newCrowdingDistance = sortedIndividuals[i].getCrowdingDistance();
+                        double newCrowdingDistance = sortedIndividuals[i].GetCrowdingDistance();
                         newCrowdingDistance +=
-                           (sortedIndividuals[i + 1].getFitnessValue(m) - sortedIndividuals[i - 1].getFitnessValue(m))
-                           / (sortedIndividuals[sortedIndividuals.Length - 1].getFitnessValue(m) - sortedIndividuals[0].getFitnessValue(m));
+                           (sortedIndividuals[i + 1].GetFitnessValue(m) - sortedIndividuals[i - 1].GetFitnessValue(m))
+                           / (sortedIndividuals[sortedIndividuals.Length - 1].GetFitnessValue(m) - sortedIndividuals[0].GetFitnessValue(m));
 
-                        sortedIndividuals[i].setCrowdingDistance(newCrowdingDistance);
+                        sortedIndividuals[i].SetCrowdingDistance(newCrowdingDistance);
                     }
                 }
             }
@@ -300,11 +300,11 @@ namespace MOEAPlat.Common
 
             public int Compare(MoChromosome individual1, MoChromosome individual2)
             {
-                if (individual1.getFitnessValue(indexObjective) < individual2.getFitnessValue(indexObjective))
+                if (individual1.GetFitnessValue(indexObjective) < individual2.GetFitnessValue(indexObjective))
                 {
                     return -1;
                 }
-                if (individual1.getFitnessValue(indexObjective) > individual2.getFitnessValue(indexObjective))
+                if (individual1.GetFitnessValue(indexObjective) > individual2.GetFitnessValue(indexObjective))
                 {
                     return 1;
                 }
@@ -312,7 +312,7 @@ namespace MOEAPlat.Common
             }
         }
 
-        public static MoChromosome[] sort(List<MoChromosome> individuals)
+        public static MoChromosome[] Sort(List<MoChromosome> individuals)
         {
             MoChromosome[] result = individuals.ToArray();
 

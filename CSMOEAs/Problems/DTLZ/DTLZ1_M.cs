@@ -13,10 +13,10 @@ namespace MOEAPlat.Problems
         {
             parDimension = M + K - 1;
             this.objDimension = M;
-            init();
+            Init();
         }
 
-        public override void init()
+        public override void Init()
         {
             this.domain = new double[this.parDimension,2];
             for (int i = 0; i < parDimension; i++)
@@ -28,7 +28,7 @@ namespace MOEAPlat.Problems
             this.range = new double[objDimension,2];
         }
 
-        public override void evaluate(MoChromosome chromosome)
+        public override void Evaluate(MoChromosome chromosome)
         {
             double[] sp = chromosome.realGenes;
             double[] obj = chromosome.objectivesValue;
@@ -66,7 +66,7 @@ namespace MOEAPlat.Problems
                 sp[i] = (sp[i] - domain[i, 0]) / (domain[i, 1] - domain[i, 0]);
         }
 
-        public static DTLZ1_M getInstance(int M)
+        public static DTLZ1_M GetInstance(int M)
         {
             if (instance == null)
             {

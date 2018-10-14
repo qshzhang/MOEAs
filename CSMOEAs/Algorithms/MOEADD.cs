@@ -31,7 +31,7 @@ namespace MOEAPlat.Algorithms
 
         public int p;
 
-        public void initial()
+        public void Initial()
         {
             this.idealpoint = new double[this.numObjectives];
             this.narpoint = new double[this.numObjectives];
@@ -42,9 +42,9 @@ namespace MOEAPlat.Algorithms
                 narpoint[i] = Double.MinValue;
             }
 
-            initWeight(this.div);
-            initialPopulation();
-            initNeighbour();
+            InitWeight(this.div);
+            InitialPopulation();
+            InitNeighbour();
 
             rankIdx_ = new int[popsize, popsize];
             subregionIdx_ = new int[popsize, popsize];
@@ -57,15 +57,15 @@ namespace MOEAPlat.Algorithms
 
             for (int i = 0; i < popsize; i++)
             {
-                double distance = calculateDistance2(mainpop[i], this.weights[i]);
+                double distance = CalculateDistance2(mainpop[i], this.weights[i]);
                 subregionDist_[i, i] = distance;
             }
 
-            NSGA.fastNonDominatedSort(mainpop);
+            NSGA.FastNonDominatedSort(mainpop);
             int curRank;
             for (int i = 0; i < popsize; i++)
             {
-                curRank = mainpop[i].getRank();
+                curRank = mainpop[i].GetRank();
                 rankIdx_[curRank, i] = 1;
             }
 
@@ -81,7 +81,7 @@ namespace MOEAPlat.Algorithms
             }
         }
 
-        protected void initNeighbour()
+        protected void InitNeighbour()
         {
             neighbourTable = new List<int[]>(popsize);
 
@@ -91,7 +91,7 @@ namespace MOEAPlat.Algorithms
                 distancematrix[i, i] = 0;
                 for (int j = i + 1; j < popsize; j++)
                 {
-                    distancematrix[i, j] = distance(weights[i], weights[j]);
+                    distancematrix[i, j] = Distance(weights[i], weights[j]);
                     distancematrix[j, i] = distancematrix[i, j];
                 }
             }
@@ -104,14 +104,14 @@ namespace MOEAPlat.Algorithms
                     val[j] = distancematrix[i, j];
                 }
 
-                int[] index = Sorting.sorting(val);
+                int[] index = Sorting.Sort(val);
                 int[] array = new int[this.neighbourSize];
                 Array.Copy(index, array, this.neighbourSize);
                 neighbourTable.Add(array);
             }
         }
 
-        protected void initWeight(int m)
+        protected void InitWeight(int m)
         {
             this.weights = new List<double[]>();
             if (numObjectives < 6) this.weights = UniPointsGenerator.getMUniDistributedPoint(numObjectives, m);
@@ -120,33 +120,33 @@ namespace MOEAPlat.Algorithms
             this.popsize = this.weights.Count();
         }
 
-        protected void initialPopulation()
+        protected void InitialPopulation()
         {
             for (int i = 0; i < this.popsize; i++)
             {
-                MoChromosome chromosome = this.createChromosome();
+                MoChromosome chromosome = this.CreateChromosome();
 
-                evaluate(chromosome);
-                updateReference(chromosome);
+                Evaluate(chromosome);
+                UpdateReference(chromosome);
                 mainpop.Add(chromosome);
             }
         }
 
-        protected override void doSolve()
+        protected override void DoSolve()
         {
-            initial();
-            frm = new plotFrm(mainpop, mop.getName());
+            Initial();
+            frm = new plotFrm(mainpop, mop.GetName());
             frm.Show();
             frm.Refresh();
-            while (!terminated())
+            while (!Terminated())
             {
                 for (int i = 0; i < popsize; i++)
                 {
                     MoChromosome offspring;
                     offspring = SBXCrossover(i, true);//GeneticOPDE//GeneticOPSBXCrossover
-                    this.evaluate(offspring);
-                    updateReference(offspring);
-                    updateArchive(offspring);
+                    this.Evaluate(offspring);
+                    UpdateReference(offspring);
+                    UpdateArchive(offspring);
                 }
 
                 if (this.ItrCounter % 10 == 0)
@@ -161,11 +161,11 @@ namespace MOEAPlat.Algorithms
             Common.FileTool.WritetoFile(mainpop, "obj", 2);
         }
 
-        public void nondominated_sorting_delete(MoChromosome indiv)
+        public void Nondominated_Sorting_Delete(MoChromosome indiv)
         {
 
             // find the non-domination level of 'indiv'
-            int indivRank = indiv.getRank();
+            int indivRank = indiv.GetRank();
 
             List<int> curLevel = new List<int>();   // used to keep the solutions in the current non-domination level
             List<int> dominateList = new List<int>();   // used to keep the solutions need to be moved
@@ -186,11 +186,11 @@ namespace MOEAPlat.Algorithms
                     if (rankIdx_[investigateRank,i] == 1)
                     {
                         flag = 0;
-                        if (checkDominance(indiv, mainpop[i]) == 1)
+                        if (CheckDominance(indiv, mainpop[i]) == 1)
                         {
                             for (int j = 0; j < curLevel.Count(); j++)
                             {
-                                if (checkDominance(mainpop[i], mainpop[curLevel[j]]) == -1)
+                                if (CheckDominance(mainpop[i], mainpop[curLevel[j]]) == -1)
                                 {
                                     flag = 1;
                                     break;
@@ -201,7 +201,7 @@ namespace MOEAPlat.Algorithms
                                 dominateList.Add(i);
                                 rankIdx_[investigateRank,i] = 0;
                                 rankIdx_[investigateRank - 1,i] = 1;
-                                mainpop[i].setRank(investigateRank - 1);
+                                mainpop[i].SetRank(investigateRank - 1);
                             }
                         }
                     }
@@ -234,11 +234,11 @@ namespace MOEAPlat.Algorithms
                             if (rankIdx_[investigateRank,j] == 1)
                             {
                                 flag = 0;
-                                if (checkDominance(mainpop[curIdx], mainpop[j]) == 1)
+                                if (CheckDominance(mainpop[curIdx], mainpop[j]) == 1)
                                 {
                                     for (int k = 0; k < curLevel.Count(); k++)
                                     {
-                                        if (checkDominance(mainpop[j], mainpop[curLevel[k]]) == -1)
+                                        if (CheckDominance(mainpop[j], mainpop[curLevel[k]]) == -1)
                                         {
                                             flag = 1;
                                             break;
@@ -249,7 +249,7 @@ namespace MOEAPlat.Algorithms
                                         dominateList.Add(j);
                                         rankIdx_[investigateRank,j] = 0;
                                         rankIdx_[investigateRank - 1,j] = 1;
-                                        mainpop[j].setRank(investigateRank - 1);
+                                        mainpop[j].SetRank(investigateRank - 1);
                                     }
                                 }
                             }
@@ -264,26 +264,26 @@ namespace MOEAPlat.Algorithms
 
         }
 
-        public void updateArchive(MoChromosome indiv)
+        public void UpdateArchive(MoChromosome indiv)
         {
 
             // find the location of 'indiv'
-            updateReference(indiv);
+            UpdateReference(indiv);
 
-            setLocation(indiv);
+            SetLocation(indiv);
 
             int location = indiv.subProbNo;
 
-            numRanks = nondominated_sorting_add(indiv);
+            numRanks = Nondominated_Sorting_Add(indiv);
 
             if (numRanks == 1)
             {
-                deleteRankOne(indiv, location);
+                DeleteRankOne(indiv, location);
             }
             else
             {
                 List<MoChromosome> lastFront = new List<MoChromosome>();
-                int frontSize = countRankOnes(numRanks - 1);
+                int frontSize = CountRankOnes(numRanks - 1);
                 if (frontSize == 0)
                 {   // the last non-domination level only contains 'indiv'
                     frontSize++;
@@ -296,62 +296,62 @@ namespace MOEAPlat.Algorithms
                         if (rankIdx_[numRanks - 1,i] == 1)
                             lastFront.Add(mainpop[i]);
                     }
-                    if (indiv.getRank() == (numRanks - 1))
+                    if (indiv.GetRank() == (numRanks - 1))
                     {
                         frontSize++;
                         lastFront.Add(indiv);
                     }
                 }
 
-                if (frontSize == 1 && lastFront[0].equals(indiv))
+                if (frontSize == 1 && lastFront[0].IsEquals(indiv))
                 {   // the last non-domination level only has 'indiv'
-                    int curNC = countOnes(location);
+                    int curNC = CountOnes(location);
                     if (curNC > 0)
                     {   // if the subregion of 'indiv' has other solution, drop 'indiv'
-                        nondominated_sorting_delete(indiv);
+                        Nondominated_Sorting_Delete(indiv);
                         return;
                     }
                     else
                     {   // if the subregion of 'indiv' has no solution, keep 'indiv'
-                        deleteCrowdRegion1(indiv, location);
+                        DeleteCrowdRegion1(indiv, location);
                     }
                 }
-                else if (frontSize == 1 && !lastFront[0].equals(indiv))
+                else if (frontSize == 1 && !lastFront[0].IsEquals(indiv))
                 { // the last non-domination level only has one solution, but not 'indiv'
-                    int targetIdx = findPosition(lastFront[0]);
-                    int parentLocation = findRegion(targetIdx);
-                    int curNC = countOnes(parentLocation);
+                    int targetIdx = FindPosition(lastFront[0]);
+                    int parentLocation = FindRegion(targetIdx);
+                    int curNC = CountOnes(parentLocation);
                     if (parentLocation == location)
                         curNC++;
 
                     if (curNC == 1)
                     {   // the subregion only has the solution 'targetIdx', keep solution 'targetIdx'
-                        deleteCrowdRegion2(indiv, location);
+                        DeleteCrowdRegion2(indiv, location);
                     }
                     else
                     {   // the subregion contains some other solutions, drop solution 'targetIdx'
-                        int indivRank = indiv.getRank();
-                        int targetRank = mainpop[targetIdx].getRank();
+                        int indivRank = indiv.GetRank();
+                        int targetRank = mainpop[targetIdx].GetRank();
                         rankIdx_[targetRank,targetIdx] = 0;
                         rankIdx_[indivRank,targetIdx] = 1;
 
-                        MoChromosome targetSol = this.createChromosome();
-                        mainpop[targetIdx].copyTo(targetSol);
+                        MoChromosome targetSol = this.CreateChromosome();
+                        mainpop[targetIdx].CopyTo(targetSol);
 
                         //Solution targetSol = new Solution(population_.get(targetIdx));
-                        indiv.copyTo(mainpop[targetIdx]);
+                        indiv.CopyTo(mainpop[targetIdx]);
                         //mainpop.chromosomes.replace(targetIdx, indiv);
 
                         subregionIdx_[parentLocation,targetIdx] = 0;
                         subregionIdx_[location,targetIdx] = 1;
 
                         // update the non-domination level structure
-                        nondominated_sorting_delete(targetSol);
+                        Nondominated_Sorting_Delete(targetSol);
                     }
                 }
                 else
                 {
-                    double indivFitness = fitnessFunction(indiv, location);
+                    double indivFitness = FitnessFunction(indiv, location);
 
                     // find the index of the solution in the last non-domination level, and its corresponding subregion
                     int[] idxArray = new int[frontSize];
@@ -359,24 +359,24 @@ namespace MOEAPlat.Algorithms
 
                     for (int i = 0; i < frontSize; i++)
                     {
-                        idxArray[i] = findPosition(lastFront[i]);
+                        idxArray[i] = FindPosition(lastFront[i]);
                         if (idxArray[i] == -1)
                             regionArray[i] = location;
                         else
-                            regionArray[i] = findRegion(idxArray[i]);
+                            regionArray[i] = FindRegion(idxArray[i]);
                     }
 
                     // find the most crowded subregion, if more than one exist, keep them in 'crowdList'
                     List<int> crowdList = new List<int>();
 
                     int crowdIdx;
-                    int nicheCount = countOnes(regionArray[0]);
+                    int nicheCount = CountOnes(regionArray[0]);
                     if (regionArray[0] == location)
                         nicheCount++;
                     crowdList.Add(regionArray[0]);
                     for (int i = 1; i < frontSize; i++)
                     {
-                        int curSize = countOnes(regionArray[i]);
+                        int curSize = CountOnes(regionArray[i]);
                         if (regionArray[i] == location)
                             curSize++;
                         if (curSize > nicheCount)
@@ -403,13 +403,13 @@ namespace MOEAPlat.Algorithms
                     {
                         int listLength = crowdList.Count();
                         crowdIdx = crowdList[0];
-                        double sumFitness1 = sumFitness(crowdIdx);
+                        double sumFitness1 = SumFitness(crowdIdx);
                         if (crowdIdx == location)
                             sumFitness1 = sumFitness1 + indivFitness;
                         for (int i = 1; i < listLength; i++)
                         {
                             int curIdx = crowdList[i];
-                            double curFitness = sumFitness(curIdx);
+                            double curFitness = SumFitness(curIdx);
                             if (curIdx == location)
                                 curFitness = curFitness + indivFitness;
                             if (curFitness > sumFitness1)
@@ -426,7 +426,7 @@ namespace MOEAPlat.Algorithms
                     }
 				    else if (nicheCount == 1)
                     { // if the subregion of each solution in the last non-domination level only has one solution, keep them all
-                        deleteCrowdRegion2(indiv, location);
+                        DeleteCrowdRegion2(indiv, location);
                     }
                     else
                     { // delete the worst solution from the most crowded subregion in the last non-domination level
@@ -447,14 +447,14 @@ namespace MOEAPlat.Algorithms
                             if (idxArray[targetIdx] == -1)
                                 maxFitness = indivFitness;
                             else
-                                maxFitness = fitnessFunction(mainpop[idxArray[targetIdx]], crowdIdx);
+                                maxFitness = FitnessFunction(mainpop[idxArray[targetIdx]], crowdIdx);
                             for (int i = 1; i < list.Count(); i++)
                             {
                                 int curIdx = list[i];
                                 if (idxArray[curIdx] == -1)
                                     curFitness = indivFitness;
                                 else
-                                    curFitness = fitnessFunction(mainpop[idxArray[curIdx]], crowdIdx);
+                                    curFitness = FitnessFunction(mainpop[idxArray[curIdx]], crowdIdx);
                                 if (curFitness > maxFitness)
                                 {
                                     targetIdx = curIdx;
@@ -463,28 +463,28 @@ namespace MOEAPlat.Algorithms
                             }
                             if (idxArray[targetIdx] == -1)
                             {
-                                nondominated_sorting_delete(indiv);
+                                Nondominated_Sorting_Delete(indiv);
                                 return;
                             }
                             else
                             {
-                                int indivRank = indiv.getRank();
-                                int targetRank = mainpop[idxArray[targetIdx]].getRank();
+                                int indivRank = indiv.GetRank();
+                                int targetRank = mainpop[idxArray[targetIdx]].GetRank();
                                 rankIdx_[targetRank,idxArray[targetIdx]] = 0;
                                 rankIdx_[indivRank,idxArray[targetIdx]] = 1;
 
-                                MoChromosome targetSol = this.createChromosome();
-                                mainpop[targetIdx].copyTo(targetSol);
+                                MoChromosome targetSol = this.CreateChromosome();
+                                mainpop[targetIdx].CopyTo(targetSol);
 
                                 //Solution targetSol = new Solution(population_.get(idxArray[targetIdx]));
-                                indiv.copyTo(mainpop[targetIdx]);
+                                indiv.CopyTo(mainpop[targetIdx]);
 
                                 //population_.replace(idxArray[targetIdx], indiv);
                                 subregionIdx_[crowdIdx,idxArray[targetIdx]] = 0;
                                 subregionIdx_[location,idxArray[targetIdx]] = 1;
 
                                 // update the non-domination level structure
-                                nondominated_sorting_delete(targetSol);
+                                Nondominated_Sorting_Delete(targetSol);
                             }
                         }
                     }
@@ -494,7 +494,7 @@ namespace MOEAPlat.Algorithms
             return;
         }
 
-        public int nondominated_sorting_add(MoChromosome indiv)
+        public int Nondominated_Sorting_Add(MoChromosome indiv)
         {
 
             int flag = 0;
@@ -505,7 +505,7 @@ namespace MOEAPlat.Algorithms
             List<int> frontSize = new List<int>();
             for (int i = 0; i < popsize; i++)
             {
-                int rankCount = countRankOnes(i);
+                int rankCount = CountRankOnes(i);
                 if (rankCount != 0)
                 {
                     frontSize.Add(rankCount);
@@ -524,12 +524,12 @@ namespace MOEAPlat.Algorithms
                 level = i;
                 if (flag == 1)
                 {   // 'indiv' is non-dominated with all solutions in the ith non-domination level, then 'indiv' belongs to the ith level
-                    indiv.setRank(i - 1);
+                    indiv.SetRank(i - 1);
                     return num_ranks;
                 }
                 else if (flag == 2)
                 {   // 'indiv' dominates some solutions in the ith level, but is non-dominated with some others, then 'indiv' belongs to the ith level, and move the dominated solutions to the next level
-                    indiv.setRank(i - 1);
+                    indiv.SetRank(i - 1);
 
                     int prevRank = i - 1;
 
@@ -542,7 +542,7 @@ namespace MOEAPlat.Algorithms
                         curIdx = dominateList[j];
                         rankIdx_[prevRank,curIdx] = 0;
                         rankIdx_[newRank,curIdx] = 1;
-                        mainpop[curIdx].setRank(newRank);
+                        mainpop[curIdx].SetRank(newRank);
                     }
                     for (int j = 0; j < popsize; j++)
                     {
@@ -551,7 +551,7 @@ namespace MOEAPlat.Algorithms
                             for (int k = 0; k < curListSize; k++)
                             {
                                 curIdx = dominateList[k];
-                                if (checkDominance(mainpop[curIdx], mainpop[j]) == 1)
+                                if (CheckDominance(mainpop[curIdx], mainpop[j]) == 1)
                                 {
                                     dominateList.Add(j);
                                     break;
@@ -579,7 +579,7 @@ namespace MOEAPlat.Algorithms
                                 curIdx = dominateList[j];
                                 rankIdx_[prevRank,curIdx] = 0;
                                 rankIdx_[newRank,curIdx] = 1;
-                                mainpop[curIdx].setRank(newRank);
+                                mainpop[curIdx].SetRank(newRank);
                             }
                             for (int j = 0; j < popsize; j++)
                             {
@@ -588,7 +588,7 @@ namespace MOEAPlat.Algorithms
                                     for (int k = 0; k < curListSize; k++)
                                     {
                                         curIdx = dominateList[k];
-                                        if (checkDominance(mainpop[curIdx], mainpop[j]) == 1)
+                                        if (CheckDominance(mainpop[curIdx], mainpop[j]) == 1)
                                         {
                                             dominateList.Add(j);
                                             break;
@@ -651,9 +651,9 @@ namespace MOEAPlat.Algorithms
                                 for (int j = 0; j < level_size; j++)
                                 {
                                     curIdx = tempRecord[k, j];
-                                    tempRank = mainpop[curIdx].getRank();
+                                    tempRank = mainpop[curIdx].GetRank();
                                     newRank = tempRank + 1;
-                                    mainpop[curIdx].setRank(newRank);
+                                    mainpop[curIdx].SetRank(newRank);
 
                                     rankIdx_[tempRank,curIdx] = 0;
                                     rankIdx_[newRank,curIdx] = 1;
@@ -677,7 +677,7 @@ namespace MOEAPlat.Algorithms
                     {
                         if (rankIdx_[i,j] == 1)
                         {
-                            switch (checkDominance(indiv, mainpop[j]))
+                            switch (CheckDominance(indiv, mainpop[j]))
                             {
                                 case 1:
                                     {
@@ -716,7 +716,7 @@ namespace MOEAPlat.Algorithms
                 }
                 else
                 {   // (flag == 4) if 'indiv' dominates all solutions in the ith level, solutions in the current level and beyond move their current next levels
-                    indiv.setRank(i - 1);
+                    indiv.SetRank(i - 1);
                     i = i - 1;
                     int remainSize = num_ranks - i;
                     int[, ] tempRecord = new int[remainSize, popsize];
@@ -738,7 +738,7 @@ namespace MOEAPlat.Algorithms
                     }
 
                     k = 0;
-                    i = indiv.getRank();
+                    i = indiv.GetRank();
                     while (i < num_ranks)
                     {
                         int level_size = frontSize[i];
@@ -748,9 +748,9 @@ namespace MOEAPlat.Algorithms
                         for (int j = 0; j < level_size; j++)
                         {
                             curIdx = tempRecord[k, j];
-                            curRank = mainpop[curIdx].getRank();
+                            curRank = mainpop[curIdx].GetRank();
                             newRank = curRank + 1;
-                            mainpop[curIdx].setRank(newRank);
+                            mainpop[curIdx].SetRank(newRank);
 
                             rankIdx_[curRank,curIdx] = 0;
                             rankIdx_[newRank,curIdx] = 1;
@@ -766,18 +766,18 @@ namespace MOEAPlat.Algorithms
             // if flag is still 3 after the for-loop, it means that 'indiv' is in the current last level
             if (flag == 1)
             {
-                indiv.setRank(level);
+                indiv.SetRank(level);
             }
             else if (flag == 2)
             {
-                indiv.setRank(level);
+                indiv.SetRank(level);
 
                 int curIdx;
                 int tempSize = dominateList.Count();
                 for (int i = 0; i < tempSize; i++)
                 {
                     curIdx = dominateList[i];
-                    mainpop[curIdx].setRank(level + 1);
+                    mainpop[curIdx].SetRank(level + 1);
 
                     rankIdx_[level,curIdx] = 0;
                     rankIdx_[level + 1,curIdx] = 1;
@@ -786,17 +786,17 @@ namespace MOEAPlat.Algorithms
             }
             else if (flag == 3)
             {
-                indiv.setRank(level + 1);
+                indiv.SetRank(level + 1);
                 num_ranks++;
             }
             else
             {
-                indiv.setRank(level);
+                indiv.SetRank(level);
                 for (int i = 0; i < popsize; i++)
                 {
                     if (rankIdx_[level,i] == 1)
                     {
-                        mainpop[i].setRank(level + 1);
+                        mainpop[i].SetRank(level + 1);
 
                         rankIdx_[level,i] = 0;
                         rankIdx_[level + 1,i] = 1;
@@ -809,7 +809,7 @@ namespace MOEAPlat.Algorithms
         }
 
 
-        public int countRankOnes(int level)
+        public int CountRankOnes(int level)
         {
             int count = 0;
             for (int i = 0; i < popsize; i++)
@@ -821,15 +821,15 @@ namespace MOEAPlat.Algorithms
             return count;
         }
 
-        public int checkDominance(MoChromosome a, MoChromosome b)
+        public int CheckDominance(MoChromosome a, MoChromosome b)
         {
-            if (a.dominates(b)) return 1;
-            if (b.dominates(a)) return -1;
+            if (a.Dominates(b)) return 1;
+            if (b.Dominates(a)) return -1;
             return 0;
 
         }
 
-        public int countOnes(int location)
+        public int CountOnes(int location)
         {
 
             int count = 0;
@@ -842,17 +842,17 @@ namespace MOEAPlat.Algorithms
             return count;
         }
 
-        public void deleteCrowdRegion1(MoChromosome indiv, int location)
+        public void DeleteCrowdRegion1(MoChromosome indiv, int location)
         {
 
             // find the most crowded subregion, if more than one such subregion exists, keep them in the crowdList
             List<int> crowdList = new List<int>();
             int crowdIdx;
-            int nicheCount = countOnes(0);
+            int nicheCount = CountOnes(0);
             crowdList.Add(0);
             for (int i = 1; i < popsize; i++)
             {
-                int curSize = countOnes(i);
+                int curSize = CountOnes(i);
                 if (curSize > nicheCount)
                 {
                     crowdList.Clear();
@@ -877,11 +877,11 @@ namespace MOEAPlat.Algorithms
             {
                 int listLength = crowdList.Count();
                 crowdIdx = crowdList[0];
-                double sumFitness1 = sumFitness(crowdIdx);
+                double sumFitness1 = SumFitness(crowdIdx);
                 for (int i = 1; i < listLength; i++)
                 {
                     int curIdx = crowdList[i];
-                    double curFitness = sumFitness(curIdx);
+                    double curFitness = SumFitness(curIdx);
                     if (curFitness > sumFitness1)
                     {
                         crowdIdx = curIdx;
@@ -900,11 +900,11 @@ namespace MOEAPlat.Algorithms
 
             // find the solution with the largest rank
             List<int> maxRankList = new List<int>();
-            int maxRank = mainpop[indList[0]].getRank();
+            int maxRank = mainpop[indList[0]].GetRank();
             maxRankList.Add(indList[0]);
             for (int i = 1; i < indList.Count(); i++)
             {
-                int curRank = mainpop[indList[i]].getRank();
+                int curRank = mainpop[indList[i]].GetRank();
                 if (curRank > maxRank)
                 {
                     maxRankList.Clear();
@@ -924,11 +924,11 @@ namespace MOEAPlat.Algorithms
             // find the solution with the largest rank and worst fitness
             int rankSize = maxRankList.Count();
             int targetIdx = maxRankList[0];
-            double maxFitness = fitnessFunction(mainpop[targetIdx], crowdIdx);
+            double maxFitness = FitnessFunction(mainpop[targetIdx], crowdIdx);
             for (int i = 1; i < rankSize; i++)
             {
                 int curIdx = maxRankList[i];
-                double curFitness = fitnessFunction(mainpop[curIdx], crowdIdx);
+                double curFitness = FitnessFunction(mainpop[curIdx], crowdIdx);
                 if (curFitness > maxFitness)
                 {
                     targetIdx = curIdx;
@@ -936,25 +936,25 @@ namespace MOEAPlat.Algorithms
                 }
             }
 
-            int indivRank = indiv.getRank();
-            int targetRank = mainpop[targetIdx].getRank();
+            int indivRank = indiv.GetRank();
+            int targetRank = mainpop[targetIdx].GetRank();
             rankIdx_[targetRank,targetIdx] = 0;
             rankIdx_[indivRank,targetIdx] = 1;
 
-            MoChromosome targetSol = this.createChromosome();
-            mainpop[targetIdx].copyTo(targetSol);
+            MoChromosome targetSol = this.CreateChromosome();
+            mainpop[targetIdx].CopyTo(targetSol);
 
             //Solution targetSol = new Solution(population_.get(targetIdx));
 
             //population_.replace(targetIdx, indiv);
 
-            indiv.copyTo(mainpop[targetIdx]);
+            indiv.CopyTo(mainpop[targetIdx]);
 
             subregionIdx_[crowdIdx,targetIdx] = 0;
             subregionIdx_[location,targetIdx] = 1;
 
             // update the non-domination level structure
-            nondominated_sorting_delete(targetSol);
+            Nondominated_Sorting_Delete(targetSol);
 
         }
 
@@ -965,21 +965,21 @@ namespace MOEAPlat.Algorithms
          * @param indiv
          * @param location
          */
-        public void deleteCrowdRegion2(MoChromosome indiv, int location)
+        public void DeleteCrowdRegion2(MoChromosome indiv, int location)
         {
 
-            double indivFitness = fitnessFunction(indiv, location);
+            double indivFitness = FitnessFunction(indiv, location);
 
             // find the most crowded subregion, if there are more than one, keep them in crowdList
             List<int> crowdList = new List<int>();
             int crowdIdx;
-            int nicheCount = countOnes(0);
+            int nicheCount = CountOnes(0);
             if (location == 0)
                 nicheCount++;
             crowdList.Add(0);
             for (int i = 1; i < popsize; i++)
             {
-                int curSize = countOnes(i);
+                int curSize = CountOnes(i);
                 if (location == i)
                     curSize++;
                 if (curSize > nicheCount)
@@ -1006,13 +1006,13 @@ namespace MOEAPlat.Algorithms
             {
                 int listLength = crowdList.Count();
                 crowdIdx = crowdList[0];
-                double sumFitness1 = sumFitness(crowdIdx);
+                double sumFitness1 = SumFitness(crowdIdx);
                 if (crowdIdx == location)
                     sumFitness1 = sumFitness1 + indivFitness;
                 for (int i = 1; i < listLength; i++)
                 {
                     int curIdx = crowdList[i];
-                    double curFitness = sumFitness(curIdx);
+                    double curFitness = SumFitness(curIdx);
                     if (curIdx == location)
                         curFitness = curFitness + indivFitness;
                     if (curFitness > sumFitness1)
@@ -1038,15 +1038,15 @@ namespace MOEAPlat.Algorithms
 
             // find the solution with the largest rank
             List<int> maxRankList = new List<int>();
-            int maxRank = mainpop[indList[0]].getRank();
+            int maxRank = mainpop[indList[0]].GetRank();
             maxRankList.Add(indList[0]);
             for (int i = 1; i < indList.Count(); i++)
             {
                 int curRank;
                 if (indList[i] == -1)
-                    curRank = indiv.getRank();
+                    curRank = indiv.GetRank();
                 else
-                    curRank = mainpop[indList[i]].getRank();
+                    curRank = mainpop[indList[i]].GetRank();
 
                 if (curRank > maxRank)
                 {
@@ -1070,7 +1070,7 @@ namespace MOEAPlat.Algorithms
             if (targetIdx == -1)
                 maxFitness = indivFitness;
             else
-                maxFitness = fitnessFunction(mainpop[targetIdx], crowdIdx);
+                maxFitness = FitnessFunction(mainpop[targetIdx], crowdIdx);
             for (int i = 1; i < rankSize; i++)
             {
                 double curFitness;
@@ -1078,7 +1078,7 @@ namespace MOEAPlat.Algorithms
                 if (curIdx == -1)
                     curFitness = indivFitness;
                 else
-                    curFitness = fitnessFunction(mainpop[curIdx], crowdIdx);
+                    curFitness = FitnessFunction(mainpop[curIdx], crowdIdx);
 
                 if (curFitness > maxFitness)
                 {
@@ -1090,21 +1090,21 @@ namespace MOEAPlat.Algorithms
             if (targetIdx == -1)
             {
 
-                nondominated_sorting_delete(indiv);
+                Nondominated_Sorting_Delete(indiv);
 
                 return;
             }
             else
             {
-                int indivRank = indiv.getRank();
-                int targetRank = mainpop[targetIdx].getRank();
+                int indivRank = indiv.GetRank();
+                int targetRank = mainpop[targetIdx].GetRank();
                 rankIdx_[targetRank,targetIdx] = 0;
                 rankIdx_[indivRank,targetIdx] = 1;
 
-                MoChromosome targetSol = this.createChromosome();
-                mainpop[targetIdx].copyTo(targetSol);
+                MoChromosome targetSol = this.CreateChromosome();
+                mainpop[targetIdx].CopyTo(targetSol);
 
-                indiv.copyTo(mainpop[targetIdx]);
+                indiv.CopyTo(mainpop[targetIdx]);
 
 
                 //Solution targetSol = new Solution(population_.get(targetIdx));
@@ -1114,26 +1114,26 @@ namespace MOEAPlat.Algorithms
                 subregionIdx_[location,targetIdx] = 1;
 
                 // update the non-domination level structure of the population
-                nondominated_sorting_delete(targetSol);
+                Nondominated_Sorting_Delete(targetSol);
             }
 
         }
 
-        public void deleteRankOne(MoChromosome indiv, int location)
+        public void DeleteRankOne(MoChromosome indiv, int location)
         {
 
-            double indivFitness = fitnessFunction(indiv, location);
+            double indivFitness = FitnessFunction(indiv, location);
 
             // find the most crowded subregion, if there are more than one, keep them in crowdList
             List<int> crowdList = new List<int>();
             int crowdIdx;
-            int nicheCount = countOnes(0);
+            int nicheCount = CountOnes(0);
             if (location == 0)
                 nicheCount++;
             crowdList.Add(0);
             for (int i = 1; i < popsize; i++)
             {
-                int curSize = countOnes(i);
+                int curSize = CountOnes(i);
                 if (location == i)
                     curSize++;
                 if (curSize > nicheCount)
@@ -1160,13 +1160,13 @@ namespace MOEAPlat.Algorithms
             {
                 int listLength = crowdList.Count();
                 crowdIdx = crowdList[0];
-                double sumFitness1 = sumFitness(crowdIdx);
+                double sumFitness1 = SumFitness(crowdIdx);
                 if (crowdIdx == location)
                     sumFitness1 = sumFitness1 + indivFitness;
                 for (int i = 1; i < listLength; i++)
                 {
                     int curIdx = crowdList[i];
-                    double curFitness = sumFitness(curIdx);
+                    double curFitness = SumFitness(curIdx);
                     if (curIdx == location)
                         curFitness = curFitness + indivFitness;
                     if (curFitness > sumFitness1)
@@ -1190,42 +1190,42 @@ namespace MOEAPlat.Algorithms
                         break;
                 }
 
-                double prev_func = fitnessFunction(mainpop[targetIdx], location);
+                double prev_func = FitnessFunction(mainpop[targetIdx], location);
                 if (indivFitness < prev_func)
                     //population_.replace(targetIdx, indiv);
-                    indiv.copyTo(mainpop[targetIdx]);
+                    indiv.CopyTo(mainpop[targetIdx]);
             }
             else
             {
                 if (location == crowdIdx)
                 {   // if indiv's subregion is the most crowded one
-                    deleteCrowdIndiv_same(location, nicheCount, indivFitness, indiv);
+                    DeleteCrowdIndiv_same(location, nicheCount, indivFitness, indiv);
                 }
                 else
                 {
-                    int curNC = countOnes(location);
-                    int crowdNC = countOnes(crowdIdx);
+                    int curNC = CountOnes(location);
+                    int crowdNC = CountOnes(crowdIdx);
 
                     if (crowdNC > (curNC + 1))
                     {   // if the crowdIdx subregion is more crowded, delete one from this subregion
-                        deleteCrowdIndiv_diff(crowdIdx, location, crowdNC, indiv);
+                        DeleteCrowdIndiv_diff(crowdIdx, location, crowdNC, indiv);
                     }
                     else if (crowdNC < (curNC + 1))
                     { // crowdNC == curNC, delete one from indiv's subregion
-                        deleteCrowdIndiv_same(location, curNC, indivFitness, indiv);
+                        DeleteCrowdIndiv_same(location, curNC, indivFitness, indiv);
                     }
                     else
                     { // crowdNC == (curNC + 1)
                         if (curNC == 0)
-                            deleteCrowdIndiv_diff(crowdIdx, location, crowdNC, indiv);
+                            DeleteCrowdIndiv_diff(crowdIdx, location, crowdNC, indiv);
                         else
                         {
                             //Random rm = new Random();
                             double rnd = random.NextDouble();
                             if (rnd < 0.5)
-                                deleteCrowdIndiv_diff(crowdIdx, location, crowdNC, indiv);
+                                DeleteCrowdIndiv_diff(crowdIdx, location, crowdNC, indiv);
                             else
-                                deleteCrowdIndiv_same(location, curNC, indivFitness, indiv);
+                                DeleteCrowdIndiv_same(location, curNC, indivFitness, indiv);
                         }
                     }
                 }
@@ -1233,7 +1233,7 @@ namespace MOEAPlat.Algorithms
 
         }
 
-        public void deleteCrowdIndiv_same(int crowdIdx, int nicheCount, double indivFitness, MoChromosome indiv)
+        public void DeleteCrowdIndiv_same(int crowdIdx, int nicheCount, double indivFitness, MoChromosome indiv)
         {
 
             // find the solution indices within this crowdIdx subregion
@@ -1247,11 +1247,11 @@ namespace MOEAPlat.Algorithms
             // find the solution with the worst fitness value
             int listSize = indList.Count();
             int worstIdx = indList[0];
-            double maxFitness = fitnessFunction(mainpop[worstIdx], crowdIdx);
+            double maxFitness = FitnessFunction(mainpop[worstIdx], crowdIdx);
             for (int i = 1; i < listSize; i++)
             {
                 int curIdx = indList[i];
-                double curFitness = fitnessFunction(mainpop[curIdx], crowdIdx);
+                double curFitness = FitnessFunction(mainpop[curIdx], crowdIdx);
                 if (curFitness > maxFitness)
                 {
                     worstIdx = curIdx;
@@ -1261,11 +1261,11 @@ namespace MOEAPlat.Algorithms
 
             // if indiv has a better fitness, use indiv to replace the worst one
             if (indivFitness < maxFitness)
-                indiv.copyTo(mainpop[worstIdx]); ; //population_.replace(worstIdx, indiv);
+                indiv.CopyTo(mainpop[worstIdx]); ; //population_.replace(worstIdx, indiv);
 
         }
 
-        public void deleteCrowdIndiv_diff(int crowdIdx, int curLocation, int nicheCount, MoChromosome indiv)
+        public void DeleteCrowdIndiv_diff(int crowdIdx, int curLocation, int nicheCount, MoChromosome indiv)
         {
 
             // find the solution indices within this crowdIdx subregion
@@ -1278,11 +1278,11 @@ namespace MOEAPlat.Algorithms
 
             // find the solution with the worst fitness value
             int worstIdx = indList[0];
-            double maxFitness = fitnessFunction(mainpop[worstIdx], crowdIdx);
+            double maxFitness = FitnessFunction(mainpop[worstIdx], crowdIdx);
             for (int i = 1; i < nicheCount; i++)
             {
                 int curIdx = indList[i];
-                double curFitness = fitnessFunction(mainpop[curIdx], crowdIdx);
+                double curFitness = FitnessFunction(mainpop[curIdx], crowdIdx);
                 if (curFitness > maxFitness)
                 {
                     worstIdx = curIdx;
@@ -1292,13 +1292,13 @@ namespace MOEAPlat.Algorithms
 
             // use indiv to replace the worst one
             //population_.replace(worstIdx, indiv);
-            indiv.copyTo(mainpop[worstIdx]);
+            indiv.CopyTo(mainpop[worstIdx]);
             subregionIdx_[crowdIdx,worstIdx] = 0;
             subregionIdx_[curLocation,worstIdx] = 1;
 
         }
 
-        public double sumFitness(int location)
+        public double SumFitness(int location)
         {
 
             //		double sum = 0;
@@ -1311,35 +1311,35 @@ namespace MOEAPlat.Algorithms
             for (int i = 0; i < popsize; i++)
             {
                 if (subregionIdx_[location,i] == 1)
-                    sum = sum + fitnessFunction(mainpop[i], location);
+                    sum = sum + FitnessFunction(mainpop[i], location);
             }
 
             return sum;
         }
 
-        double fitnessFunction(MoChromosome indiv, int idx)//double[] lambda
+        double FitnessFunction(MoChromosome indiv, int idx)//double[] lambda
         {
             double fitness;
             fitness = 0.0;
 
-            fitness = pbiScalarObj(idx, indiv, GlobalValue.IsNormalization);
+            fitness = PbiScalarObj(idx, indiv, GlobalValue.IsNormalization);
 
             return fitness;
         } // fitnessEvaluation
 
-        public int findPosition(MoChromosome indiv)
+        public int FindPosition(MoChromosome indiv)
         {
 
             for (int i = 0; i < popsize; i++)
             {
-                if (indiv.equals(mainpop[i]))
+                if (indiv.IsEquals(mainpop[i]))
                     return i;
             }
 
             return -1;
         }
 
-        public int findRegion(int idx)
+        public int FindRegion(int idx)
         {
 
             for (int i = 0; i < popsize; i++)
@@ -1351,7 +1351,7 @@ namespace MOEAPlat.Algorithms
             return -1;
         }
 
-        public void setLocation(MoChromosome offSpring)
+        public void SetLocation(MoChromosome offSpring)
         {
 
             double[] v = new double[this.numObjectives];
@@ -1367,7 +1367,7 @@ namespace MOEAPlat.Algorithms
             double ta;
             for (int i = 0; i < this.weights.Count(); i++)
             {
-                ta = getAngle(v, this.weights[i]);
+                ta = GetAngle(v, this.weights[i]);
                 if (ta < theta)
                 {
                     theta = ta;
@@ -1380,7 +1380,7 @@ namespace MOEAPlat.Algorithms
 
         }
 
-        protected double getAngle(double[] v1, double[] v2)
+        protected double GetAngle(double[] v1, double[] v2)
         {
             double s1 = 0, s2 = 0, s3 = 0;
             for (int i = 0; i < this.numObjectives; i++)
@@ -1392,7 +1392,7 @@ namespace MOEAPlat.Algorithms
             return Math.Acos(s1 / (Math.Sqrt(s2) * Math.Sqrt(s3)));
         }
 
-        public double calculateDistance2(MoChromosome var, double[] namda)
+        public double CalculateDistance2(MoChromosome var, double[] namda)
         {
 
             // normalize the weight vector (line segment)

@@ -24,7 +24,7 @@ namespace MOEAPlat.Algorithms
 
         List<double[]> unitVec = new List<double[]>();
 
-        public void initial()
+        public void Initial()
         {
             this.popsize = div;
 
@@ -37,23 +37,23 @@ namespace MOEAPlat.Algorithms
                 narpoint[i] = Double.MinValue;
             }
 
-            initialPopulation();
-            initUnitVec();
+            InitialPopulation();
+            InitUnitVec();
         }
 
-        protected void initialPopulation()
+        protected void InitialPopulation()
         {
             for (int i = 0; i < this.popsize; i++)
             {
-                MoChromosome chromosome = this.createChromosome();
+                MoChromosome chromosome = this.CreateChromosome();
 
-                evaluate(chromosome);
+                Evaluate(chromosome);
                 mainpop.Add(chromosome);
-                updateReference(chromosome);
+                UpdateReference(chromosome);
             }
         }
 
-        private void initUnitVec()
+        private void InitUnitVec()
         {
             for(int i = 0;i < this.numObjectives; i++)
             {
@@ -77,11 +77,11 @@ namespace MOEAPlat.Algorithms
                 {
                     pos2 = random.Next() % mainpop.Count;
                 }
-                if (mainpop[pos1].dominates(mainpop[pos2]))
+                if (mainpop[pos1].Dominates(mainpop[pos2]))
                 {
                     matingpool.Add(mainpop[pos1]);
                 }
-                else if (mainpop[pos2].dominates(mainpop[pos1]))
+                else if (mainpop[pos2].Dominates(mainpop[pos1]))
                 {
                     matingpool.Add(mainpop[pos2]);
                 }
@@ -109,13 +109,13 @@ namespace MOEAPlat.Algorithms
             return v;
         }
 
-        protected override void doSolve()
+        protected override void DoSolve()
         {
-            initial();
-            frm = new plotFrm(mainpop, mop.getName());
+            Initial();
+            frm = new plotFrm(mainpop, mop.GetName());
             frm.Show();
             frm.Refresh();
-            while (!terminated())
+            while (!Terminated())
             {
                 //MatingSelection();
                 List<MoChromosome> offsPop = new List<MoChromosome>();
@@ -124,9 +124,9 @@ namespace MOEAPlat.Algorithms
                 {
                     MoChromosome offspring;
                     offspring = SBXCrossover(i);//GeneticOPDE//GeneticOPSBXCrossover
-                    this.evaluate(offspring);
+                    this.Evaluate(offspring);
                     offsPop.Add(offspring);
-                    updateReference(offspring);
+                    UpdateReference(offspring);
                 }
 
                 List<MoChromosome> Pop = new List<MoChromosome>();
@@ -150,9 +150,9 @@ namespace MOEAPlat.Algorithms
         private void EnviromentSelection(List<MoChromosome> pop)
         {
             List<MoChromosome> result = new List<MoChromosome>();
-            List<List<MoChromosome>> dominatedSet0 = NSGA.fastNonDominatedSort(pop);
+            List<List<MoChromosome>> dominatedSet0 = NSGA.FastNonDominatedSort(pop);
 
-            computeFitness(ref pop);
+            ComputeFitness(ref pop);
 
             int cnt = 0;
             while (result.Count() + dominatedSet0[cnt].Count() <= this.popsize)
@@ -193,8 +193,8 @@ namespace MOEAPlat.Algorithms
         {
             while(result.Count < this.popsize)
             {
-                int w = maxAngle(flag, Fl);
-                int u = minAngle(flag, Fl);
+                int w = MaxAngle(flag, Fl);
+                int u = MinAngle(flag, Fl);
                 Maximum_Vector_Angle_First(w, ref flag, ref result, ref Fl);
                 Worse_Elimination(u, ref flag, ref result, ref Fl);
             }
@@ -208,7 +208,7 @@ namespace MOEAPlat.Algorithms
             {
                 if(flag[i] == false)
                 {
-                    double ag = Tool.getAngle(TranObj(Fl[i]), TranObj(Fl[w]));
+                    double ag = Tool.GetAngle(TranObj(Fl[i]), TranObj(Fl[w]));
                     if(ag < Fl[i].angle)
                     {
                         Fl[i].angle = ag;
@@ -225,13 +225,13 @@ namespace MOEAPlat.Algorithms
                 int r = Fl[u].subProbNo;
                 if (result[r].fitnessValue > Fl[u].fitnessValue && flag[u] == false)
                 {
-                    Fl[u].copyTo(result[r]);
+                    Fl[u].CopyTo(result[r]);
                     flag[u] = true;
                     for (int i = 0; i < Fl.Count; i++)
                     {
                         if (flag[i] == false)
                         {
-                            double ag = Tool.getAngle(TranObj(Fl[i]), TranObj(Fl[u]));
+                            double ag = Tool.GetAngle(TranObj(Fl[i]), TranObj(Fl[u]));
                             if (Fl[i].subProbNo != Fl[u].subProbNo)
                             {
                                 if (ag < Fl[i].angle)
@@ -251,7 +251,7 @@ namespace MOEAPlat.Algorithms
             
         }
 
-        private int maxAngle(Boolean[] flag, List<MoChromosome> Fl)
+        private int MaxAngle(Boolean[] flag, List<MoChromosome> Fl)
         {
             int pos = -1;
             double max = -1;
@@ -266,7 +266,7 @@ namespace MOEAPlat.Algorithms
             return pos;
         }
 
-        private int minAngle(Boolean[] flag, List<MoChromosome> Fl)
+        private int MinAngle(Boolean[] flag, List<MoChromosome> Fl)
         {
             int pos = -1;
             double min = 10;
@@ -282,7 +282,7 @@ namespace MOEAPlat.Algorithms
         }
 
 
-        private void computeFitness(ref List<MoChromosome> F1)
+        private void ComputeFitness(ref List<MoChromosome> F1)
         {
             for(int i = 0;i < F1.Count; i++)
             {
@@ -301,7 +301,7 @@ namespace MOEAPlat.Algorithms
                     int pos = -1;
                     for(int j = 0;j < Fl.Count; j++)
                     {
-                        double tp = Tool.getAngle(TranObj(Fl[j]), unitVec[i]);
+                        double tp = Tool.GetAngle(TranObj(Fl[j]), unitVec[i]);
                         if(tp < min)
                         {
                             min = tp;
@@ -312,10 +312,10 @@ namespace MOEAPlat.Algorithms
                     flag[pos] = false;
                 }
 
-                pair[] li = new pair[Fl.Count];
+                PairRelation[] li = new PairRelation[Fl.Count];
                 for(int i = 0; i < li.Length; i++)
                 {
-                    li[i] = new pair(i, Fl[i].fitnessValue);
+                    li[i] = new PairRelation(i, Fl[i].fitnessValue);
                 }
 
                 li = li.OrderBy(r => r.val).ToArray();
@@ -338,7 +338,7 @@ namespace MOEAPlat.Algorithms
                 int pos = -1;
                 for(int j = 0;j < result.Count;j++)
                 {
-                    double tp = Tool.getAngle(TranObj(result[j]), TranObj(Fl[i]));
+                    double tp = Tool.GetAngle(TranObj(result[j]), TranObj(Fl[i]));
                     if(tp < minA)
                     {
                         minA = tp;

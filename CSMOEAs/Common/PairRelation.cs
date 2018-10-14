@@ -5,16 +5,16 @@ using System.Text;
 
 namespace MOEAPlat.Common
 {
-    public class pair : IComparable<pair>
+    public class PairRelation : IComparable<PairRelation>
     {
         public int pos;
         public double val;
-        public pair(int i, double dist)
+        public PairRelation(int i, double dist)
         {
-            pos = i;
+            this.pos = i;
             this.val = dist;
         }
-        public int CompareTo(pair o)
+        public int CompareTo(PairRelation o)
         {
             if (o.val < val) return -1;
             else if (o.val > val) return 1;

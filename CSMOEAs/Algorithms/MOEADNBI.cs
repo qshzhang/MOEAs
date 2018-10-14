@@ -21,12 +21,12 @@ namespace MOEAPlat.Algorithms
     {
         double lambda1 = 1.0, lambda2 = 1.0;
 
-        point P1 = new point();
-        point P2 = new point();
+        Common.Point2 P1 = new Common.Point2();
+        Common.Point2 P2 = new Common.Point2();
 
 
         Random random = new Random();
-        protected void initial()
+        protected void Initial()
         {
             this.popsize = div;
             this.idealpoint = new double[this.numObjectives];
@@ -38,12 +38,12 @@ namespace MOEAPlat.Algorithms
                 narpoint[i] = Double.MinValue;
             }
 
-            initWeight(this.div);
-            initialPopulation();
-            initNeighbour();
+            InitWeight(this.div);
+            InitialPopulation();
+            InitNeighbour();
         }
 
-        protected void initNeighbour()
+        protected void InitNeighbour()
         {
             neighbourTable = new List<int[]>(popsize);
 
@@ -53,7 +53,7 @@ namespace MOEAPlat.Algorithms
                 distancematrix[i, i] = 0;
                 for (int j = i + 1; j < popsize; j++)
                 {
-                    distancematrix[i, j] = distance(weights[i], weights[j]);
+                    distancematrix[i, j] = Distance(weights[i], weights[j]);
                     distancematrix[j, i] = distancematrix[i, j];
                 }
             }
@@ -66,14 +66,14 @@ namespace MOEAPlat.Algorithms
                     val[j] = distancematrix[i, j];
                 }
 
-                int[] index = Sorting.sorting(val);
+                int[] index = Sorting.Sort(val);
                 int[] array = new int[this.neighbourSize];
                 Array.Copy(index, array, this.neighbourSize);
                 neighbourTable.Add(array);
             }
         }
 
-        protected void initWeight(int m)
+        protected void InitWeight(int m)
         {
             this.weights = new List<double[]>();
             if (numObjectives < 6) this.weights = UniPointsGenerator.getMUniDistributedPoint(numObjectives, m);
@@ -82,94 +82,94 @@ namespace MOEAPlat.Algorithms
             this.popsize = this.weights.Count();
         }
 
-        protected void initialPopulation()
+        protected void InitialPopulation()
         {
             for (int i = 0; i < this.popsize; i++)
             {
-                MoChromosome chromosome = this.createChromosome();
+                MoChromosome chromosome = this.CreateChromosome();
 
-                evaluate(chromosome);
-                updateReference(chromosome);
-                updatePoint(chromosome);
+                Evaluate(chromosome);
+                UpdateReference(chromosome);
+                UpdatePoint(chromosome);
                 mainpop.Add(chromosome);
             }
         }
 
-        protected void updateNeighbours(int i, MoChromosome offSpring)
+        protected void UpdateNeighbours(int i, MoChromosome offSpring)
         {
             for (int j = 0; j < this.neighbourSize; j++)
             {
                 int weightindex = neighbourTable[i][j];
                 MoChromosome sol = mainpop[weightindex];
 
-                double d = updateCretia(weightindex, offSpring);
-                double e = updateCretia(weightindex, sol);
+                double d = UpdateCretia(weightindex, offSpring);
+                double e = UpdateCretia(weightindex, sol);
                 if (d < e)
-                    offSpring.copyTo(mainpop[weightindex]);
+                    offSpring.CopyTo(mainpop[weightindex]);
             }
         }
 
-        protected double updateCretia(int problemIndex, MoChromosome chrom)
+        protected double UpdateCretia(int problemIndex, MoChromosome chrom)
         {
-            return utechScalarObj(problemIndex, chrom);
+            return UTechScalarObj(problemIndex, chrom);
         }
 
-        protected double utechScalarObj(int idx, MoChromosome var)
+        protected double UTechScalarObj(int idx, MoChromosome var)
         {
             double max_fun = -1 * Double.MaxValue;
 
             double alpha = (double)(this.popsize - idx) * 1d / (this.popsize - 1);
 
-            point r = new point();
-            r.f1 = alpha * P1.f1 + (1 - alpha) * P2.f1;
-            r.f2 = alpha * P1.f2 + (1 - alpha) * P2.f2;
+            Common.Point2 r = new Common.Point2();
+            r.P_X = alpha * P1.P_X + (1 - alpha) * P2.P_X;
+            r.P_Y = alpha * P1.P_Y + (1 - alpha) * P2.P_Y;
 
-            max_fun = Math.Max(lambda2 * (var.objectivesValue[0] - r.f1), lambda1 * (var.objectivesValue[1] - r.f2));
+            max_fun = Math.Max(lambda2 * (var.objectivesValue[0] - r.P_X), lambda1 * (var.objectivesValue[1] - r.P_Y));
             return max_fun;
         }
 
-        protected void updatePoint(MoChromosome indiv)
+        protected void UpdatePoint(MoChromosome indiv)
         {
          // update the idealpoint.
             
-            if (P1.f1 > indiv.objectivesValue[0])
+            if (P1.P_X > indiv.objectivesValue[0])
             {
-                P1.f1 = indiv.objectivesValue[0];
-                P1.f2 = indiv.objectivesValue[1];
+                P1.P_X = indiv.objectivesValue[0];
+                P1.P_Y = indiv.objectivesValue[1];
             }
-            if (P2.f2 > indiv.objectivesValue[1])
+            if (P2.P_Y > indiv.objectivesValue[1])
             {
-                P2.f1 = indiv.objectivesValue[0];
-                P2.f2 = indiv.objectivesValue[1];
+                P2.P_X = indiv.objectivesValue[0];
+                P2.P_Y = indiv.objectivesValue[1];
             }
             if (this.ItrCounter > 0.9 * this.TotalItrNum)
             {
-                P1.f1 = 0;
-                P1.f2 = 1;
-                P2.f1 = 1;
-                P2.f2 = 0;
+                P1.P_X = 0;
+                P1.P_Y = 1;
+                P2.P_X = 1;
+                P2.P_Y = 0;
             }
 
-            lambda1 = Math.Abs(P1.f1 - P2.f1);
-            lambda2 = Math.Abs(P1.f2 - P2.f2);
+            lambda1 = Math.Abs(P1.P_X - P2.P_X);
+            lambda2 = Math.Abs(P1.P_Y - P2.P_Y);
         }
 
-        protected override void doSolve()
+        protected override void DoSolve()
         {
-            initial();
-            frm = new plotFrm(mainpop, mop.getName());
+            Initial();
+            frm = new plotFrm(mainpop, mop.GetName());
             frm.Show();
             frm.Refresh();
-            while (!terminated())
+            while (!Terminated())
             {
                 for(int i = 0;i < this.popsize; i++)
                 {
                     MoChromosome offspring;
                     offspring = SBXCrossover(i);//GeneticOPDE//GeneticOPSBXCrossover
-                    this.evaluate(offspring);
-                    updateReference(offspring);
-                    updatePoint(offspring);
-                    updateNeighbours(i, offspring);
+                    this.Evaluate(offspring);
+                    UpdateReference(offspring);
+                    UpdatePoint(offspring);
+                    UpdateNeighbours(i, offspring);
                     offspring = null;
                 }
 

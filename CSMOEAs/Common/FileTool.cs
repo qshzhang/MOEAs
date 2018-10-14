@@ -16,9 +16,9 @@ namespace MOEAPlat.Common
             {
                 //sw.Write(mo.vectorString());
                 if(type == 1)
-                    sw.WriteLine(mo.genVectorString());
+                    sw.WriteLine(mo.GenVectorString());
                 else
-                    sw.WriteLine(mo.objVectorString());
+                    sw.WriteLine(mo.ObjVectorString());
             }
             sw.Flush();
             sw.Close();
@@ -38,7 +38,7 @@ namespace MOEAPlat.Common
             sw.Dispose();
         }
 
-        public static List<double[]> readData(string path)
+        public static List<double[]> ReadData(string path)
         {
             List<double[]> list = new List<double[]>();
 
@@ -73,9 +73,9 @@ namespace MOEAPlat.Common
             }
         }
 
-        public static List<pair> readIndicatorData(string path)
+        public static List<PairRelation> ReadIndicatorData(string path)
         {
-            List<pair> list = new List<pair>();
+            List<PairRelation> list = new List<PairRelation>();
 
             try
             {
@@ -86,7 +86,7 @@ namespace MOEAPlat.Common
                 int i = 1;
                 do
                 {
-                    pair p = new pair(i, Convert.ToDouble(strLine));
+                    PairRelation p = new PairRelation(i, Convert.ToDouble(strLine));
                     list.Add(p);
                     strLine = m_streamReader.ReadLine();
                     i++;

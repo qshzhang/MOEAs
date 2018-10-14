@@ -7,7 +7,7 @@ namespace MOEAPlat.Common
 {
     public static class QulityIndicatorToolFunction
     {
-        public static double getDist(double[] v1, double[] v2)
+        public static double GetDist(double[] v1, double[] v2)
         {
             double dist = 0;
             for(int i = 0;i < v1.Length; i++)
@@ -17,7 +17,7 @@ namespace MOEAPlat.Common
             return Math.Sqrt(dist);
         }
 
-        public static double[] getMaximumValues(List<double[]> front, int noObjectives)
+        public static double[] GetMaximumValues(List<double[]> front, int noObjectives)
         {
             double[] maximumValue = new double[noObjectives];
             for (int i = 0; i < noObjectives; i++)
@@ -36,7 +36,7 @@ namespace MOEAPlat.Common
             return maximumValue;
         } // getMaximumValues
 
-        public static double[] getMinimumValues(List<double[]> front, int noObjectives)
+        public static double[] GetMinimumValues(List<double[]> front, int noObjectives)
         {
             double[] minimumValue = new double[noObjectives];
             for (int i = 0; i < noObjectives; i++)
@@ -53,7 +53,7 @@ namespace MOEAPlat.Common
             return minimumValue;
         } // getMinimumValues
 
-        public static List<double[]> getNormalizedFront(List<double[]> front,
+        public static List<double[]> GetNormalizedFront(List<double[]> front,
                                             double[] maximumValue,
                                             double[] minimumValue)
         {
@@ -73,7 +73,7 @@ namespace MOEAPlat.Common
             return normalizedFront;
         } // getNormalizedFront
 
-        public static List<double[]> invertedFront(List<double[]> front)
+        public static List<double[]> InvertedFront(List<double[]> front)
         {
             List<double[]> invertedFront = new List<double[]>();
 
@@ -101,7 +101,7 @@ namespace MOEAPlat.Common
             return invertedFront;
         } // invertedFront
 
-        public static double calculateHypervolume(List<double[]> front, int noPoints, int noObjectives)
+        public static double CalculateHypervolume(List<double[]> front, int noPoints, int noObjectives)
         {
             int n;
             double volume, distance;
@@ -114,7 +114,7 @@ namespace MOEAPlat.Common
                 int noNondominatedPoints;
                 double tempVolume, tempDistance;
 
-                noNondominatedPoints = filterNondominatedSet(front, n, noObjectives - 1);
+                noNondominatedPoints = FilterNondominatedSet(front, n, noObjectives - 1);
                 //noNondominatedPoints = front.length;
                 if (noObjectives < 3)
                 {
@@ -124,19 +124,19 @@ namespace MOEAPlat.Common
                     tempVolume = front[0][0];
                 }
                 else
-                    tempVolume = calculateHypervolume(front,
+                    tempVolume = CalculateHypervolume(front,
                                                       noNondominatedPoints,
                                                       noObjectives - 1);
 
-                tempDistance = surfaceUnchangedTo(front, n, noObjectives - 1);
+                tempDistance = SurfaceUnchangedTo(front, n, noObjectives - 1);
                 volume += tempVolume * (tempDistance - distance);
                 distance = tempDistance;
-                n = reduceNondominatedSet(front, n, noObjectives - 1, distance);
+                n = ReduceNondominatedSet(front, n, noObjectives - 1, distance);
             }
             return volume;
         } // CalculateHypervolume
 
-        private static int filterNondominatedSet(List<double[]> front, int noPoints, int noObjectives)
+        private static int FilterNondominatedSet(List<double[]> front, int noPoints, int noObjectives)
         {
             int i, j;
             int n;
@@ -148,18 +148,18 @@ namespace MOEAPlat.Common
                 j = i + 1;
                 while (j < n)
                 {
-                    if (dominates(front[i], front[j], noObjectives))
+                    if (Dominates(front[i], front[j], noObjectives))
                     {
                         /* remove point 'j' */
                         n--;
-                        swap(front, j, n);
+                        Swap(front, j, n);
                     }
-                    else if (dominates(front[j], front[i], noObjectives))
+                    else if (Dominates(front[j], front[i], noObjectives))
                     {
                         /* remove point 'i'; ensure that the point copied to index 'i'
                            is considered in the next outer loop (thus, decrement i) */
                         n--;
-                        swap(front, i, n);
+                        Swap(front, i, n);
                         i--;
                         break;
                     }
@@ -171,7 +171,7 @@ namespace MOEAPlat.Common
             return n;
         } // FilterNondominatedSet 
 
-        private static Boolean dominates(double[] point1, double[] point2, int noObjectives)
+        private static Boolean Dominates(double[] point1, double[] point2, int noObjectives)
         {
             int i;
             int betterInAnyObjective;
@@ -184,7 +184,7 @@ namespace MOEAPlat.Common
             return ((i >= noObjectives) && (betterInAnyObjective > 0));
         } //Dominates
 
-        private static void swap(List<double[]> front, int i, int j)
+        private static void Swap(List<double[]> front, int i, int j)
         {
             double[] temp;
 
@@ -193,7 +193,7 @@ namespace MOEAPlat.Common
             front[j] = temp;
         } // Swap 
 
-        private static double surfaceUnchangedTo(List<double[]> front, int noPoints, int objective)
+        private static double SurfaceUnchangedTo(List<double[]> front, int noPoints, int objective)
         {
             int i;
             double minValue, value;
@@ -215,7 +215,7 @@ namespace MOEAPlat.Common
            dimension 'objective'; the points referenced by
            'front[0..noPoints-1]' are considered; 'front' is resorted, such that
            'front[0..n-1]' contains the remaining points; 'n' is returned */
-        private static int reduceNondominatedSet(List<double[]> front, int noPoints, int objective,
+        private static int ReduceNondominatedSet(List<double[]> front, int noPoints, int objective,
                      double threshold)
         {
             int n;
@@ -226,7 +226,7 @@ namespace MOEAPlat.Common
                 if (front[i][objective] <= threshold)
                 {
                     n--;
-                    swap(front, i, n);
+                    Swap(front, i, n);
                 }
 
             return n;

@@ -13,11 +13,11 @@ namespace MOEAPlat.Problems
         private CDP()
         {
             this.parDimension = 5;
-            init();
+            Init();
         }
 
 
-        public override void evaluate(MoChromosome chromosome)
+        public override void Evaluate(MoChromosome chromosome)
         {
             double[] sp = chromosome.realGenes;
             double[] obj = chromosome.objectivesValue;
@@ -40,7 +40,7 @@ namespace MOEAPlat.Problems
                 sp[i] = (sp[i] - domain[i, 0]) / (domain[i, 1] - domain[i, 0]);
         }
 
-        public override void init()
+        public override void Init()
         {
             // TODO Auto-generated method stub
             //parDimension = 3;
@@ -54,7 +54,7 @@ namespace MOEAPlat.Problems
             this.range = new double[objDimension, 2];
         }
 
-        public static CDP getInstance()
+        public static CDP GetInstance()
         {
             if (instance == null)
             {

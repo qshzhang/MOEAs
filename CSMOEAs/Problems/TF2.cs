@@ -13,10 +13,10 @@ namespace MOEAPlat.Problems
         private TF2(int pd)
         {
             this.parDimension = pd;
-            init();
+            Init();
         }
 
-        public override void evaluate(MoChromosome chromosome)
+        public override void Evaluate(MoChromosome chromosome)
         {
             double[] sp = chromosome.realGenes;
             double[] obj = chromosome.objectivesValue;
@@ -38,7 +38,7 @@ namespace MOEAPlat.Problems
                 sp[i] = (sp[i] - domain[i, 0]) / (domain[i, 1] - domain[i, 0]);
         }
 
-        public override void init()
+        public override void Init()
         {
             // TODO Auto-generated method stub
             //parDimension = 3;
@@ -52,7 +52,7 @@ namespace MOEAPlat.Problems
             this.range = new double[objDimension, 2];
         }
 
-        public static TF2 getInstance(int pd)
+        public static TF2 GetInstance(int pd)
         {
             if (instance == null)
             {

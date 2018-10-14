@@ -29,7 +29,7 @@ namespace MOEAPlat.PlotDialog
             }
             if(lst[0].objectDimension < 3)
             {
-                pof = POF.POF.getPOF(name);
+                pof = POF.POF.GetPOF(name);
             }
         }
 
@@ -120,8 +120,8 @@ namespace MOEAPlat.PlotDialog
                 this.Mchart.Series[0].ChartType = SeriesChartType.Spline;
                 this.Mchart.Series[0].LegendText = "POF";
 
-                Mchart.ChartAreas[0].AxisX.Maximum = Math.Ceiling(Tool.maxArray(list, 0));
-                Mchart.ChartAreas[0].AxisX.Minimum = Math.Floor(Tool.minArray(list, 1));
+                Mchart.ChartAreas[0].AxisX.Maximum = Math.Ceiling(Tool.MaxArray(list, 0));
+                Mchart.ChartAreas[0].AxisX.Minimum = Math.Floor(Tool.MinArray(list, 1));
 
                 //Mchart.ChartAreas[0].AxisX.Maximum = Math.Ceiling(list[list.Count - 1][0]);
                 //Mchart.ChartAreas[0].AxisX.Minimum = Math.Floor(list[0][0]);

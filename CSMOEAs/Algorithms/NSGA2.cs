@@ -27,27 +27,27 @@ namespace MOEAPlat.Algorithms
         public void initial()
         {
             this.popsize = div;
-            initialPopulation();
+            InitialPopulation();
         }
 
-        protected void initialPopulation()
+        protected void InitialPopulation()
         {
             for (int i = 0; i < this.popsize; i++)
             {
-                MoChromosome chromosome = this.createChromosome();
+                MoChromosome chromosome = this.CreateChromosome();
 
-                evaluate(chromosome);
+                Evaluate(chromosome);
                 mainpop.Add(chromosome);
             }
         }
 
-        protected override void doSolve()
+        protected override void DoSolve()
         {
             initial();
-            frm = new plotFrm(mainpop, mop.getName());
+            frm = new plotFrm(mainpop, mop.GetName());
             frm.Show();
             frm.Refresh();
-            while (!terminated())
+            while (!Terminated())
             {
 
                 List<MoChromosome> offsPop = new List<MoChromosome>();
@@ -56,7 +56,7 @@ namespace MOEAPlat.Algorithms
                 {
                     MoChromosome offspring;
                     offspring = SBXCrossover(i, false);//GeneticOPDE//GeneticOPSBXCrossover
-                    this.evaluate(offspring);
+                    this.Evaluate(offspring);
                     offsPop.Add(offspring);
                 }
 
@@ -82,7 +82,7 @@ namespace MOEAPlat.Algorithms
         {
             List<MoChromosome> result = new List<MoChromosome>();
             //List<List<MoChromosome>> dominatedSet0 = NSGA.fastNonDominatedSort(pop);
-            List<List<MoChromosome>> dominatedSet0 = NSGA.fastConstrainedNonDominatedSort(pop);
+            List<List<MoChromosome>> dominatedSet0 = NSGA.FastConstrainedNonDominatedSort(pop);
 
             int cnt = 0;
             while (result.Count() + dominatedSet0[cnt].Count() < this.popsize)
@@ -103,8 +103,8 @@ namespace MOEAPlat.Algorithms
                 return;
             }
 
-            NSGA.crowdingDistanceAssignment(dominatedSet0[cnt]);
-            MoChromosome[] arr = NSGA.sort(dominatedSet0[cnt]);
+            NSGA.CrowdingDistanceAssignment(dominatedSet0[cnt]);
+            MoChromosome[] arr = NSGA.Sort(dominatedSet0[cnt]);
             int i = 0;
             while (result.Count() < popsize)
             {

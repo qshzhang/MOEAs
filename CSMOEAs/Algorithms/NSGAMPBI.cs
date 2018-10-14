@@ -35,7 +35,7 @@ namespace MOEAPlat.Algorithms
         
 
 
-        protected void initial()
+        protected void Initial()
         {
             this.idealpoint = new double[this.numObjectives];
             this.narpoint = new double[this.numObjectives];
@@ -47,13 +47,13 @@ namespace MOEAPlat.Algorithms
                 narpoint[i] = Double.MinValue;
             }
 
-            initWeight(this.div);
-            initialPopulation();
-            initNeighbour();
-            threshold = getThreshold(this.weights);
+            InitWeight(this.div);
+            InitialPopulation();
+            InitNeighbour();
+            threshold = GetThreshold(this.weights);
         }
 
-        protected void initNeighbour()
+        protected void InitNeighbour()
         {
             neighbourTable = new List<int[]>(popsize);
 
@@ -63,7 +63,7 @@ namespace MOEAPlat.Algorithms
                 distancematrix[i, i] = 0;
                 for (int j = i + 1; j < popsize; j++)
                 {
-                    distancematrix[i, j] = distance(weights[i], weights[j]);
+                    distancematrix[i, j] = Distance(weights[i], weights[j]);
                     distancematrix[j, i] = distancematrix[i, j];
                 }
             }
@@ -76,26 +76,26 @@ namespace MOEAPlat.Algorithms
                     val[j] = distancematrix[i, j];
                 }
 
-                int[] index = Sorting.sorting(val);
+                int[] index = Sorting.Sort(val);
                 int[] array = new int[this.neighbourSize];
                 Array.Copy(index, array, this.neighbourSize);
                 neighbourTable.Add(array);
             }
         }
 
-        protected void initialPopulation()
+        protected void InitialPopulation()
         {
             for (int i = 0; i < this.popsize; i++)
             {
-                MoChromosome chromosome = this.createChromosome();
+                MoChromosome chromosome = this.CreateChromosome();
 
-                evaluate(chromosome);
+                Evaluate(chromosome);
                 mainpop.Add(chromosome);
-                updateReference(chromosome);
+                UpdateReference(chromosome);
             }
         }
 
-        protected void initWeight(int m)
+        protected void InitWeight(int m)
         {
             this.weights = new List<double[]>();
             if (numObjectives < 6) this.weights = UniPointsGenerator.getMUniDistributedPoint(numObjectives, m);
@@ -105,7 +105,7 @@ namespace MOEAPlat.Algorithms
             this.baseNum = this.popsize;
         }
 
-        protected double getThreshold(List<double[]> wt)
+        protected double GetThreshold(List<double[]> wt)
         {
             //double min = Double.MaxValue;
             //for(int i = 0; i < wt.Count(); i++)
@@ -120,14 +120,14 @@ namespace MOEAPlat.Algorithms
             double[] center = new double[this.numObjectives];
             for (int i = 0; i < this.numObjectives; i++) center[i] = 1.0 / this.numObjectives;
 
-            pair[] pr = new pair[wt.Count];
+            PairRelation[] pr = new PairRelation[wt.Count];
             for(int i = 0;i < wt.Count; i++)
             {
-                pr[i] = new pair(i, -1);
+                pr[i] = new PairRelation(i, -1);
             }
             for(int i = 0;i < wt.Count; i++)
             {
-                pr[i].val = distance(center, wt[i]);
+                pr[i].val = Distance(center, wt[i]);
             }
 
             Array.Sort(pr);
@@ -145,11 +145,11 @@ namespace MOEAPlat.Algorithms
             for (int i = 0; i < this.numObjectives; i++) ct[i] /= this.numObjectives;
 
 
-            return distance(ct, wt[pr[len-0].pos]);
+            return Distance(ct, wt[pr[len-0].pos]);
         }
 
 
-        protected double igdScalarObj(int idx, MoChromosome var)
+        protected double IgdScalarObj(int idx, MoChromosome var)
         {
             double[] namda = this.weights[idx];
 
@@ -162,10 +162,10 @@ namespace MOEAPlat.Algorithms
             {
                 obj[i] = var.objectivesValue[i] - this.idealpoint[i] - sd[i] -(namda[i] * Dintercept);
             }
-            return pbiScalarObj(weight, obj);
+            return PbiScalarObj(weight, obj);
         }
 
-        protected double pbiScalarObj(double[] namda, double[] obj)
+        protected double PbiScalarObj(double[] namda, double[] obj)
         {
             double lenv = 0, mul = 0;
             for (int i = 0; i < numObjectives; i++)
@@ -183,21 +183,21 @@ namespace MOEAPlat.Algorithms
             return d1 + 5 * Math.Sqrt(d2);
         }
 
-        void updateSD(List<MoChromosome> pop)
+        void UpdateSD(List<MoChromosome> pop)
         {
-            List<MoChromosome> temp = NSGA.fastNonDominatedSort(pop)[0];
-            getDintercept(temp);
+            List<MoChromosome> temp = NSGA.FastNonDominatedSort(pop)[0];
+            GetDintercept(temp);
             for (int i = 0; i < this.numObjectives; i++) sd[i] = Double.MaxValue;
             for (int i = 0; i < temp.Count(); i++)
             {
-                double[] tp = projPoint(temp[i]);
+                double[] tp = ProjPoint(temp[i]);
                 for (int j = 0; j < this.numObjectives; j++)
                 {
                     if (sd[j] > tp[j]) sd[j] = tp[j];
                 }
             }
         }
-        double[] projPoint(MoChromosome var)
+        double[] ProjPoint(MoChromosome var)
         {
             double[] result = new double[this.numObjectives];
             double sum = 0.0;
@@ -212,7 +212,7 @@ namespace MOEAPlat.Algorithms
             return result;
         }
 
-        void getDintercept(List<MoChromosome> pop)
+        void GetDintercept(List<MoChromosome> pop)
         {
             Dintercept = Double.MaxValue;
             for (int i = 0; i < pop.Count(); i++)
@@ -226,7 +226,7 @@ namespace MOEAPlat.Algorithms
             }
         }
 
-        void updateDintercept()
+        void UpdateDintercept()
         {
             double sum = 0.0;
             for (int i = 0; i < this.numObjectives; i++) sum += sd[i];
@@ -237,7 +237,7 @@ namespace MOEAPlat.Algorithms
         {
             List<MoChromosome> result = new List<MoChromosome>();
             //List<List<MoChromosome>> dominatedSet0 = NSGA.fastNonDominatedSort(pop);
-            List<List<MoChromosome>> dominatedSet0 = NSGA.fastConstrainedNonDominatedSort(pop);
+            List<List<MoChromosome>> dominatedSet0 = NSGA.FastConstrainedNonDominatedSort(pop);
 
             int cnt = 0;
             while (result.Count() + dominatedSet0[cnt].Count() <= this.popsize)
@@ -259,12 +259,12 @@ namespace MOEAPlat.Algorithms
 
             if(this.ItrCounter < Mr * this.TotalItrNum)
             {
-                updateSD(pop);
-                updateDintercept();
+                UpdateSD(pop);
+                UpdateDintercept();
             }
 
 
-            List<List<MoChromosome>> associatedSolution = clustering(dominatedSet0[cnt]);
+            List<List<MoChromosome>> associatedSolution = Clustering(dominatedSet0[cnt]);
 
             for (int i = 0; i < this.weights.Count(); i++)
             {
@@ -331,7 +331,7 @@ namespace MOEAPlat.Algorithms
             return;
         }
 
-        protected List<List<MoChromosome>> clustering(List<MoChromosome> pop)
+        protected List<List<MoChromosome>> Clustering(List<MoChromosome> pop)
         {
             List<List<MoChromosome>> associatedSolution;
             associatedSolution = new List<List<MoChromosome>>();
@@ -347,7 +347,7 @@ namespace MOEAPlat.Algorithms
                 int pos = -1;
                 for (int j = 0; j < this.weights.Count(); j++)
                 {
-                    dt = igdScalarObj(j, pop[i]);
+                    dt = IgdScalarObj(j, pop[i]);
                     //dt = getAngle(dominatedSet0[cnt][i].objectivesValue, this.weights[j]);
                     if (dt < dist)
                     {
@@ -355,35 +355,35 @@ namespace MOEAPlat.Algorithms
                         pos = j;
                     }
                 }
-                pop[i].tchVal = igdScalarObj(pos, pop[i]);
+                pop[i].tchVal = IgdScalarObj(pos, pop[i]);
                 pop[i].subProbNo = pos;
                 associatedSolution[pos].Add(pop[i]);
             }
             return associatedSolution;
         }
 
-        protected override void doSolve()
+        protected override void DoSolve()
         {
-            initial();
+            Initial();
 
-            string prob = mop.getName();
+            string prob = mop.GetName();
             if (prob.IndexOf("DTLZ") != -1)
             {
                 igdValue.Add(QulityIndicator.QulityIndicator.DTLZIGD(mainpop, prob, this.numObjectives));
             }
             else
             {
-                pofData = FileTool.readData(pofPath + prob);
+                pofData = FileTool.ReadData(pofPath + prob);
                 igdValue.Add(QulityIndicator.QulityIndicator.IGD(mainpop, pofData));
             }
 
             if (GlobalValue.IsShowProcess)
             {
-                frm = new plotFrm(mainpop, mop.getName());
+                frm = new plotFrm(mainpop, mop.GetName());
                 frm.Show();
                 frm.Refresh();
             }
-            while (!terminated())
+            while (!Terminated())
             {
                 List<MoChromosome> offsPop = new List<MoChromosome>();
                 for (int i = 0; i < popsize; i++)
@@ -397,9 +397,9 @@ namespace MOEAPlat.Algorithms
                     {
                         offspring = DECrossover(i,true);
                     }
-                    this.evaluate(offspring);
+                    this.Evaluate(offspring);
                     offsPop.Add(offspring);
-                    updateReference(offspring);
+                    UpdateReference(offspring);
                 }
 
                 List<MoChromosome> Pop = new List<MoChromosome>();
@@ -410,7 +410,7 @@ namespace MOEAPlat.Algorithms
 
                 if (this.ItrCounter >= Mr * this.TotalItrNum && this.ItrCounter % ((int)(this.TotalItrNum * fr)) == 0)
                 {
-                    adjustReferencePoints();
+                    AdjustReferencePoints();
                 }
                 if(this.ItrCounter % 10 == 0)
                 {
@@ -436,11 +436,11 @@ namespace MOEAPlat.Algorithms
             Common.FileTool.WritetoFile(igdValue, "igdCurve");
         }
 
-        protected void adjustReferencePoints()
+        protected void AdjustReferencePoints()
         {
             List<double[]> wNew = new List<double[]>();
 
-            List<List<MoChromosome>> associatedSolution = clustering(mainpop);
+            List<List<MoChromosome>> associatedSolution = Clustering(mainpop);
             
 
             List<double[]> wNew1 = new List<double[]>();
@@ -458,21 +458,21 @@ namespace MOEAPlat.Algorithms
             List<double[]> temp = new List<double[]>();
 
 
-            int n = getH((int)(popsize * baseNum * 1.0 / wNew.Count()), this.numObjectives);
+            int n = GetH((int)(popsize * baseNum * 1.0 / wNew.Count()), this.numObjectives);
             temp = UniPointsGenerator.getMUniDistributedPoint(numObjectives, n);
 
 
             baseNum = temp.Count();
 
             double dt = threshold;
-            threshold = getThreshold(temp);
+            threshold = GetThreshold(temp);
 
             for (int i = 0; i < temp.Count(); i++)
             {
                 double min = Double.MaxValue;
                 for (int j = 0; j < wNew.Count(); j++)
                 {
-                    double tp2 = distance(temp[i], wNew[j]);
+                    double tp2 = Distance(temp[i], wNew[j]);
                     if (tp2 < min) min = tp2;
                 }
 
@@ -486,7 +486,7 @@ namespace MOEAPlat.Algorithms
             H = n;
         }
 
-        protected double getAngle(double[] v1, double[] v2)
+        protected double GetAngle(double[] v1, double[] v2)
         {
             double sum = 0;
             double len1 = 0;
@@ -500,7 +500,7 @@ namespace MOEAPlat.Algorithms
             return Math.Acos(sum / (Math.Sqrt(len1 * len2)));
         }
 
-        private int getH(int n, int m)
+        private int GetH(int n, int m)
         {
             int H = 1;
             int len = 1;

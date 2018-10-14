@@ -33,11 +33,11 @@ namespace MOEAPlat.Problems.WFG
             parDimension = this.k_ + this.l_;
             objDimension = this.M_;
 
-            init();
+            Init();
 
         } // WFG
 
-        public override void init()
+        public override void Init()
         {
             // TODO Auto-generated method stub
             //parDimension = 3;

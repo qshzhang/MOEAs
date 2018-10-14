@@ -68,8 +68,8 @@
     <Compile Include="Common\GlobalValue.cs" />
     <Compile Include="Common\Matrix.cs" />
     <Compile Include="Common\NSGA.cs" />
-    <Compile Include="Common\pair.cs" />
-    <Compile Include="Common\point.cs" />
+    <Compile Include="Common\PairRelation.cs" />
+    <Compile Include="Common\Point2.cs" />
     <Compile Include="Common\Sorting.cs" />
     <Compile Include="Common\QulityIndicatorToolFunction.cs" />
     <Compile Include="Common\Tool.cs" />

@@ -8,12 +8,12 @@ namespace MOEAPlat.Problems
 {
     public interface MultiObjectiveProblem
     {
-        int getObjectiveSpaceDimension();
-        int getParameterSpaceDimension();
-        int getCNeqNum();
-        int getCEqNum();
-        double[,] getDomain();
-        void evaluate(MoChromosome chromosome);
-        string getName();
+        int GetObjectiveSpaceDimension();
+        int GetParameterSpaceDimension();
+        int GetCNeqNum();
+        int GetCEqNum();
+        double[,] GetDomain();
+        void Evaluate(MoChromosome chromosome);
+        string GetName();
     }
 }

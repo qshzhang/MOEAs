@@ -25,44 +25,44 @@ namespace MOEAPlat.Algorithms
 
         private List<MoChromosome> externalSet = new List<MoChromosome>();
 
-        public void initial()
+        public void Initial()
         {
             this.popsize = div;
-            initialPopulation();
+            InitialPopulation();
             k = (int)Math.Sqrt(2 * popsize);
         }
 
-        protected void initialPopulation()
+        protected void InitialPopulation()
         {
             for (int i = 0; i < this.popsize; i++)
             {
-                MoChromosome chromosome = this.createChromosome();
+                MoChromosome chromosome = this.CreateChromosome();
 
-                evaluate(chromosome);
+                Evaluate(chromosome);
                 mainpop.Add(chromosome);
             }
         }
 
 
-        protected override void doSolve()
+        protected override void DoSolve()
         {
-            initial();
+            Initial();
 
-            string prob = mop.getName();
+            string prob = mop.GetName();
             if (prob.IndexOf("DTLZ") != -1)
             {
                 igdValue.Add(QulityIndicator.QulityIndicator.DTLZIGD(mainpop, prob, this.numObjectives));
             }
             else
             {
-                pofData = FileTool.readData(pofPath + prob);
+                pofData = FileTool.ReadData(pofPath + prob);
                 igdValue.Add(QulityIndicator.QulityIndicator.IGD(mainpop, pofData));
             }
 
-            frm = new plotFrm(mainpop, mop.getName());
+            frm = new plotFrm(mainpop, mop.GetName());
             frm.Show();
             frm.Refresh();
-            while (!terminated())
+            while (!Terminated())
             {
 
                 List<MoChromosome> offsPop = new List<MoChromosome>();
@@ -71,7 +71,7 @@ namespace MOEAPlat.Algorithms
                 {
                     MoChromosome offspring;
                     offspring = SBXCrossover(i, false);//GeneticOPDE//GeneticOPSBXCrossover
-                    this.evaluate(offspring);
+                    this.Evaluate(offspring);
                     offsPop.Add(offspring);
                 }
 
@@ -126,7 +126,7 @@ namespace MOEAPlat.Algorithms
             }
             if(result.Count > popsize)
             {
-                NSGA.crowdingDistanceAssignment(result);
+                NSGA.CrowdingDistanceAssignment(result);
                 result = result.OrderByDescending(r => r.crdistance).ToList();
             }
 
@@ -149,7 +149,7 @@ namespace MOEAPlat.Algorithms
                 for(int j = 0;j < pop.Count; j++)
                 {
                     if (i == j) continue;
-                    if (pop[j].dominates(pop[i]))
+                    if (pop[j].Dominates(pop[i]))
                     {
                         pop[i].fitnessValue += cnt[j];
                     }
@@ -167,7 +167,7 @@ namespace MOEAPlat.Algorithms
                 for(int j = 0;j < pop.Count; j++)
                 {
                     if (i == j) continue;
-                    if (pop[i].dominates(pop[j])) cnt[i]++;
+                    if (pop[i].Dominates(pop[j])) cnt[i]++;
                 }
             }
             return cnt;
@@ -185,7 +185,7 @@ namespace MOEAPlat.Algorithms
                 }
                 for (int j = i; j < pop.Count; j++)
                 {
-                    dist[j] = distance(pop[i].objectivesValue, pop[j].objectivesValue);
+                    dist[j] = Distance(pop[i].objectivesValue, pop[j].objectivesValue);
                 }
                 list.Add(dist);
             }

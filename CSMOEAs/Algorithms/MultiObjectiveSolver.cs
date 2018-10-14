@@ -49,7 +49,7 @@ namespace MOEAPlat.Algorithms
 
         protected plotFrm frm;
 
-        public void stop()
+        public void Stop()
         {
             stoped = true;
         }
@@ -58,18 +58,18 @@ namespace MOEAPlat.Algorithms
         /// solve a MOP
         /// </summary>
         /// <param name="problem">MOP instance</param>
-        public void solve(MultiObjectiveProblem problem)
+        public void Solve(MultiObjectiveProblem problem)
         {
-            this.setMultiObjectiveProblem(problem);
-            this.numObjectives = problem.getObjectiveSpaceDimension();
-            this.parDimension = problem.getParameterSpaceDimension();
-            this.ceqNum = problem.getCEqNum();
-            this.cneqNum = problem.getCNeqNum();
-            this.doSolve();
+            this.SetMultiObjectiveProblem(problem);
+            this.numObjectives = problem.GetObjectiveSpaceDimension();
+            this.parDimension = problem.GetParameterSpaceDimension();
+            this.ceqNum = problem.GetCEqNum();
+            this.cneqNum = problem.GetCNeqNum();
+            this.DoSolve();
             this.stoped = true;
         }
 
-        private void setMultiObjectiveProblem(MultiObjectiveProblem problem)
+        private void SetMultiObjectiveProblem(MultiObjectiveProblem problem)
         {
             this.mop = problem;
         }
@@ -78,10 +78,10 @@ namespace MOEAPlat.Algorithms
         /// evaluate the objective value for a individual
         /// </summary>
         /// <param name="chromosmoe">an individual</param>
-        public void evaluate(MoChromosome chromosmoe)
+        public void Evaluate(MoChromosome chromosmoe)
         {
             MultiObjectiveProblem multiObjectiveProblem = mop;
-            multiObjectiveProblem.evaluate(chromosmoe);
+            multiObjectiveProblem.Evaluate(chromosmoe);
         }
 
         /// <summary>
@@ -89,15 +89,17 @@ namespace MOEAPlat.Algorithms
         /// </summary>
         /// <param name="type">encoding mode: 0-real number coding; 1-binary coding</param>
         /// <returns>an individual</returns>
-        public MoChromosome createChromosome(int type = 0) //ref MoChromosome chromosome
+        public MoChromosome CreateChromosome(int type = 0) //ref MoChromosome chromosome
         {
-            MoChromosome chromosome = new MoChromosome();
-            chromosome.parDimension = this.parDimension;
-            chromosome.objectDimension = this.numObjectives;
-            chromosome.objectivesValue = new double[this.numObjectives];
-            chromosome.domainInfo = new double[this.parDimension, 2];
-            chromosome.ceqValue = new double[this.ceqNum];
-            chromosome.cneqValue = new double[this.cneqNum];
+            MoChromosome chromosome = new MoChromosome
+            {
+                parDimension = this.parDimension,
+                objectDimension = this.numObjectives,
+                objectivesValue = new double[this.numObjectives],
+                domainInfo = new double[this.parDimension, 2],
+                ceqValue = new double[this.ceqNum],
+                cneqValue = new double[this.cneqNum]
+            };
 
             //long tick = DateTime.Now.Millisecond;
             //Random random = new Random((int)(tick & 0xffffffffL) | (int)(tick >> 32));
@@ -126,7 +128,7 @@ namespace MOEAPlat.Algorithms
         /// determine whether iteration ends
         /// </summary>
         /// <returns></returns>
-        protected Boolean terminated()
+        protected Boolean Terminated()
         {
             // condition on the iteration.
             return (this.ItrCounter > this.TotalItrNum);
@@ -153,7 +155,7 @@ namespace MOEAPlat.Algorithms
         /// <param name="weight1"></param>
         /// <param name="weight2"></param>
         /// <returns></returns>
-        public double distance(double[] weight1, double[] weight2)
+        public double Distance(double[] weight1, double[] weight2)
         {
             double sum = 0;
             for (int i = 0; i < weight1.Length; i++)
@@ -169,7 +171,7 @@ namespace MOEAPlat.Algorithms
         /// <param name="idx">index of weight vectors</param>
         /// <param name="individual">an individual</param>
         /// <returns></returns>
-        protected double getParDist(int idx, MoChromosome var)
+        protected double GetParDist(int idx, MoChromosome var)
         {
 
             double[] namda = this.weights[idx];
@@ -193,7 +195,7 @@ namespace MOEAPlat.Algorithms
         /// transformed the weight vectors
         /// the detail can find in essay "MOEA/D with Adaptive Weight Adjustment"
         /// </summary>
-        protected void getTransweight()
+        protected void GetTransweight()
         {
             if (this.Transweights == null)
                 this.Transweights = new List<double[]>();
@@ -234,7 +236,7 @@ namespace MOEAPlat.Algorithms
         /// <param name="individual">an individuals</param>
         /// <param name="flag">is objective vector need standard</param>
         /// <returns></returns>
-        protected double getAngle(int idx, MoChromosome var, Boolean flag = false)
+        protected double GetAngle(int idx, MoChromosome var, Boolean flag = false)
         {
             double[] namda = this.weights[idx];
             double mul = 0.0;
@@ -264,7 +266,7 @@ namespace MOEAPlat.Algorithms
         /// <param name="individual">an individuals</param>
         /// <param name="flag"></param>
         /// <returns></returns>
-        protected double techScalarObj(int idx, MoChromosome var, Boolean flag = false)
+        protected double TechScalarObj(int idx, MoChromosome var, Boolean flag = false)
         {
             double[] namda = this.Transweights[idx];
             double max_fun = -1 * Double.MaxValue;
@@ -296,7 +298,7 @@ namespace MOEAPlat.Algorithms
         /// <param name="idx"></param>
         /// <param name="individual"></param>
         /// <returns></returns>
-        protected double wsScalarObj(int idx, MoChromosome var)
+        protected double WsScalarObj(int idx, MoChromosome var)
         {
             double[] namda = this.weights[idx];
             double sum = 0;
@@ -314,7 +316,7 @@ namespace MOEAPlat.Algorithms
         /// <param name="individual"></param>
         /// <param name="flag"></param>
         /// <returns></returns>
-        protected double pbiScalarObj(int idx, MoChromosome var, Boolean flag = false)
+        protected double PbiScalarObj(int idx, MoChromosome var, Boolean flag = false)
         {
 
             double[] namda = this.weights[idx];
@@ -352,7 +354,7 @@ namespace MOEAPlat.Algorithms
         /// update ideal point
         /// </summary>
         /// <param name="individual"></param>
-        protected void updateReference(MoChromosome indiv)
+        protected void UpdateReference(MoChromosome indiv)
         {
             for (int j = 0; j < indiv.objectivesValue.Length; j++)
             {
@@ -367,7 +369,7 @@ namespace MOEAPlat.Algorithms
 
         }
 
-        protected void updateNadirPoint(List<MoChromosome> list)
+        protected void UpdateNadirPoint(List<MoChromosome> list)
         {
             List<int> li = new List<int>();
             for(int i = 0;i < this.numObjectives; i++)
@@ -411,7 +413,7 @@ namespace MOEAPlat.Algorithms
             for (int i = 0; i < this.numObjectives; i++) u[i] = 1;
             double[] result = Matrix.MatrixMultiple(imatrix, u);
 
-            if(result == null || (result != null && !Tool.isSatisfy(result)))
+            if(result == null || (result != null && !Tool.IsSatisfy(result)))
             {
                 for (int i = 0; i < this.numObjectives; i++) this.narpoint[i] = Double.MinValue;
                 for(int i = 0;i < this.numObjectives; i++)
@@ -437,7 +439,7 @@ namespace MOEAPlat.Algorithms
         /// get all objective vector in the population
         /// </summary>
         /// <returns></returns>
-        public List<double[]> getObjective()
+        public List<double[]> GetObjective()
         {
             List<double[]> objs = new List<double[]>();
             foreach(MoChromosome mo in mainpop)
@@ -493,12 +495,12 @@ namespace MOEAPlat.Algorithms
             MoChromosome chromosome2 = mainpop[l];
 
             // generic operation crossover and mutation.
-            MoChromosome offSpring = this.createChromosome();
+            MoChromosome offSpring = this.CreateChromosome();
             MoChromosome current = mainpop[i];
 
-            offSpring.DE(current, chromosome1, chromosome2, random);
+            offSpring.DECrossover(current, chromosome1, chromosome2, random);
 
-            offSpring.mutate(1d / offSpring.parDimension, random);
+            offSpring.Mutate(1d / offSpring.parDimension, random);
             return offSpring;
         }
 
@@ -524,16 +526,16 @@ namespace MOEAPlat.Algorithms
                 while (k == i);
             }
 
-            MoChromosome offSpring = this.createChromosome();
-            offSpring.SBX(this.mainpop[i], mainpop[k], random);
+            MoChromosome offSpring = this.CreateChromosome();
+            offSpring.SBXCrossover(this.mainpop[i], mainpop[k], random);
 
-            offSpring.mutate(1d / offSpring.parDimension, random);
+            offSpring.Mutate(1d / offSpring.parDimension, random);
 
             offSpring.selected = false;
             //offSpring.mutate(this.randomGenerator, 1d/this.popsize);
             return offSpring;
         }
 
-        abstract protected void doSolve();
+        abstract protected void DoSolve();
     }
 }

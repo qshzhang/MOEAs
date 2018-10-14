@@ -22,7 +22,7 @@ namespace MOEAPlat.Problems
                 A_[i] = 1;
         }
 
-        public override void evaluate(MoChromosome chromosome)
+        public override void Evaluate(MoChromosome chromosome)
         {
             // TODO Auto-generated method stub
             double[] sp = chromosome.realGenes;
@@ -52,7 +52,7 @@ namespace MOEAPlat.Problems
         }
 
 
-        public static WFG1_M getInstance(int M)
+        public static WFG1_M GetInstance(int M)
         {
             if (instance == null)
             {

@@ -7,7 +7,7 @@ namespace MOEAPlat.Common
 {
     public static class Sorting
     {
-        public static int[] sorting(double[] tobesorted)
+        public static int[] Sort(double[] tobesorted)
         {
             int[] index = new int[tobesorted.Length];
             for (int i = 0; i < index.Length; i++)

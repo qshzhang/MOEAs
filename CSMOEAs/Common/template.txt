@@ -40,7 +40,7 @@ namespace MOEAPlat.Problems
             this.range = new double[objDimension,2];
         }
 
-        public static #FuncName# getInstance(int pd)
+        public static #FuncName# GetInstance(int pd)
         {
             if (instance == null)
             {

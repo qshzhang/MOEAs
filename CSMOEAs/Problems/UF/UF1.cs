@@ -12,9 +12,9 @@ namespace MOEAPlat.Problems
         private UF1(int pd)
         {
             this.parDimension = pd;
-            init();
+            Init();
         }
-        public override void evaluate(MoChromosome chromosome)
+        public override void Evaluate(MoChromosome chromosome)
         {
             double[] sp = chromosome.realGenes;
             double[] obj = chromosome.objectivesValue;
@@ -44,7 +44,7 @@ namespace MOEAPlat.Problems
                 sp[i] = (sp[i] - domain[i, 0]) / (domain[i, 1] - domain[i, 0]);
         }
 
-        public override void init()
+        public override void Init()
         {
             this.domain = new double[this.parDimension, 2];
             domain[0, 0] = 0;
@@ -58,7 +58,7 @@ namespace MOEAPlat.Problems
             this.range = new double[objDimension, 2];
         }
 
-        public static UF1 getInstance(int pd)
+        public static UF1 GetInstance(int pd)
         {
             if (instance == null)
             {

@@ -7,7 +7,7 @@ namespace MOEAPlat.Common
 {
     public static class Tool
     {
-        public static double getAngle(double[] v1, double[] v2)
+        public static double GetAngle(double[] v1, double[] v2)
         {
             double mul = 0.0;
             double a = 0.0;
@@ -51,7 +51,7 @@ namespace MOEAPlat.Common
             return Math.Sqrt(sum);
         }
 
-        public static double maxArray(List<double[]> list, int obj)
+        public static double MaxArray(List<double[]> list, int obj)
         {
             double max = Double.MinValue;
             foreach(double[] arr in list)
@@ -64,7 +64,7 @@ namespace MOEAPlat.Common
             return max;
         }
 
-        public static double minArray(List<double[]> list, int obj)
+        public static double MinArray(List<double[]> list, int obj)
         {
             double min = Double.MaxValue;
             foreach (double[] arr in list)
@@ -77,7 +77,7 @@ namespace MOEAPlat.Common
             return min;
         }
 
-        public static Boolean isSatisfy(double[] arr)
+        public static Boolean IsSatisfy(double[] arr)
         {
             Boolean flag = true;
             foreach(double e in arr)

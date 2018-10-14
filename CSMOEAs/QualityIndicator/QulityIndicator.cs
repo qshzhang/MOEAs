@@ -20,14 +20,27 @@ namespace MOEAPlat.QulityIndicator
             return list;
         }
 
+        /// <summary>
+        /// IGD value
+        /// </summary>
+        /// <param name="solution">obtained solutions</param>
+        /// <param name="trueFront">true PF data</param>
+        /// <returns></returns>
         public static double IGD(List<MoChromosome> solution, List<double[]> trueFront)
         {
             return IGD(GetList(solution), trueFront);
         }
 
-        public static double HV(List<MoChromosome> solution, double[] refPoint, double[] miniPoin)
+        /// <summary>
+        /// HV value
+        /// </summary>
+        /// <param name="solution">obtained solutions</param>
+        /// <param name="refPoint">reference points</param>
+        /// <param name="miniPoint"></param>
+        /// <returns></returns>
+        public static double HV(List<MoChromosome> solution, double[] refPoint, double[] miniPoint)
         {
-            return HV(GetList(solution), refPoint, miniPoin);
+            return HV(GetList(solution), refPoint, miniPoint);
         }
 
         private static double IGD(List<double[]> solution, List<double[]> trueFront)
@@ -39,7 +52,7 @@ namespace MOEAPlat.QulityIndicator
                 double dist = Double.MaxValue;
                 for(int i = 0;i < solution.Count; i++)
                 {
-                    double d = QulityIndicatorToolFunction.getDist(v, solution[i]);
+                    double d = QulityIndicatorToolFunction.GetDist(v, solution[i]);
                     if(d < dist)
                     {
                         dist = d;
@@ -79,16 +92,16 @@ namespace MOEAPlat.QulityIndicator
             //minimumValues = QulityIndicatorToolFunction.getMinimumValues(trueFront, numberOfObjectives);
 
             // STEP 2. Get the normalized front
-            normalizedFront = QulityIndicatorToolFunction.getNormalizedFront(solution,
+            normalizedFront = QulityIndicatorToolFunction.GetNormalizedFront(solution,
                                                         maximumValues,
                                                         minimumValues);
 
             // STEP 3. Inverse the pareto front. This is needed because of the original
             //metric by Zitzler is for maximization problems
-            invertedFront = QulityIndicatorToolFunction.invertedFront(normalizedFront);
+            invertedFront = QulityIndicatorToolFunction.InvertedFront(normalizedFront);
 
             // STEP4. The hypervolumen (control is passed to java version of Zitzler code)
-            return QulityIndicatorToolFunction.calculateHypervolume(invertedFront, invertedFront.Count, numberOfObjectives);
+            return QulityIndicatorToolFunction.CalculateHypervolume(invertedFront, invertedFront.Count, numberOfObjectives);
         }
 
         public static double DTLZIGD(List<MoChromosome> solution, string prob, int objs)

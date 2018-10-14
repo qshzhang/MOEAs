@@ -25,7 +25,7 @@ namespace MOEAPlat.Algorithms
 
         //public List<MoChromosome> mainpop = new List<MoChromosome>();
 
-        public void initial()
+        public void Initial()
         {
             this.idealpoint = new double[this.numObjectives];
             this.narpoint = new double[this.numObjectives];
@@ -36,12 +36,12 @@ namespace MOEAPlat.Algorithms
                 narpoint[i] = Double.MinValue;
             }
 
-            initWeight(this.div);
-            initialPopulation();
-            inittheta();
+            InitWeight(this.div);
+            InitialPopulation();
+            InitTheta();
         }
 
-        protected void initWeight(int m)
+        protected void InitWeight(int m)
         {
             this.weights = new List<double[]>();
             if (numObjectives < 6) this.weights = UniPointsGenerator.getMUniDistributedPoint(numObjectives, m);
@@ -51,7 +51,7 @@ namespace MOEAPlat.Algorithms
             k = (int)Math.Sqrt(2 * popsize);
         }
 
-        private void inittheta()
+        private void InitTheta()
         {
             double[] arr = new double[this.popsize];
             for(int i = 0;i < this.popsize; i++)
@@ -60,7 +60,7 @@ namespace MOEAPlat.Algorithms
                 for(int j = 0;j < popsize; j++)
                 {
                     if (i == j) continue;
-                    double tp = Tool.getAngle(weights[i], weights[j]);
+                    double tp = Tool.GetAngle(weights[i], weights[j]);
                     if (tp < min) min = tp;
                 }
                 arr[i] = min;
@@ -68,25 +68,25 @@ namespace MOEAPlat.Algorithms
             thetam = Tool.ArrayMax(arr);
         }
 
-        protected void initialPopulation()
+        protected void InitialPopulation()
         {
             for (int i = 0; i < this.popsize; i++)
             {
-                MoChromosome chromosome = this.createChromosome();
+                MoChromosome chromosome = this.CreateChromosome();
 
-                evaluate(chromosome);
-                updateReference(chromosome);
+                Evaluate(chromosome);
+                UpdateReference(chromosome);
                 mainpop.Add(chromosome);
             }
         }
 
-        protected override void doSolve()
+        protected override void DoSolve()
         {
-            initial();
-            frm = new plotFrm(mainpop, mop.getName());
+            Initial();
+            frm = new plotFrm(mainpop, mop.GetName());
             frm.Show();
             frm.Refresh();
-            while (!terminated())
+            while (!Terminated())
             {
 
                 List<MoChromosome> offsPop = new List<MoChromosome>();
@@ -102,9 +102,9 @@ namespace MOEAPlat.Algorithms
                     {
                         offspring = DECrossover(i);
                     }
-                    this.evaluate(offspring);
+                    this.Evaluate(offspring);
                     offsPop.Add(offspring);
-                    updateReference(offspring);
+                    UpdateReference(offspring);
                 }
 
                 List<MoChromosome> Pop = new List<MoChromosome>();
@@ -131,7 +131,7 @@ namespace MOEAPlat.Algorithms
 
             GlobalRawFitness(pop);
 
-            List<List<MoChromosome>> associatedSolution = clustering(pop);
+            List<List<MoChromosome>> associatedSolution = Clustering(pop);
 
             for(int i = 0;i < associatedSolution.Count; i++)
             {
@@ -220,7 +220,7 @@ namespace MOEAPlat.Algorithms
                 for (int j = 0; j < pop.Count; j++)
                 {
                     if (i == j) continue;
-                    if (pop[j].dominates(pop[i]))
+                    if (pop[j].Dominates(pop[i]))
                     {
                         pop[i].FVl += cnt[j];
                     }
@@ -229,7 +229,7 @@ namespace MOEAPlat.Algorithms
             }
         }
 
-        protected List<List<MoChromosome>> clustering(List<MoChromosome> pop)
+        protected List<List<MoChromosome>> Clustering(List<MoChromosome> pop)
         {
             List<List<MoChromosome>> associatedSolution;
             associatedSolution = new List<List<MoChromosome>>();
@@ -245,7 +245,7 @@ namespace MOEAPlat.Algorithms
                 int pos = -1;
                 for (int j = 0; j < this.weights.Count(); j++)
                 {
-                    dt = getAngle(j, pop[i]);
+                    dt = GetAngle(j, pop[i]);
                     if (dt < dist)
                     {
                         dist = dt;
@@ -272,7 +272,7 @@ namespace MOEAPlat.Algorithms
                 for (int j = 0; j < pop.Count; j++)
                 {
                     if (i == j) continue;
-                    if (pop[j].dominates(pop[i]))
+                    if (pop[j].Dominates(pop[i]))
                     {
                         pop[i].FVg += cnt[j];
                     }
@@ -290,7 +290,7 @@ namespace MOEAPlat.Algorithms
                 for (int j = 0; j < pop.Count; j++)
                 {
                     if (i == j) continue;
-                    if (pop[i].dominates(pop[j])) cnt[i]++;
+                    if (pop[i].Dominates(pop[j])) cnt[i]++;
                 }
             }
             return cnt;
@@ -308,7 +308,7 @@ namespace MOEAPlat.Algorithms
                 }
                 for (int j = i; j < pop.Count; j++)
                 {
-                    dist[j] = distance(pop[i].objectivesValue, pop[j].objectivesValue);
+                    dist[j] = Distance(pop[i].objectivesValue, pop[j].objectivesValue);
                 }
                 list.Add(dist);
             }

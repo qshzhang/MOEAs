@@ -27,7 +27,7 @@ namespace MOEAPlat.Algorithms
 
         //public List<MoChromosome> mainpop = new List<MoChromosome>();
 
-        public void initial()
+        public void Initial()
         {
             this.popsize = div;
 
@@ -40,19 +40,19 @@ namespace MOEAPlat.Algorithms
                 narpoint[i] = Double.MinValue;
             }
 
-            initialPopulation();
+            InitialPopulation();
             radius = 1.0 / Math.Pow(popsize, 1.0 / this.numObjectives);
         }
 
-        protected void initialPopulation()
+        protected void InitialPopulation()
         {
             for (int i = 0; i < this.popsize; i++)
             {
-                MoChromosome chromosome = this.createChromosome();
+                MoChromosome chromosome = this.CreateChromosome();
 
-                evaluate(chromosome);
+                Evaluate(chromosome);
                 mainpop.Add(chromosome);
-                updateReference(chromosome);
+                UpdateReference(chromosome);
             }
         }
 
@@ -66,10 +66,10 @@ namespace MOEAPlat.Algorithms
                 {
                     pos2 = random.Next() % mainpop.Count;
                 }
-                if(dominate(mainpop[pos1], mainpop[pos2]))
+                if(Dominate(mainpop[pos1], mainpop[pos2]))
                 {
                     matingpool.Add(mainpop[pos1]);
-                }else if(dominate(mainpop[pos2], mainpop[pos1]))
+                }else if(Dominate(mainpop[pos2], mainpop[pos1]))
                 {
                     matingpool.Add(mainpop[pos2]);
                 }
@@ -87,13 +87,13 @@ namespace MOEAPlat.Algorithms
             }
         }
 
-        protected override void doSolve()
+        protected override void DoSolve()
         {
-            initial();
-            frm = new plotFrm(mainpop, mop.getName());
+            Initial();
+            frm = new plotFrm(mainpop, mop.GetName());
             frm.Show();
             frm.Refresh();
-            while (!terminated())
+            while (!Terminated())
             {
                 //MatingSelection();
                 List<MoChromosome> offsPop = new List<MoChromosome>();
@@ -102,9 +102,9 @@ namespace MOEAPlat.Algorithms
                 {
                     MoChromosome offspring;
                     offspring = SBXCrossover(i, false);//GeneticOPDE//GeneticOPSBXCrossover
-                    this.evaluate(offspring);
+                    this.Evaluate(offspring);
                     offsPop.Add(offspring);
-                    updateReference(offspring);
+                    UpdateReference(offspring);
                 }
 
                 List<MoChromosome> Pop = new List<MoChromosome>();
@@ -183,7 +183,7 @@ namespace MOEAPlat.Algorithms
                 }
                 for (int j = i; j < pop.Count; j++)
                 {
-                    dist[j] = distance(TranObj(pop[i]), TranObj(pop[j]));
+                    dist[j] = Distance(TranObj(pop[i]), TranObj(pop[j]));
                 }
                 list.Add(dist);
             }
@@ -246,13 +246,13 @@ namespace MOEAPlat.Algorithms
                 t = 0;
                 foreach (MoChromosome individualQ in individuals)
                 {
-                    if (dominate(individualP, individualQ))
+                    if (Dominate(individualP, individualQ))
                     {
                         individual2DominatedIndividuals[s].Add(t);
                     }
                     else
                     {
-                        if (dominate(individualQ, individualP))
+                        if (Dominate(individualQ, individualP))
                         {
                             individual2NumberOfDominatingIndividuals[s] =
                                   individual2NumberOfDominatingIndividuals[s] + 1;
@@ -264,7 +264,7 @@ namespace MOEAPlat.Algorithms
                 if (individual2NumberOfDominatingIndividuals[s] == 0)
                 {
                     // p belongs to the first front
-                    individualP.setRank(1);
+                    individualP.SetRank(1);
                     if (dominationFronts.Count == 0)
                     {
                         List<int> firstDominationFront = new List<int>();
@@ -293,7 +293,7 @@ namespace MOEAPlat.Algorithms
                               individual2NumberOfDominatingIndividuals[individualQ] - 1;
                         if (individual2NumberOfDominatingIndividuals[individualQ] == 0)
                         {
-                            individuals[individualQ].setRank(i + 1);
+                            individuals[individualQ].SetRank(i + 1);
                             nextDominationFront.Add(individualQ);
                         }
                     }
@@ -323,7 +323,7 @@ namespace MOEAPlat.Algorithms
             return frontSet;
         }
 
-        private Boolean dominate(MoChromosome mo1, MoChromosome mo2)
+        private Boolean Dominate(MoChromosome mo1, MoChromosome mo2)
         {
             if (mo1.fcd < mo2.fcd && mo1.fpr < mo2.fpr) return true;
             return false;

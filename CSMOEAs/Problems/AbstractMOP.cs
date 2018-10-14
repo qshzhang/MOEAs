@@ -16,7 +16,7 @@ namespace MOEAPlat.Problems
         protected int cneqNum = 0;
         protected int ceqNum = 0;
 
-        public String getName()
+        public String GetName()
         {
             return name;
         }
@@ -26,35 +26,35 @@ namespace MOEAPlat.Problems
         //    return idealpoint;
         //}
 
-        public int getObjectiveSpaceDimension()
+        public int GetObjectiveSpaceDimension()
         {
             return objDimension;
         }
 
-        public int getParameterSpaceDimension()
+        public int GetParameterSpaceDimension()
         {
             return parDimension;
         }
 
-        public double[,] getRange()
+        public double[,] GetRange()
         {
             return range;
         }
 
-        public double[,] getDomain()
+        public double[,] GetDomain()
         {
             return domain;
         }
 
-        public abstract void evaluate(MoChromosome chromosome);
-        public abstract void init();
+        public abstract void Evaluate(MoChromosome chromosome);
+        public abstract void Init();
 
-        public int getCNeqNum()
+        public int GetCNeqNum()
         {
             return cneqNum;
         }
 
-        public int getCEqNum()
+        public int GetCEqNum()
         {
             return ceqNum;
         }

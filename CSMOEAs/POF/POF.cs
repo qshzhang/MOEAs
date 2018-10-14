@@ -9,7 +9,7 @@ namespace MOEAPlat.POF
 {
     public static class POF
     {
-        public static List<double[]> getPOF(string name)
+        public static List<double[]> GetPOF(string name)
         {
             List<double[]> result = new List<double[]>();
 
@@ -251,7 +251,7 @@ namespace MOEAPlat.POF
 
         public static List<double[]> POF_POL()
         {
-            return FileTool.readData("D:\\Code\\C#\\MOEAPlat\\MOEAPlat\\POF\\APOF\\POL");
+            return FileTool.ReadData("D:\\Code\\C#\\MOEAPlat\\MOEAPlat\\POF\\APOF\\POL");
         }
 
         public static List<double[]> POF_WFG3_2()

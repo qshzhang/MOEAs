@@ -29,7 +29,7 @@ namespace MOEAPlat.Algorithms
 
         //public List<MoChromosome> mainpop = new List<MoChromosome>();
 
-        public void initial()
+        public void Initial()
         {
             this.idealpoint = new double[this.numObjectives];
             this.narpoint = new double[this.numObjectives];
@@ -40,12 +40,12 @@ namespace MOEAPlat.Algorithms
                 narpoint[i] = Double.MinValue;
             }
 
-            initWeight(this.div);
-            initialPopulation();
-            inittheta();
+            InitWeight(this.div);
+            InitialPopulation();
+            Inittheta();
         }
 
-        private void inittheta()
+        private void Inittheta()
         {
             double[] arr = new double[this.popsize];
             for (int i = 0; i < this.popsize; i++)
@@ -54,7 +54,7 @@ namespace MOEAPlat.Algorithms
                 for (int j = 0; j < popsize; j++)
                 {
                     if (i == j) continue;
-                    double tp = Tool.getAngle(weights[i], weights[j]);
+                    double tp = Tool.GetAngle(weights[i], weights[j]);
                     if (tp < min) min = tp;
                 }
                 arr[i] = min;
@@ -62,7 +62,7 @@ namespace MOEAPlat.Algorithms
             thetam = Tool.ArrayMax(arr);
         }
 
-        protected void initWeight(int m)
+        protected void InitWeight(int m)
         {
             this.weights = new List<double[]>();
             if (numObjectives < 6) this.weights = UniPointsGenerator.getMUniDistributedPoint(numObjectives, m);
@@ -83,21 +83,21 @@ namespace MOEAPlat.Algorithms
             Vectors.AddRange(weights);
         }
 
-        protected void initialPopulation()
+        protected void InitialPopulation()
         {
             for (int i = 0; i < this.popsize; i++)
             {
-                MoChromosome chromosome = this.createChromosome();
+                MoChromosome chromosome = this.CreateChromosome();
 
-                evaluate(chromosome);
-                updateReference(chromosome);
+                Evaluate(chromosome);
+                UpdateReference(chromosome);
                 mainpop.Add(chromosome);
             }
         }
 
-        protected override void doSolve()
+        protected override void DoSolve()
         {
-            initial();
+            Initial();
 
             //string prob = mop.getName();
             //if (prob.IndexOf("DTLZ") != -1)
@@ -111,10 +111,10 @@ namespace MOEAPlat.Algorithms
             //}
 
 
-            frm = new plotFrm(mainpop, mop.getName());
+            frm = new plotFrm(mainpop, mop.GetName());
             frm.Show();
             frm.Refresh();
-            while (!terminated())
+            while (!Terminated())
             {
 
                 List<MoChromosome> offsPop = new List<MoChromosome>();
@@ -123,9 +123,9 @@ namespace MOEAPlat.Algorithms
                 {
                     MoChromosome offspring;
                     offspring = SBXCrossover(i);//GeneticOPDE//GeneticOPSBXCrossover
-                    this.evaluate(offspring);
+                    this.Evaluate(offspring);
                     offsPop.Add(offspring);
-                    updateReference(offspring);
+                    UpdateReference(offspring);
 
                 }
 
@@ -214,7 +214,7 @@ namespace MOEAPlat.Algorithms
                 }
             }
 
-            List<List<MoChromosome>> associatedSolution = clustering(pop);
+            List<List<MoChromosome>> associatedSolution = Clustering(pop);
 
             List<double[]> vec = new List<double[]>();
 
@@ -247,7 +247,7 @@ namespace MOEAPlat.Algorithms
         {
             List<MoChromosome> result = new List<MoChromosome>();
 
-            List<List<MoChromosome>> associatedSolution = clustering(pop);
+            List<List<MoChromosome>> associatedSolution = Clustering(pop);
 
             for(int i = 0;i < this.weights.Count; i++)
             {
@@ -313,7 +313,7 @@ namespace MOEAPlat.Algorithms
 
         }
 
-        protected double getAngle(double[] namda, MoChromosome var, Boolean flag = false)
+        protected double GetAngle(double[] namda, MoChromosome var, Boolean flag = false)
         {
             double mul = 0.0;
             double a = 0.0;
@@ -335,7 +335,7 @@ namespace MOEAPlat.Algorithms
             return Math.Acos(mul / (Math.Sqrt(a * b)));
         }
 
-        protected List<List<MoChromosome>> clustering(List<MoChromosome> pop)
+        protected List<List<MoChromosome>> Clustering(List<MoChromosome> pop)
         {
             List<List<MoChromosome>> associatedSolution;
             associatedSolution = new List<List<MoChromosome>>();
@@ -351,7 +351,7 @@ namespace MOEAPlat.Algorithms
                 int pos = -1;
                 for (int j = 0; j < this.weights.Count(); j++)
                 {
-                    dt = getAngle(Vectors[j], pop[i], GlobalValue.IsNormalization);
+                    dt = GetAngle(Vectors[j], pop[i], GlobalValue.IsNormalization);
                     if (dt < dist)
                     {
                         dist = dt;

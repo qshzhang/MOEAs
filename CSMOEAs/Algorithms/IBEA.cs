@@ -25,30 +25,30 @@ namespace MOEAPlat.Algorithms
 
         //public List<MoChromosome> mainpop = new List<MoChromosome>();
 
-        public void initial()
+        public void Initial()
         {
             this.popsize = div;
-            initialPopulation();
+            InitialPopulation();
         }
 
-        protected void initialPopulation()
+        protected void InitialPopulation()
         {
             for (int i = 0; i < this.popsize; i++)
             {
-                MoChromosome chromosome = this.createChromosome();
+                MoChromosome chromosome = this.CreateChromosome();
 
-                evaluate(chromosome);
+                Evaluate(chromosome);
                 mainpop.Add(chromosome);
             }
         }
 
-        protected override void doSolve()
+        protected override void DoSolve()
         {
-            initial();
-            frm = new plotFrm(mainpop, mop.getName());
+            Initial();
+            frm = new plotFrm(mainpop, mop.GetName());
             frm.Show();
             frm.Refresh();
-            while (!terminated())
+            while (!Terminated())
             {
 
                 List<MoChromosome> offsPop = new List<MoChromosome>();
@@ -57,7 +57,7 @@ namespace MOEAPlat.Algorithms
                 {
                     MoChromosome offspring;
                     offspring = SBXCrossover(i,false);//GeneticOPDE//GeneticOPSBXCrossover
-                    this.evaluate(offspring);
+                    this.Evaluate(offspring);
                     offsPop.Add(offspring);
                 }
 
@@ -108,18 +108,18 @@ namespace MOEAPlat.Algorithms
 
             result.AddRange(pop);
 
-            calculateFitness(ref result);
+            CalculateFitness(ref result);
 
             while (result.Count() > this.popsize)
             {
-                removeWorst(ref result);
+                RemoveWorst(ref result);
             }
             mainpop.Clear();
             mainpop.AddRange(result);
             return;
         }
 
-        public void calculateFitness(ref List<MoChromosome> solutionSet)
+        public void CalculateFitness(ref List<MoChromosome> solutionSet)
         {
             // Obtains the lower and upper bounds of the population
             double[] maximumValues = new double[this.numObjectives];
@@ -147,14 +147,14 @@ namespace MOEAPlat.Algorithms
                 }
             }
 
-            computeIndicatorValuesHD(solutionSet, maximumValues, minimumValues);
+            ComputeIndicatorValuesHD(solutionSet, maximumValues, minimumValues);
             for (int pos = 0; pos < solutionSet.Count(); pos++)
             {
-                fitness(ref solutionSet, pos);
+                SetFitness(ref solutionSet, pos);
             }
         }
 
-        public void fitness(ref List<MoChromosome> solutionSet, int pos)
+        public void SetFitness(ref List<MoChromosome> solutionSet, int pos)
         {
             double fitness = 0.0;
             double kappa = 0.05;
@@ -169,7 +169,7 @@ namespace MOEAPlat.Algorithms
             solutionSet[pos].fitnessValue = fitness;
         }
 
-        public void computeIndicatorValuesHD(List<MoChromosome> solutionSet, double[] maximumValues,
+        public void ComputeIndicatorValuesHD(List<MoChromosome> solutionSet, double[] maximumValues,
                                             double[] minimumValues)
         {
             MoChromosome A, B;
@@ -179,27 +179,27 @@ namespace MOEAPlat.Algorithms
 
             for (int j = 0; j < solutionSet.Count(); j++)
             {
-                A = this.createChromosome();
-                solutionSet[j].copyTo(A);
+                A = this.CreateChromosome();
+                solutionSet[j].CopyTo(A);
 
                 List<Double> aux = new List<Double>();
                 foreach (MoChromosome solution in solutionSet)
                 {
-                    B = this.createChromosome();
-                    solution.copyTo(B);
+                    B = this.CreateChromosome();
+                    solution.CopyTo(B);
 
-                    Boolean flag = A.dominates(B);
+                    Boolean flag = A.Dominates(B);
 
                     double value;
                     if (flag == true) //false
                     {
                         value =
-                            -calculateHypervolumeIndicator(A, B, this.numObjectives,
+                            -CalculateHypervolumeIndicator(A, B, this.numObjectives,
                                 maximumValues, minimumValues);
                     }
                     else
                     {
-                        value = calculateHypervolumeIndicator(B, A, this.numObjectives,
+                        value = CalculateHypervolumeIndicator(B, A, this.numObjectives,
                             maximumValues, minimumValues);
                     }
 
@@ -214,7 +214,7 @@ namespace MOEAPlat.Algorithms
             }
         }
 
-        double calculateHypervolumeIndicator(MoChromosome solutionA, MoChromosome solutionB, int d,
+        double CalculateHypervolumeIndicator(MoChromosome solutionA, MoChromosome solutionB, int d,
                                                 double[] maximumValues, double[] minimumValues)
         {
             double a, b, r, max;
@@ -250,16 +250,16 @@ namespace MOEAPlat.Algorithms
                 if (a < b)
                 {
                     volume =
-                        calculateHypervolumeIndicator(solutionA, null, d - 1, maximumValues, minimumValues) * (b
+                        CalculateHypervolumeIndicator(solutionA, null, d - 1, maximumValues, minimumValues) * (b
                             - a) / r;
                     volume +=
-                        calculateHypervolumeIndicator(solutionA, solutionB, d - 1, maximumValues, minimumValues)
+                        CalculateHypervolumeIndicator(solutionA, solutionB, d - 1, maximumValues, minimumValues)
                             * (max - b) / r;
                 }
                 else
                 {
                     volume =
-                        calculateHypervolumeIndicator(solutionA, solutionB, d - 1, maximumValues, minimumValues)
+                        CalculateHypervolumeIndicator(solutionA, solutionB, d - 1, maximumValues, minimumValues)
                             * (max - a) / r;
                 }
             }
@@ -267,7 +267,7 @@ namespace MOEAPlat.Algorithms
             return (volume);
         }
 
-        public void removeWorst(ref List<MoChromosome> solutionSet)
+        public void RemoveWorst(ref List<MoChromosome> solutionSet)
         {
             // Find the worst;
             double worst = solutionSet[0].fitnessValue;

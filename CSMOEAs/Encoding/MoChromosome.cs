@@ -46,22 +46,26 @@ namespace MOEAPlat.Encoding
 
         //}
 
-        public void setCrowdingDistance(double d)
+        public void SetCrowdingDistance(double d)
         {
             this.crdistance = d;
         }
 
-        public double getCrowdingDistance()
+        public double GetCrowdingDistance()
         {
             return this.crdistance;
         }
 
-        public double getFitnessValue(int idx)
+        public double GetFitnessValue(int idx)
         {
             return this.objectivesValue[idx];
         }
 
-        public string objVectorString()
+        /// <summary>
+        /// transform the objective vector to string
+        /// </summary>
+        /// <returns></returns>
+        public string ObjVectorString()
         {
             string str = "";
             for(int i = 0;i < this.objectivesValue.Length; i++)
@@ -72,7 +76,11 @@ namespace MOEAPlat.Encoding
             return str.Substring(0, str.Length - 2);
         }
 
-        public string genVectorString()
+        /// <summary>
+        /// transform decision variable vector to string
+        /// </summary>
+        /// <returns></returns>
+        public string GenVectorString()
         {
             string str = "";
             for (int i = 0; i < this.realGenes.Length; i++)
@@ -83,7 +91,8 @@ namespace MOEAPlat.Encoding
             return str.Substring(0, str.Length - 2);
         }
 
-        public Boolean dominates(MoChromosome another)
+
+        public Boolean Dominates(MoChromosome another)
         {
             Boolean flag = false;
             for (int i = 0; i < objectDimension; i++)
@@ -94,16 +103,16 @@ namespace MOEAPlat.Encoding
             return flag;
         }
 
-        public Boolean contrained_dominates(MoChromosome another)
+        public Boolean ContrainedDominates(MoChromosome another)
         {
-            Boolean m1 = NSGA.isFeasibleSolutions(this);
-            Boolean m2 = NSGA.isFeasibleSolutions(another);
+            Boolean m1 = NSGA.IsFeasibleSolutions(this);
+            Boolean m2 = NSGA.IsFeasibleSolutions(another);
 
             if (m1 == true && m2 == false) return true;
             if (m1 == false && m2 == true) return false;
             if (m1 == false && m2 == false)
             {
-                if (NSGA.getCVValue(this) < NSGA.getCVValue(another)) return true;
+                if (NSGA.GetCVValue(this) < NSGA.GetCVValue(another)) return true;
                 else return false;
             }
 
@@ -118,12 +127,12 @@ namespace MOEAPlat.Encoding
 
         public Boolean IsCrowdedComparisonOperatorBetter(MoChromosome otherIndividual)
         {
-            if (getRank() < otherIndividual.getRank())
+            if (GetRank() < otherIndividual.GetRank())
             {
                 return true;
             }
-            if (getRank() == otherIndividual.getRank()
-                  && getCrowdingDistance() > otherIndividual.getCrowdingDistance())
+            if (GetRank() == otherIndividual.GetRank()
+                  && GetCrowdingDistance() > otherIndividual.GetCrowdingDistance())
             {
                 return true;
             }
@@ -131,7 +140,7 @@ namespace MOEAPlat.Encoding
             return false;
         }
 
-        public void copyTo(MoChromosome copyto)
+        public void CopyTo(MoChromosome copyto)
         {
             //if(copyto.objectivesValue == null)
             //{
@@ -160,7 +169,7 @@ namespace MOEAPlat.Encoding
         }
 
         //Real code
-        public void mutate(double rate, Random random)
+        public void Mutate(double rate, Random random)
         {
             double rnd, delta1, delta2, mut_pow, deltaq;
             double y, yl, yu, val, xy;
@@ -207,18 +216,18 @@ namespace MOEAPlat.Encoding
             return;
         }
 
-        public void setRank(int rank)
+        public void SetRank(int rank)
         {
             this.rank = rank;
         }
 
-        public int getRank()
+        public int GetRank()
         {
             return rank;
         }
 
         //Real code
-        public void SBX(MoChromosome p1, MoChromosome p2, Random random)
+        public void SBXCrossover(MoChromosome p1, MoChromosome p2, Random random)
         {
             double rand;
             double y1, y2, yl, yu;
@@ -319,7 +328,7 @@ namespace MOEAPlat.Encoding
         }
 
         //Real code
-        public void DE(MoChromosome p, MoChromosome p1, MoChromosome p2, Random random)
+        public void DECrossover(MoChromosome p, MoChromosome p1, MoChromosome p2, Random random)
         {
             int D = parDimension;
 
@@ -377,7 +386,7 @@ namespace MOEAPlat.Encoding
             }
         }
 
-        public Boolean equals(Object obj)
+        public Boolean IsEquals(Object obj)
         {
             if (!this.Equals(obj))
 			    return false;

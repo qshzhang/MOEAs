@@ -78,7 +78,7 @@ namespace MOEAPlat
             }
         }
 
-        public void IGDCurve(List<pair> list)
+        public void IGDCurve(List<PairRelation> list)
         {
             GenChart.Series[0].LegendText = "IGD Curve";
             //this.Mchart.Series[0].ChartType = SeriesChartType.Line;
@@ -98,7 +98,7 @@ namespace MOEAPlat
             this.GenChart.Series[0].Color = Color.Red;
             //GenChart.Series.Add("IGDCurve");
 
-            foreach (pair p in list)
+            foreach (PairRelation p in list)
             {
                 this.GenChart.Series[0].Points.AddXY(p.pos, p.val);
             }
@@ -134,8 +134,8 @@ namespace MOEAPlat
                 this.Mchart.Series[0].ChartType = SeriesChartType.Spline;
                 this.Mchart.Series[0].LegendText = "POF";
 
-                Mchart.ChartAreas[0].AxisX.Maximum = Math.Ceiling(Tool.maxArray(list, 0));
-                Mchart.ChartAreas[0].AxisX.Minimum = Math.Floor(Tool.minArray(list, 1));
+                Mchart.ChartAreas[0].AxisX.Maximum = Math.Ceiling(Tool.MaxArray(list, 0));
+                Mchart.ChartAreas[0].AxisX.Minimum = Math.Floor(Tool.MinArray(list, 1));
             }
 
 
@@ -174,12 +174,12 @@ namespace MOEAPlat
 
             try
             {
-                problem = (MultiObjectiveProblem)t.InvokeMember("getInstance", BindingFlags.Static | BindingFlags.Public | BindingFlags.InvokeMethod,
+                problem = (MultiObjectiveProblem)t.InvokeMember("GetInstance", BindingFlags.Static | BindingFlags.Public | BindingFlags.InvokeMethod,
                 null, null, parameters);
             }
             catch (Exception ex)
             {
-                problem = (MultiObjectiveProblem)t.InvokeMember("getInstance", BindingFlags.Static | BindingFlags.Public | BindingFlags.InvokeMethod,
+                problem = (MultiObjectiveProblem)t.InvokeMember("GetInstance", BindingFlags.Static | BindingFlags.Public | BindingFlags.InvokeMethod,
                 null, null, null);
             }
 
@@ -192,13 +192,13 @@ namespace MOEAPlat
             //MultiObjectiveProblem problem = (MultiObjectiveProblem)assembly.CreateInstance("MOEAPlat.Problems."+this.comBoxMOP.SelectedItem, 
             //    true, BindingFlags.Default, null, parameters, null, null); ;
             
-            //MultiObjectiveProblem problem = Problems.WFG4_M.getInstance(15);
-            impl.solve(problem);
+            //MultiObjectiveProblem problem = Problems.WFG4_M.GetInstance(15);
+            impl.Solve(problem);
 
-            List<double[]> list = FileTool.readData("obj");
-            if (problem.getObjectiveSpaceDimension() == 2)
+            List<double[]> list = FileTool.ReadData("obj");
+            if (problem.GetObjectiveSpaceDimension() == 2)
             {
-                List<double[]> pof = POF.POF.getPOF(problem.getName());
+                List<double[]> pof = POF.POF.GetPOF(problem.GetName());
                 plot(pof, 0);
                 plot(list, 1);
             }
@@ -208,7 +208,7 @@ namespace MOEAPlat
                 coordinateplot(list);
             }
 
-            IGDCurve(FileTool.readIndicatorData("igdCurve"));
+            IGDCurve(FileTool.ReadIndicatorData("igdCurve"));
             table(list);
             list.Clear();
         }
