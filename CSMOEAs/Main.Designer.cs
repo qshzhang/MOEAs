@@ -60,6 +60,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.GenChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.ucBackPanel = new MOEAPlat.UserControls.ucBackPanel();
             ((System.ComponentModel.ISupportInitialize)(this.Mchart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataShow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -90,7 +91,7 @@
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.Mchart.Series.Add(series1);
-            this.Mchart.Size = new System.Drawing.Size(600, 490);
+            this.Mchart.Size = new System.Drawing.Size(830, 447);
             this.Mchart.TabIndex = 0;
             this.Mchart.Text = "chart1";
             // 
@@ -101,15 +102,15 @@
             this.DataShow.Location = new System.Drawing.Point(0, 0);
             this.DataShow.Name = "DataShow";
             this.DataShow.ReadOnly = true;
+            this.DataShow.RowHeadersWidth = 62;
             this.DataShow.RowTemplate.Height = 30;
-            this.DataShow.Size = new System.Drawing.Size(417, 334);
+            this.DataShow.Size = new System.Drawing.Size(575, 476);
             this.DataShow.TabIndex = 1;
             // 
             // splitContainer1
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(10, 10, 10, 0);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 52);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(10);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -120,8 +121,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer3);
-            this.splitContainer1.Size = new System.Drawing.Size(1015, 828);
-            this.splitContainer1.SplitterDistance = 490;
+            this.splitContainer1.Size = new System.Drawing.Size(1401, 927);
+            this.splitContainer1.SplitterDistance = 447;
             this.splitContainer1.TabIndex = 2;
             // 
             // splitContainer2
@@ -156,8 +157,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.Mchart);
-            this.splitContainer2.Size = new System.Drawing.Size(1015, 490);
-            this.splitContainer2.SplitterDistance = 411;
+            this.splitContainer2.Size = new System.Drawing.Size(1401, 447);
+            this.splitContainer2.SplitterDistance = 567;
             this.splitContainer2.TabIndex = 0;
             // 
             // combNormalization
@@ -276,7 +277,7 @@
             // btnAddObj
             // 
             this.btnAddObj.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddObj.Location = new System.Drawing.Point(23, 427);
+            this.btnAddObj.Location = new System.Drawing.Point(33, 400);
             this.btnAddObj.Name = "btnAddObj";
             this.btnAddObj.Size = new System.Drawing.Size(143, 36);
             this.btnAddObj.TabIndex = 11;
@@ -319,7 +320,7 @@
             // btnExecute
             // 
             this.btnExecute.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExecute.Location = new System.Drawing.Point(236, 427);
+            this.btnExecute.Location = new System.Drawing.Point(246, 400);
             this.btnExecute.Name = "btnExecute";
             this.btnExecute.Size = new System.Drawing.Size(137, 36);
             this.btnExecute.TabIndex = 6;
@@ -388,8 +389,8 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.GenChart);
-            this.splitContainer3.Size = new System.Drawing.Size(1015, 334);
-            this.splitContainer3.SplitterDistance = 417;
+            this.splitContainer3.Size = new System.Drawing.Size(1401, 476);
+            this.splitContainer3.SplitterDistance = 575;
             this.splitContainer3.TabIndex = 0;
             // 
             // GenChart
@@ -405,16 +406,30 @@
             series2.Legend = "Legend1";
             series2.Name = "Series1";
             this.GenChart.Series.Add(series2);
-            this.GenChart.Size = new System.Drawing.Size(594, 334);
+            this.GenChart.Size = new System.Drawing.Size(822, 476);
             this.GenChart.TabIndex = 0;
             this.GenChart.Text = "chart1";
+            // 
+            // ucBackPanel
+            // 
+            this.ucBackPanel.BackColor = System.Drawing.Color.Transparent;
+            this.ucBackPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucBackPanel.IsShowMinBtn = true;
+            this.ucBackPanel.Location = new System.Drawing.Point(0, 0);
+            this.ucBackPanel.Name = "ucBackPanel";
+            this.ucBackPanel.Size = new System.Drawing.Size(1420, 998);
+            this.ucBackPanel.TabIndex = 3;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1015, 828);
+            this.ClientSize = new System.Drawing.Size(1420, 998);
             this.Controls.Add(this.splitContainer1);
+            this.Controls.Add(this.ucBackPanel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Main";
             this.Text = "Main";
             this.Load += new System.EventHandler(this.Main_Load);
@@ -466,6 +481,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox combNormalization;
         private System.Windows.Forms.Label label7;
+        private UserControls.ucBackPanel ucBackPanel;
     }
 }
 

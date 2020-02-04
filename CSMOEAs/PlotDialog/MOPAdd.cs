@@ -15,6 +15,18 @@ namespace MOEAPlat.PlotDialog
         public MOPAdd()
         {
             InitializeComponent();
+            ucBackPanel.OnBtnClose += BtnClose;
+            ucBackPanel.OnBtnMinFrm += BtnMinFrm;
+        }
+
+        private void BtnClose()
+        {
+            this.Close();
+        }
+
+        private void BtnMinFrm()
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
 
         private void btnOK_Click(object sender, EventArgs e)

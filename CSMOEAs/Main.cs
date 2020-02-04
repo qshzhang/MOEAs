@@ -24,6 +24,26 @@ namespace MOEAPlat
         public Main()
         {
             InitializeComponent();
+            ucBackPanel.OnBtnClose += BtnClose;
+            ucBackPanel.OnBtnMinFrm += BtnMinFrm;
+            //this.WindowState = FormWindowState.Maximized;
+
+            this.Width = 1200;
+            this.Height = 900;
+
+            this.splitContainer1.Location = new Point(10, 42);
+            this.splitContainer1.Width = this.ucBackPanel.Width - 20;
+            this.splitContainer1.Height = this.ucBackPanel.Height - 50;
+        }
+
+        private void BtnClose()
+        {
+            this.Close();
+        }
+
+        private void BtnMinFrm()
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
 
         private void Main_Load(object sender, EventArgs e)
