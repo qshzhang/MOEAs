@@ -34,7 +34,7 @@ namespace MOEAPlat.UserControls
 
         private void BtnClose_MouseLeave(object sender, EventArgs e)
         {
-            BtnClose.BackColor = System.Drawing.Color.Blue;
+            BtnClose.BackColor = System.Drawing.Color.Transparent;
         }
 
         private void BtnMinFrm_MouseEnter(object sender, EventArgs e)
@@ -44,7 +44,7 @@ namespace MOEAPlat.UserControls
 
         private void BtnMinFrm_MouseLeave(object sender, EventArgs e)
         {
-            BtnMinFrm.BackColor = System.Drawing.Color.Blue;
+            BtnMinFrm.BackColor = System.Drawing.Color.Transparent;
         }
 
         private void ucBackPanel_MouseDown(object sender, MouseEventArgs e)
@@ -100,16 +100,16 @@ namespace MOEAPlat.UserControls
         private void ucBackPanel_SizeChanged(object sender, EventArgs e)
         {
             this.BtnClose.Location = new Point(this.Width - this.BtnClose.Width - 1, 1);
-            this.BtnMinFrm.Location = new Point(this.Width - this.BtnClose.Width - 1 - this.BtnMinFrm.Width, 1);
+            this.BtnMinFrm.Location = new Point(this.Width - this.BtnClose.Width - 3 - this.BtnMinFrm.Width, 1);
         }
 
         private void ucBackPanel_Paint(object sender, PaintEventArgs e)
         {
-            Pen pen = new Pen(Color.Blue, 3);
-            e.Graphics.DrawLine(pen, 0, 0, this.Width, 0);
-            e.Graphics.DrawLine(pen, 0, 0, 0, this.Height);
-            e.Graphics.DrawLine(pen, this.Width, 0, this.Width, this.Height);
-            e.Graphics.DrawLine(pen, 0, this.Height, this.Width, this.Height);
+            //Pen pen = new Pen(Color.Blue, 3);
+            //e.Graphics.DrawLine(pen, 0, 0, this.Width, 0);
+            //e.Graphics.DrawLine(pen, 0, 0, 0, this.Height);
+            //e.Graphics.DrawLine(pen, this.Width, 0, this.Width, this.Height);
+            //e.Graphics.DrawLine(pen, 0, this.Height, this.Width, this.Height);
         }
     }
 }
