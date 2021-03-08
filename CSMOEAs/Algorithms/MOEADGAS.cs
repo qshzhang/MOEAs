@@ -6,6 +6,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+/*
+ * The details of MOEADGAS and test problems can refer to the following paper
+ * 
+ * 基于分解思想的多目标进化算法研究[D].湖南大学,2018.
+ * 
+*/
+
 namespace MOEAPlat.Algorithms
 {
     public class MOEADGAS : MultiObjectiveSolver
