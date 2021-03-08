@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<multiobjectiveproblems>
+  <mop name = "CDP" decisions = "5" popsize = "23" maxGeneration = "500" />
+ </multiobjectiveproblems>
