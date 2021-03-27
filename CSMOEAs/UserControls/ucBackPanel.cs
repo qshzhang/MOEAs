@@ -105,11 +105,7 @@ namespace MOEAPlat.UserControls
 
         private void ucBackPanel_Paint(object sender, PaintEventArgs e)
         {
-            //Pen pen = new Pen(Color.Blue, 3);
-            //e.Graphics.DrawLine(pen, 0, 0, this.Width, 0);
-            //e.Graphics.DrawLine(pen, 0, 0, 0, this.Height);
-            //e.Graphics.DrawLine(pen, this.Width, 0, this.Width, this.Height);
-            //e.Graphics.DrawLine(pen, 0, this.Height, this.Width, this.Height);
+            
         }
     }
 }

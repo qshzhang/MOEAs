@@ -21,6 +21,8 @@ namespace MOEAPlat.PlotDialog
         public plotFrm(List<MoChromosome> lst, string name)
         {
             InitializeComponent();
+            ucBackPanelPlot.OnBtnClose += BtnClose;
+
             foreach (MoChromosome mo in lst)
             {
                 double[] arr = new double[mo.objectDimension];
@@ -33,8 +35,17 @@ namespace MOEAPlat.PlotDialog
             }
         }
 
+        private void BtnClose()
+        {
+            this.Close();
+        }
+
         private void plotFrm_Load(object sender, EventArgs e)
         {
+            Mchart.Location = new Point(3, 30);
+            Mchart.Width = ucBackPanelPlot.Width - 6;
+            Mchart.Height = ucBackPanelPlot.Height - 32;
+
             Mchart.Titles.Add("Iteration: " + 1);
             plotChart(1); 
             

@@ -22,3 +22,4 @@ D:\Code\github\MOEAs\CSMOEAs\bin\Debug\MOEAPlat.exe
 D:\Code\github\MOEAs\CSMOEAs\bin\Debug\MOEAPlat.pdb
 D:\Code\github\MOEAs\CSMOEAs\obj\Debug\MOEAPlat.UserControls.ucBackPanel.resources
 D:\Code\github\MOEAs\CSMOEAs\obj\Debug\CSMOEAs.csprojAssemblyReference.cache
+D:\Code\github\MOEAs\CSMOEAs\obj\Debug\CSMOEAs.csproj.CoreCompileInputs.cache

@@ -51,6 +51,7 @@
     <Compile Include="Algorithms\IBEA.cs" />
     <Compile Include="Algorithms\MOEAD.cs" />
     <Compile Include="Algorithms\MOEADD.cs" />
+    <Compile Include="Algorithms\MOEADGAS.cs" />
     <Compile Include="Algorithms\MOEADM2M.cs" />
     <Compile Include="Algorithms\MOEADNBI.cs" />
     <Compile Include="Algorithms\MOEADTPN.cs" />
@@ -236,6 +237,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Common\parasetting.xml" />
     <Content Include="Common\template.txt" />
     <Content Include="README.txt" />
   </ItemGroup>

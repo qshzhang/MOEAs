@@ -20,7 +20,9 @@ namespace MOEAPlat
 {
     public partial class Main : Form
     {
-
+        private Boolean bIsFullSize = false;
+        private int MaxWith = 1200;
+        private int MaxHeight = 900;
         public Main()
         {
             InitializeComponent();
@@ -28,8 +30,8 @@ namespace MOEAPlat
             ucBackPanel.OnBtnMinFrm += BtnMinFrm;
             //this.WindowState = FormWindowState.Maximized;
 
-            this.Width = 1200;
-            this.Height = 900;
+            this.Width = MaxWith;
+            this.Height = MaxHeight;
 
             this.splitContainer1.Location = new Point(10, 42);
             this.splitContainer1.Width = this.ucBackPanel.Width - 20;
@@ -48,6 +50,12 @@ namespace MOEAPlat
 
         private void Main_Load(object sender, EventArgs e)
         {
+            if(false == bIsFullSize)
+            {
+                this.Width = 300;
+                this.Height = 390;
+            }
+
             Type[] types = Assembly.GetExecutingAssembly().GetTypes();
             foreach(Type ty in types)
             {
@@ -98,7 +106,7 @@ namespace MOEAPlat
             }
         }
 
-        public void IGDCurve(List<PairRelation> list)
+        public void PlotIGDCurve(List<PairRelation> list)
         {
             GenChart.Series[0].LegendText = "IGD Curve";
             //this.Mchart.Series[0].ChartType = SeriesChartType.Line;
@@ -124,7 +132,7 @@ namespace MOEAPlat
             }
         }
 
-        public void plot(List<double[]> list, int type)
+        public void PlotObjData(List<double[]> list, int type)
         {
             if (list.Count == 0) return;
 
@@ -215,12 +223,20 @@ namespace MOEAPlat
             //MultiObjectiveProblem problem = Problems.WFG4_M.GetInstance(15);
             impl.Solve(problem);
 
+            if(false == bIsFullSize)
+            {
+                this.Width = MaxWith;
+                this.Height = MaxHeight;
+
+                bIsFullSize = true;
+            }
+
             List<double[]> list = FileTool.ReadData("obj");
             if (problem.GetObjectiveSpaceDimension() == 2)
             {
                 List<double[]> pof = POF.POF.GetPOF(problem.GetName());
-                plot(pof, 0);
-                plot(list, 1);
+                PlotObjData(pof, 0);
+                PlotObjData(list, 1);
             }
             else
             {
@@ -228,12 +244,12 @@ namespace MOEAPlat
                 coordinateplot(list);
             }
 
-            IGDCurve(FileTool.ReadIndicatorData("igdCurve"));
-            table(list);
+            PlotIGDCurve(FileTool.ReadIndicatorData("igdCurve"));
+            ShowObjDataInTable(list);
             list.Clear();
         }
 
-        protected void table(List<double[]> list)
+        protected void ShowObjDataInTable(List<double[]> list)
         {
             this.DataShow.Rows.Clear();
             this.DataShow.Columns.Clear();
