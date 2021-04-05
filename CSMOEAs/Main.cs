@@ -20,7 +20,6 @@ namespace MOEAPlat
 {
     public partial class Main : Form
     {
-        private Boolean bIsFullSize = false;
         private int MaxWith = 1200;
         private int MaxHeight = 900;
         public Main()
@@ -50,11 +49,8 @@ namespace MOEAPlat
 
         private void Main_Load(object sender, EventArgs e)
         {
-            if(false == bIsFullSize)
-            {
-                this.Width = 300;
-                this.Height = 390;
-            }
+            this.Width = 300;
+            this.Height = 390;
 
             Type[] types = Assembly.GetExecutingAssembly().GetTypes();
             foreach(Type ty in types)
@@ -219,17 +215,17 @@ namespace MOEAPlat
 
             //MultiObjectiveProblem problem = (MultiObjectiveProblem)assembly.CreateInstance("MOEAPlat.Problems."+this.comBoxMOP.SelectedItem, 
             //    true, BindingFlags.Default, null, parameters, null, null); ;
-            
+
             //MultiObjectiveProblem problem = Problems.WFG4_M.GetInstance(15);
+
+            this.Width = 300;
+            this.Height = 390;
+
+
             impl.Solve(problem);
 
-            if(false == bIsFullSize)
-            {
-                this.Width = MaxWith;
-                this.Height = MaxHeight;
-
-                bIsFullSize = true;
-            }
+            this.Width = MaxWith;
+            this.Height = MaxHeight;
 
             List<double[]> list = FileTool.ReadData("obj");
             if (problem.GetObjectiveSpaceDimension() == 2)
