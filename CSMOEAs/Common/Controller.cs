@@ -25,6 +25,7 @@ namespace MOEAPlat.Common
 
         public static Dictionary<string, MOPControl> dictionary = new Dictionary<string, MOPControl>()
         {
+            { "Buses", new MOPControl { name="Buses", decisions=3, popsize=100, maxGeneration=500} },
             { "CDP", new MOPControl { name="CDP", decisions=5, popsize=23, maxGeneration=500} },
             { "F1", new MOPControl{ name="F1", decisions=30, popsize=100, maxGeneration=500} },
             { "F2", new MOPControl{ name="F2", decisions=30, popsize=100, maxGeneration=500}},

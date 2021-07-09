@@ -1,0 +1,2265 @@
+{
+    "stops": [
+        {
+            "id": "110000002",
+            "caption": "Sidwell Street (Stop 23), Exeter",
+            "lnglat": [
+                -3.5253384113311768,
+                50.72637176513672
+            ]
+        },
+        {
+            "id": "1100DEC10231",
+            "caption": "Elmside (W-bound), Blackboy Road, Exeter",
+            "lnglat": [
+                -3.516209125518799,
+                50.729736328125
+            ]
+        },
+        {
+            "id": "1100DEC10230",
+            "caption": "Exeter Trust House (SW-bound), Blackboy Road, Exeter",
+            "lnglat": [
+                -3.519056797027588,
+                50.729286193847656
+            ]
+        },
+        {
+            "id": "1100DEZ05115",
+            "caption": "Elmside (E-bound), Blackboy Road, Exeter",
+            "lnglat": [
+                -3.5167181491851807,
+                50.729705810546875
+            ]
+        },
+        {
+            "id": "1100DEC10229",
+            "caption": "Sorry Head (E-bound), Blackboy Road, Exeter",
+            "lnglat": [
+                -3.519087314605713,
+                50.7293586730957
+            ]
+        },
+        {
+            "id": "1100DEC10085",
+            "caption": "Sidwell Street (Stop 36), Exeter",
+            "lnglat": [
+                -3.5241827964782715,
+                50.72699737548828
+            ]
+        },
+        {
+            "id": "1100DEC10184",
+            "caption": "Odeon Cinema (Stop 24), Sidwell Street, Exeter",
+            "lnglat": [
+                -3.521761655807495,
+                50.728370666503906
+            ]
+        },
+        {
+            "id": "1100DEC10524",
+            "caption": "Bus Station (Any), Tiverton",
+            "lnglat": [
+                -3.4866325855255127,
+                50.90167999267578
+            ]
+        },
+        {
+            "id": "1100DEA57077",
+            "caption": "Health Centre (NE-bound), B3181, Cullompton",
+            "lnglat": [
+                -3.3923537731170654,
+                50.863895416259766
+            ]
+        },
+        {
+            "id": "1100DEC10600",
+            "caption": "St George's View (N-bound), Willand Road, Cullompton",
+            "lnglat": [
+                -3.393237590789795,
+                50.86256408691406
+            ]
+        },
+        {
+            "id": "1100DEC10599",
+            "caption": "Market House (Stop A), High Street, Cullompton",
+            "lnglat": [
+                -3.3925540447235107,
+                50.858219146728516
+            ]
+        },
+        {
+            "id": "1100DEC10598",
+            "caption": "War Memorial (N-bound), High Street, Cullompton",
+            "lnglat": [
+                -3.392775535583496,
+                50.858028411865234
+            ]
+        },
+        {
+            "id": "1100DEC10597",
+            "caption": "Hayridge Centre (NE-bound), Exeter Hill, Cullompton",
+            "lnglat": [
+                -3.39290452003479,
+                50.855201721191406
+            ]
+        },
+        {
+            "id": "1100DEC10596",
+            "caption": "Hayridge Centre (opp), Exeter Hill, Cullompton",
+            "lnglat": [
+                -3.3929696083068848,
+                50.855003356933594
+            ]
+        },
+        {
+            "id": "1100DEC10601",
+            "caption": "St George's Well (SW-bound), B3181, Cullompton",
+            "lnglat": [
+                -3.3925671577453613,
+                50.863426208496094
+            ]
+        },
+        {
+            "id": "1100DEC10603",
+            "caption": "Headweir Road (N-bound), Cullompton",
+            "lnglat": [
+                -3.3916618824005127,
+                50.8659553527832
+            ]
+        },
+        {
+            "id": "1100DEC10602",
+            "caption": "Headweir Road (S-bound), Cullompton",
+            "lnglat": [
+                -3.391547679901123,
+                50.86545944213867
+            ]
+        },
+        {
+            "id": "1100DEC10595",
+            "caption": "Exeter Road Garage (NE-bound), Cullompton",
+            "lnglat": [
+                -3.3943374156951904,
+                50.853702545166016
+            ]
+        },
+        {
+            "id": "1100DEC10593",
+            "caption": "School (opp), Exeter Road, Cullompton",
+            "lnglat": [
+                -3.394382953643799,
+                50.85189437866211
+            ]
+        },
+        {
+            "id": "1100DEC10594",
+            "caption": "School (S-bound), Exeter Road, Cullompton",
+            "lnglat": [
+                -3.394232749938965,
+                50.85162353515625
+            ]
+        },
+        {
+            "id": "1100DEC10591",
+            "caption": "Toad Hall (NE-bound), Exeter Road, Cullompton",
+            "lnglat": [
+                -3.39479923248291,
+                50.84965896606445
+            ]
+        },
+        {
+            "id": "1100DEC10592",
+            "caption": "Toad Hall (SW-bound), Exeter Road, Cullompton",
+            "lnglat": [
+                -3.394451379776001,
+                50.84990310668945
+            ]
+        },
+        {
+            "id": "1100DEA57155",
+            "caption": "Merchants Walk (N-bound), Millennium Way, Cullompton",
+            "lnglat": [
+                -3.3876543045043945,
+                50.86116409301758
+            ]
+        },
+        {
+            "id": "1100DEA57157",
+            "caption": "Fairfax Drive (N-bound), Millennium Way, Cullompton",
+            "lnglat": [
+                -3.387643814086914,
+                50.86368179321289
+            ]
+        },
+        {
+            "id": "1100DEA57159",
+            "caption": "Plantagenet Drive (N-bound), Millennium Way, Cullompton",
+            "lnglat": [
+                -3.3877227306365967,
+                50.86729431152344
+            ]
+        },
+        {
+            "id": "1100DEA05767",
+            "caption": "Tesco Superstore (NE-bound), Blundell's Road, Tiverton",
+            "lnglat": [
+                -3.4803199768066406,
+                50.90398406982422
+            ]
+        },
+        {
+            "id": "1100DEC10252",
+            "caption": "Lloyds Bank (NE-bound), Main Road, Exeter",
+            "lnglat": [
+                -3.469928026199341,
+                50.74004364013672
+            ]
+        },
+        {
+            "id": "1100DEC10251",
+            "caption": "Heart of Oak (SW-bound), Main Road, Exeter",
+            "lnglat": [
+                -3.470823287963867,
+                50.73921585083008
+            ]
+        },
+        {
+            "id": "1100DEC10250",
+            "caption": "Pinbridge Mews (W-bound), Pinhoe Road, Exeter",
+            "lnglat": [
+                -3.475409746170044,
+                50.73678970336914
+            ]
+        },
+        {
+            "id": "1100DEC10557",
+            "caption": "Park Lane (NE-bound), Exeter",
+            "lnglat": [
+                -3.466994524002075,
+                50.7423210144043
+            ]
+        },
+        {
+            "id": "1100DEC10253",
+            "caption": "Parkers Cross (SW-bound), Main Road, Exeter",
+            "lnglat": [
+                -3.467160701751709,
+                50.742191314697266
+            ]
+        },
+        {
+            "id": "1100DEC10561",
+            "caption": "Poltimore Gate (NE-bound), B3181, Broadclyst",
+            "lnglat": [
+                -3.4580883979797363,
+                50.749446868896484
+            ]
+        },
+        {
+            "id": "1100DEC10562",
+            "caption": "Poltimore Gate (SW-bound), B3181, Broadclyst",
+            "lnglat": [
+                -3.457862377166748,
+                50.74947738647461
+            ]
+        },
+        {
+            "id": "1100DEC10559",
+            "caption": "Hillside Gardens (NE-bound), B3181, Broadclyst",
+            "lnglat": [
+                -3.4619967937469482,
+                50.747039794921875
+            ]
+        },
+        {
+            "id": "1100DEC10560",
+            "caption": "Hillside Gardens (SW-bound), B3181, Broadclyst",
+            "lnglat": [
+                -3.4618141651153564,
+                50.74709701538086
+            ]
+        },
+        {
+            "id": "1100DEZ05111",
+            "caption": "Tesco (E-bound), Station Road, Cullompton",
+            "lnglat": [
+                -3.390385866165161,
+                50.85936737060547
+            ]
+        },
+        {
+            "id": "1100DEA57214",
+            "caption": "Hay House (N-bound), B3181, Budlake",
+            "lnglat": [
+                -3.4408791065216064,
+                50.7798957824707
+            ]
+        },
+        {
+            "id": "1100DEA57215",
+            "caption": "Hay House (S-bound), B3181, Budlake",
+            "lnglat": [
+                -3.440791130065918,
+                50.779808044433594
+            ]
+        },
+        {
+            "id": "1100DEZ05116",
+            "caption": "Oak Close (NE-bound), Main Road, Exeter",
+            "lnglat": [
+                -3.471423625946045,
+                50.73892593383789
+            ]
+        },
+        {
+            "id": "1100DEC10249",
+            "caption": "Pinbridge Mews (E-bound), Pinhoe Road, Exeter",
+            "lnglat": [
+                -3.475397825241089,
+                50.73686218261719
+            ]
+        },
+        {
+            "id": "1100DEC10576",
+            "caption": "Beare (NE-bound), B3181, Beare",
+            "lnglat": [
+                -3.436065196990967,
+                50.801483154296875
+            ]
+        },
+        {
+            "id": "1100DEC10577",
+            "caption": "Beare (SW-bound), B3181, Beare",
+            "lnglat": [
+                -3.4357967376708984,
+                50.8015251159668
+            ]
+        },
+        {
+            "id": "1100DEC10574",
+            "caption": "Budlake (N-bound), B3181, Budlake",
+            "lnglat": [
+                -3.4420855045318604,
+                50.791446685791016
+            ]
+        },
+        {
+            "id": "1100DEC10575",
+            "caption": "Budlake (S-bound), B3181, Budlake",
+            "lnglat": [
+                -3.4420268535614014,
+                50.7913818359375
+            ]
+        },
+        {
+            "id": "1100DEC10572",
+            "caption": "Killerton Turn (N-bound), B3181, Budlake",
+            "lnglat": [
+                -3.4432995319366455,
+                50.788482666015625
+            ]
+        },
+        {
+            "id": "1100DEC10571",
+            "caption": "Killerton Turn (S-bound), B3181, Budlake",
+            "lnglat": [
+                -3.4435248374938965,
+                50.787506103515625
+            ]
+        },
+        {
+            "id": "1100DEC10583",
+            "caption": "Westfield (N-bound), Hele Road, Bradninch",
+            "lnglat": [
+                -3.4271700382232666,
+                50.82065963745117
+            ]
+        },
+        {
+            "id": "1100DEC10582",
+            "caption": "Westfield (S-bound), Hele Road, Bradninch",
+            "lnglat": [
+                -3.426962375640869,
+                50.820831298828125
+            ]
+        },
+        {
+            "id": "1100DEC10580",
+            "caption": "Hele Mill (SE-bound), Station Road, Bradninch",
+            "lnglat": [
+                -3.4300684928894043,
+                50.812835693359375
+            ]
+        },
+        {
+            "id": "1100DEC10578",
+            "caption": "Hele Cross (NE-bound), B3181, Beare",
+            "lnglat": [
+                -3.4249250888824463,
+                50.808475494384766
+            ]
+        },
+        {
+            "id": "1100DEC10570",
+            "caption": "Shelter (opp), B3181, Broadclyst",
+            "lnglat": [
+                -3.4435715675354004,
+                50.765995025634766
+            ]
+        },
+        {
+            "id": "1100DEC10569",
+            "caption": "Shelter (SW-bound), B3181, Broadclyst",
+            "lnglat": [
+                -3.4435555934906006,
+                50.76594161987305
+            ]
+        },
+        {
+            "id": "1100DEC10563",
+            "caption": "Rosewood (E-bound), B3181, Broadclyst",
+            "lnglat": [
+                -3.449355125427246,
+                50.753997802734375
+            ]
+        },
+        {
+            "id": "1100DEC10624",
+            "caption": "Rosewood (W-bound), B3181, Broadclyst",
+            "lnglat": [
+                -3.449268341064453,
+                50.753944396972656
+            ]
+        },
+        {
+            "id": "1100DEC10565",
+            "caption": "Dog Village (N-bound), B3181, Broadclyst",
+            "lnglat": [
+                -3.442244291305542,
+                50.758338928222656
+            ]
+        },
+        {
+            "id": "1100DEC10564",
+            "caption": "Dog Village (SW-bound), B3181, Broadclyst",
+            "lnglat": [
+                -3.4425840377807617,
+                50.75740051269531
+            ]
+        },
+        {
+            "id": "1100DEC10568",
+            "caption": "Sunnyfield (N-bound), New Buildings, Broadclyst",
+            "lnglat": [
+                -3.4438552856445312,
+                50.764156341552734
+            ]
+        },
+        {
+            "id": "1100DEC10567",
+            "caption": "Old Police House (S-bound), B3181, Broadclyst",
+            "lnglat": [
+                -3.4434256553649902,
+                50.763099670410156
+            ]
+        },
+        {
+            "id": "1100DEC10606",
+            "caption": "Post Office (opp), Willand Old Village, Willand",
+            "lnglat": [
+                -3.371539354324341,
+                50.88482666015625
+            ]
+        },
+        {
+            "id": "1100DEC10607",
+            "caption": "Post Office (SW-bound), Willand Old Village, Willand",
+            "lnglat": [
+                -3.3714120388031006,
+                50.88484573364258
+            ]
+        },
+        {
+            "id": "1100DEC10605",
+            "caption": "Harpitt Close (NE-bound), Willand Old Village, Willand",
+            "lnglat": [
+                -3.3766558170318604,
+                50.88236618041992
+            ]
+        },
+        {
+            "id": "1100DEA56812",
+            "caption": "Harpitt Close (SW-bound), Willand Old Village, Willand",
+            "lnglat": [
+                -3.3765695095062256,
+                50.882328033447266
+            ]
+        },
+        {
+            "id": "1100DEC10604",
+            "caption": "Five Bridges Farm (opp), B3181, Willand",
+            "lnglat": [
+                -3.3862454891204834,
+                50.87689971923828
+            ]
+        },
+        {
+            "id": "1100DEA56813",
+            "caption": "Five Bridges Farm (SW-bound), B3181, Willand",
+            "lnglat": [
+                -3.3861868381500244,
+                50.87683868408203
+            ]
+        },
+        {
+            "id": "1100DEC10584",
+            "caption": "Townlands (NE-bound), Hele Road, Bradninch",
+            "lnglat": [
+                -3.425551652908325,
+                50.82392501831055
+            ]
+        },
+        {
+            "id": "1100DEC10585",
+            "caption": "Townlands (SW-bound), Hele Road, Bradninch",
+            "lnglat": [
+                -3.4257278442382812,
+                50.82365417480469
+            ]
+        },
+        {
+            "id": "1100DEC10590",
+            "caption": "Parsonage Street (NE-bound), Bradninch",
+            "lnglat": [
+                -3.4200432300567627,
+                50.82861328125
+            ]
+        },
+        {
+            "id": "1100DEC10588",
+            "caption": "Parsonage Street (SW-bound), Bradninch",
+            "lnglat": [
+                -3.419843912124634,
+                50.82859802246094
+            ]
+        },
+        {
+            "id": "1100DEC10623",
+            "caption": "Beech Close (NE-bound), Meadow Park, Willand",
+            "lnglat": [
+                -3.3731329441070557,
+                50.88777542114258
+            ]
+        },
+        {
+            "id": "1100DEC10622",
+            "caption": "Chestnut Drive (SW-bound), Meadow Park, Willand",
+            "lnglat": [
+                -3.3738038539886475,
+                50.88737869262695
+            ]
+        },
+        {
+            "id": "1100DEC10621",
+            "caption": "Meadow Park (NW-bound), Willand",
+            "lnglat": [
+                -3.376922607421875,
+                50.88755798339844
+            ]
+        },
+        {
+            "id": "1100DEC10620",
+            "caption": "Meadow Park (SE-bound), Willand",
+            "lnglat": [
+                -3.3767800331115723,
+                50.887542724609375
+            ]
+        },
+        {
+            "id": "1100DEC10619",
+            "caption": "Tamar's Drive (NE-bound), Meadow Park, Willand",
+            "lnglat": [
+                -3.3768763542175293,
+                50.88984298706055
+            ]
+        },
+        {
+            "id": "1100DEA56823",
+            "caption": "Tamar's Drive (SW-bound), Meadow Park, Willand",
+            "lnglat": [
+                -3.376537561416626,
+                50.889930725097656
+            ]
+        },
+        {
+            "id": "1100DEC10612",
+            "caption": "Uffculme Turn (NE-bound), Uffculme Road, Willand",
+            "lnglat": [
+                -3.3666112422943115,
+                50.893741607666016
+            ]
+        },
+        {
+            "id": "1100DEA56811",
+            "caption": "Uffculme Turn (SW-bound), Uffculme Road, Willand",
+            "lnglat": [
+                -3.3665530681610107,
+                50.89369583129883
+            ]
+        },
+        {
+            "id": "1100DEA05995",
+            "caption": "Main Road (NE-bound), Willand",
+            "lnglat": [
+                -3.3721871376037598,
+                50.88703918457031
+            ]
+        },
+        {
+            "id": "1100DEC10608",
+            "caption": "Main Road (SW-bound), Willand",
+            "lnglat": [
+                -3.372238874435425,
+                50.88685989379883
+            ]
+        },
+        {
+            "id": "1100DEA56816",
+            "caption": "Ostler Inn (NE-bound), Commercial Road, Uffculme",
+            "lnglat": [
+                -3.3280980587005615,
+                50.90595626831055
+            ]
+        },
+        {
+            "id": "1100DEC10613",
+            "caption": "Ostler Inn (opp), Commercial Road, Uffculme",
+            "lnglat": [
+                -3.3281097412109375,
+                50.90586853027344
+            ]
+        },
+        {
+            "id": "1100DEC10618",
+            "caption": "Somerlea (NE-bound), Somerville Road, Willand",
+            "lnglat": [
+                -3.372976779937744,
+                50.89165115356445
+            ]
+        },
+        {
+            "id": "1100DEC10617",
+            "caption": "Somerlea (SW-bound), Somerville Road, Willand",
+            "lnglat": [
+                -3.372835636138916,
+                50.89168167114258
+            ]
+        },
+        {
+            "id": "1100DEC10616",
+            "caption": "South View Close (W-bound), South View Road, Willand",
+            "lnglat": [
+                -3.369710922241211,
+                50.89276885986328
+            ]
+        },
+        {
+            "id": "1100DEC10615",
+            "caption": "College Green (E-bound), Commercial Road, Uffculme",
+            "lnglat": [
+                -3.332988739013672,
+                50.90439987182617
+            ]
+        },
+        {
+            "id": "1100DEC10614",
+            "caption": "College Green (W-bound), Commercial Road, Uffculme",
+            "lnglat": [
+                -3.3330862522125244,
+                50.904327392578125
+            ]
+        },
+        {
+            "id": "1100DEC11508",
+            "caption": "Waterloo Cross (SW-bound), B3181, Ayshford",
+            "lnglat": [
+                -3.345379590988159,
+                50.916839599609375
+            ]
+        },
+        {
+            "id": "1100DEZ05270",
+            "caption": "Kings Oak Lea Roundabout (NE-bound), B3181, Cullompton",
+            "lnglat": [
+                -3.388568162918091,
+                50.86992263793945
+            ]
+        },
+        {
+            "id": "1100DEZ05269",
+            "caption": "Kings Oak Lea Roundabout (SW-bound), B3181, Cullompton",
+            "lnglat": [
+                -3.3884689807891846,
+                50.869930267333984
+            ]
+        },
+        {
+            "id": "1100DEZ05268",
+            "caption": "Saxon Way Roundabout (N-bound), B3181, Cullompton",
+            "lnglat": [
+                -3.390434980392456,
+                50.86817932128906
+            ]
+        },
+        {
+            "id": "1100DEZ05267",
+            "caption": "Saxon Way Roundabout (S-bound), B3181, Cullompton",
+            "lnglat": [
+                -3.3903491497039795,
+                50.8681640625
+            ]
+        },
+        {
+            "id": "1100DEC11498",
+            "caption": "Richmond Close (NE-bound), Sampford Peverell",
+            "lnglat": [
+                -3.376051187515259,
+                50.92262268066406
+            ]
+        },
+        {
+            "id": "1100DEC11496",
+            "caption": "The Globe (NE-bound), Lower Town, Sampford Peverell",
+            "lnglat": [
+                -3.379474639892578,
+                50.919551849365234
+            ]
+        },
+        {
+            "id": "1100DEA11829",
+            "caption": "The Globe (SW-bound), Lower Town, Sampford Peverell",
+            "lnglat": [
+                -3.3791489601135254,
+                50.91960144042969
+            ]
+        },
+        {
+            "id": "1100DEC11495",
+            "caption": "Turnpike (E-bound), Sampford Peverell",
+            "lnglat": [
+                -3.3847572803497314,
+                50.917781829833984
+            ]
+        },
+        {
+            "id": "1100DEC11494",
+            "caption": "Turnpike (W-bound), Sampford Peverell",
+            "lnglat": [
+                -3.3846142292022705,
+                50.917755126953125
+            ]
+        },
+        {
+            "id": "1100DEC11500",
+            "caption": "Tiverton Parkway Station (SW-bound), Sampford Peverell",
+            "lnglat": [
+                -3.359722375869751,
+                50.91741943359375
+            ]
+        },
+        {
+            "id": "1100DEC11505",
+            "caption": "Square (NE-bound), The Square, Uffculme",
+            "lnglat": [
+                -3.327367067337036,
+                50.9062614440918
+            ]
+        },
+        {
+            "id": "1100DEC11501",
+            "caption": "Little Chef (opp), Ayshford",
+            "lnglat": [
+                -3.3531017303466797,
+                50.917236328125
+            ]
+        },
+        {
+            "id": "1100DEC11502",
+            "caption": "Little Chef (W-bound), Ayshford",
+            "lnglat": [
+                -3.353114366531372,
+                50.91718292236328
+            ]
+        },
+        {
+            "id": "1100DEC11484",
+            "caption": "Uplowman Road (E-bound), Post Hill",
+            "lnglat": [
+                -3.4477696418762207,
+                50.910091400146484
+            ]
+        },
+        {
+            "id": "1100DEC11483",
+            "caption": "Uplowman Road (W-bound), Post Hill",
+            "lnglat": [
+                -3.4478533267974854,
+                50.910037994384766
+            ]
+        },
+        {
+            "id": "1100DEA11817",
+            "caption": "Tidcombe Lane (E-bound), Tiverton",
+            "lnglat": [
+                -3.4623210430145264,
+                50.90736770629883
+            ]
+        },
+        {
+            "id": "1100DEC11482",
+            "caption": "Tidcombe Lane (W-bound), Tiverton",
+            "lnglat": [
+                -3.4623618125915527,
+                50.907310485839844
+            ]
+        },
+        {
+            "id": "1100DEC11481",
+            "caption": "Blundell's School (E-bound), Blundell's Road, Tiverton",
+            "lnglat": [
+                -3.466397285461426,
+                50.90673065185547
+            ]
+        },
+        {
+            "id": "1100DEA11816",
+            "caption": "Blundell's School (W-bound), Blundell's Road, Tiverton",
+            "lnglat": [
+                -3.4660985469818115,
+                50.9067268371582
+            ]
+        },
+        {
+            "id": "1100DEC11479",
+            "caption": "Blundell's Avenue (E-bound), Tiverton",
+            "lnglat": [
+                -3.4720165729522705,
+                50.90541076660156
+            ]
+        },
+        {
+            "id": "1100DEC11480",
+            "caption": "Blundell's Avenue (W-bound), Tiverton",
+            "lnglat": [
+                -3.4719300270080566,
+                50.90537643432617
+            ]
+        },
+        {
+            "id": "1100DEA11821",
+            "caption": "Fairway (E-bound), Post Hill, Post Hill",
+            "lnglat": [
+                -3.441359043121338,
+                50.90977478027344
+            ]
+        },
+        {
+            "id": "1100DEC11485",
+            "caption": "Fairway (W-bound), Post Hill, Post Hill",
+            "lnglat": [
+                -3.4424431324005127,
+                50.90987777709961
+            ]
+        },
+        {
+            "id": "1100DEC11492",
+            "caption": "Orchard View (W-bound), Halberton",
+            "lnglat": [
+                -3.4054434299468994,
+                50.90694808959961
+            ]
+        },
+        {
+            "id": "1100DEC11490",
+            "caption": "The Barge (E-bound), High Street, Halberton",
+            "lnglat": [
+                -3.4079835414886475,
+                50.90675735473633
+            ]
+        },
+        {
+            "id": "1100DEC11491",
+            "caption": "The Barge (W-bound), High Street, Halberton",
+            "lnglat": [
+                -3.408038854598999,
+                50.90670394897461
+            ]
+        },
+        {
+            "id": "1100DEA11824",
+            "caption": "Court Farm (opp), High Street, Halberton",
+            "lnglat": [
+                -3.4168057441711426,
+                50.90781784057617
+            ]
+        },
+        {
+            "id": "1100DEC11487",
+            "caption": "Shelter (SW-bound), High Street, Halberton",
+            "lnglat": [
+                -3.4166629314422607,
+                50.90780258178711
+            ]
+        },
+        {
+            "id": "1100DEC11510",
+            "caption": "Coldharbour (NE-bound), Uffculme Road, Uffculme",
+            "lnglat": [
+                -3.3372304439544678,
+                50.90303039550781
+            ]
+        },
+        {
+            "id": "1100DEC11509",
+            "caption": "Coldharbour (SW-bound), Uffculme Road, Uffculme",
+            "lnglat": [
+                -3.33729887008667,
+                50.90293884277344
+            ]
+        },
+        {
+            "id": "1100DEC11478",
+            "caption": "Church (W-bound), Blundell's Road, Tiverton",
+            "lnglat": [
+                -3.477998733520508,
+                50.904335021972656
+            ]
+        },
+        {
+            "id": "1100DEA05769",
+            "caption": "Tesco Superstore (opp), Blundell's Road, Tiverton",
+            "lnglat": [
+                -3.4808075428009033,
+                50.90365982055664
+            ]
+        },
+        {
+            "id": "1100DEA56851",
+            "caption": "Diggerland (NE-bound), B3181, Willand",
+            "lnglat": [
+                -3.3789310455322266,
+                50.88142776489258
+            ]
+        },
+        {
+            "id": "1100DEA56852",
+            "caption": "Diggerland (SW-bound), B3181, Willand",
+            "lnglat": [
+                -3.3788444995880127,
+                50.881385803222656
+            ]
+        },
+        {
+            "id": "1100DEA11827",
+            "caption": "Village Hall (opp), High Street, Halberton",
+            "lnglat": [
+                -3.412576913833618,
+                50.90767288208008
+            ]
+        },
+        {
+            "id": "1100DEA11826",
+            "caption": "Village Hall (SE-bound), High Street, Halberton",
+            "lnglat": [
+                -3.4126811027526855,
+                50.9078254699707
+            ]
+        },
+        {
+            "id": "1100DEA57161",
+            "caption": "Millennium Way (N-bound), Cullompton",
+            "lnglat": [
+                -3.3878543376922607,
+                50.86981201171875
+            ]
+        },
+        {
+            "id": "1100DEA57374",
+            "caption": "Gornhay Orchard (E-bound), Blundells Road, Tiverton",
+            "lnglat": [
+                -3.458300828933716,
+                50.90843963623047
+            ]
+        },
+        {
+            "id": "1100DEA57375",
+            "caption": "Gornhay Orchard (W-bound), Blundells Road, Tiverton",
+            "lnglat": [
+                -3.458270788192749,
+                50.90838623046875
+            ]
+        },
+        {
+            "id": "1100DEA57388",
+            "caption": "Bridwell Avenue (SE-bound), Uffculme",
+            "lnglat": [
+                -3.344350814819336,
+                50.90335464477539
+            ]
+        },
+        {
+            "id": "1100DEC10247",
+            "caption": "Warwick Way (SW-bound), Pinhoe Road, Exeter",
+            "lnglat": [
+                -3.4821338653564453,
+                50.733863830566406
+            ]
+        },
+        {
+            "id": "1100DEC10245",
+            "caption": "Hillyfield Road (W-bound), Exeter",
+            "lnglat": [
+                -3.4854953289031982,
+                50.733055114746094
+            ]
+        },
+        {
+            "id": "1100DEC10243",
+            "caption": "Shops (W-bound), Pinhoe Road, Exeter",
+            "lnglat": [
+                -3.4909956455230713,
+                50.73223114013672
+            ]
+        },
+        {
+            "id": "1100DEC10241",
+            "caption": "Honeylands Children's Centre (W-bound), Pinhoe Road, Exeter",
+            "lnglat": [
+                -3.496695041656494,
+                50.73188018798828
+            ]
+        },
+        {
+            "id": "1100DEC10235",
+            "caption": "St. Mark's Church (W-bound), Pinhoe Road, Exeter",
+            "lnglat": [
+                -3.509350061416626,
+                50.7305908203125
+            ]
+        },
+        {
+            "id": "1100DEC10233",
+            "caption": "Mount Pleasant (W-bound), Pinhoe Road, Exeter",
+            "lnglat": [
+                -3.5127415657043457,
+                50.73030471801758
+            ]
+        },
+        {
+            "id": "1100DEC10239",
+            "caption": "Widgery Road (W-bound), Exeter",
+            "lnglat": [
+                -3.4998586177825928,
+                50.73155212402344
+            ]
+        },
+        {
+            "id": "1100DEC10237",
+            "caption": "Tarbet Avenue (W-bound), Exeter",
+            "lnglat": [
+                -3.50447416305542,
+                50.730987548828125
+            ]
+        },
+        {
+            "id": "1100DEA09008",
+            "caption": "Sainsburys (SW-bound), Hill Barton Road, Exeter",
+            "lnglat": [
+                -3.4806976318359375,
+                50.73460006713867
+            ]
+        },
+        {
+            "id": "1100DEC10232",
+            "caption": "Mount Pleasant (E-bound), Pinhoe Road, Exeter",
+            "lnglat": [
+                -3.5127017498016357,
+                50.730384826660156
+            ]
+        },
+        {
+            "id": "1100DEC10246",
+            "caption": "Warwick Way (E-bound), Pinhoe Road, Exeter",
+            "lnglat": [
+                -3.4830472469329834,
+                50.733619689941406
+            ]
+        },
+        {
+            "id": "1100DEC10244",
+            "caption": "Thackery Road (E-bound), Exeter",
+            "lnglat": [
+                -3.486499547958374,
+                50.73299789428711
+            ]
+        },
+        {
+            "id": "1100DEC10242",
+            "caption": "Shops (E-bound), Pinhoe Road, Exeter",
+            "lnglat": [
+                -3.491208791732788,
+                50.73225402832031
+            ]
+        },
+        {
+            "id": "1100DEC10248",
+            "caption": "Aldi (NE-bound), Pinhoe Road, Exeter",
+            "lnglat": [
+                -3.4792253971099854,
+                50.73554611206055
+            ]
+        },
+        {
+            "id": "1100DEC10240",
+            "caption": "Honeylands Children's Centre (E-bound), Pinhoe Road, Exeter",
+            "lnglat": [
+                -3.49593186378479,
+                50.73194122314453
+            ]
+        },
+        {
+            "id": "1100DEC10234",
+            "caption": "St. Mark's Church (E-bound), Pinhoe Road, Exeter",
+            "lnglat": [
+                -3.508941888809204,
+                50.73067855834961
+            ]
+        },
+        {
+            "id": "1100DEC10238",
+            "caption": "Widgery Road (E-bound), Exeter",
+            "lnglat": [
+                -3.5004842281341553,
+                50.73161315917969
+            ]
+        },
+        {
+            "id": "1100DEC10236",
+            "caption": "Tarbet Avenue (E-bound), Exeter",
+            "lnglat": [
+                -3.5041940212249756,
+                50.7310905456543
+            ]
+        },
+        {
+            "id": "1100DEA09009",
+            "caption": "Sainsburys (NE-bound), Pinhoe Road, Exeter",
+            "lnglat": [
+                -3.4807863235473633,
+                50.734718322753906
+            ]
+        }
+    ],
+    "edges": [
+        {
+            "id": "110000002-1100DEC10229",
+            "anode": "110000002",
+            "bnode": "1100DEC10229",
+            "distance": 0.5619924604500504,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10229-1100DEZ05115",
+            "anode": "1100DEC10229",
+            "bnode": "1100DEZ05115",
+            "distance": 0.18710149040104967,
+            "directed": false
+        },
+        {
+            "id": "1100DEZ05115-1100DEC10249",
+            "anode": "1100DEZ05115",
+            "bnode": "1100DEC10249",
+            "distance": 3.078555281074,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10249-1100DEZ05116",
+            "anode": "1100DEC10249",
+            "bnode": "1100DEZ05116",
+            "distance": 0.38112500154517476,
+            "directed": false
+        },
+        {
+            "id": "1100DEZ05116-1100DEC10252",
+            "anode": "1100DEZ05116",
+            "bnode": "1100DEC10252",
+            "distance": 0.17023646828522696,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10252-1100DEC10557",
+            "anode": "1100DEC10252",
+            "bnode": "1100DEC10557",
+            "distance": 0.21642975024515512,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10557-1100DEC10559",
+            "anode": "1100DEC10557",
+            "bnode": "1100DEC10559",
+            "distance": 0.7618981974108531,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10559-1100DEC10561",
+            "anode": "1100DEC10559",
+            "bnode": "1100DEC10561",
+            "distance": 0.3842156220731769,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10561-1100DEC10563",
+            "anode": "1100DEC10561",
+            "bnode": "1100DEC10563",
+            "distance": 0.7941658643449203,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10563-1100DEC10565",
+            "anode": "1100DEC10563",
+            "bnode": "1100DEC10565",
+            "distance": 0.7300432818875416,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10565-1100DEC10568",
+            "anode": "1100DEC10565",
+            "bnode": "1100DEC10568",
+            "distance": 0.6608446708734763,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10568-1100DEC10570",
+            "anode": "1100DEC10568",
+            "bnode": "1100DEC10570",
+            "distance": 0.2095103400904971,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10570-1100DEA57214",
+            "anode": "1100DEC10570",
+            "bnode": "1100DEA57214",
+            "distance": 1.5763730315653635,
+            "directed": false
+        },
+        {
+            "id": "1100DEA57214-1100DEC10572",
+            "anode": "1100DEA57214",
+            "bnode": "1100DEC10572",
+            "distance": 1.0163956019725826,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10572-1100DEC10574",
+            "anode": "1100DEC10572",
+            "bnode": "1100DEC10574",
+            "distance": 0.3433375043377465,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10574-1100DEC10576",
+            "anode": "1100DEC10574",
+            "bnode": "1100DEC10576",
+            "distance": 1.2881931905338835,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10576-1100DEC10578",
+            "anode": "1100DEC10576",
+            "bnode": "1100DEC10578",
+            "distance": 1.1311794148840493,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10578-1100DEC10583",
+            "anode": "1100DEC10578",
+            "bnode": "1100DEC10583",
+            "distance": 1.8231716864361238,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10583-1100DEC10584",
+            "anode": "1100DEC10583",
+            "bnode": "1100DEC10584",
+            "distance": 0.4025666042497347,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10584-1100DEC10590",
+            "anode": "1100DEC10584",
+            "bnode": "1100DEC10590",
+            "distance": 0.6986131365955024,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10590-1100DEC10591",
+            "anode": "1100DEC10590",
+            "bnode": "1100DEC10591",
+            "distance": 3.032528686955815,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10591-1100DEC10593",
+            "anode": "1100DEC10591",
+            "bnode": "1100DEC10593",
+            "distance": 0.19570281301708492,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10593-1100DEC10595",
+            "anode": "1100DEC10593",
+            "bnode": "1100DEC10595",
+            "distance": 0.2355113351106265,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10595-1100DEC10597",
+            "anode": "1100DEC10595",
+            "bnode": "1100DEC10597",
+            "distance": 0.19473848996362333,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10597-1100DEC10598",
+            "anode": "1100DEC10597",
+            "bnode": "1100DEC10598",
+            "distance": 0.3199956201584577,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10598-1100DEZ05111",
+            "anode": "1100DEC10598",
+            "bnode": "1100DEZ05111",
+            "distance": 0.2462244268514928,
+            "directed": false
+        },
+        {
+            "id": "1100DEZ05111-1100DEA57155",
+            "anode": "1100DEZ05111",
+            "bnode": "1100DEA57155",
+            "distance": 0.30923919856175425,
+            "directed": false
+        },
+        {
+            "id": "1100DEA57155-1100DEA57157",
+            "anode": "1100DEA57155",
+            "bnode": "1100DEA57157",
+            "distance": 0.3107812629146943,
+            "directed": false
+        },
+        {
+            "id": "1100DEA57157-1100DEA57159",
+            "anode": "1100DEA57157",
+            "bnode": "1100DEA57159",
+            "distance": 0.4411857354116152,
+            "directed": false
+        },
+        {
+            "id": "1100DEA57159-1100DEA57161",
+            "anode": "1100DEA57159",
+            "bnode": "1100DEA57161",
+            "distance": 0.25312043819893354,
+            "directed": false
+        },
+        {
+            "id": "1100DEA57161-1100DEC10604",
+            "anode": "1100DEA57161",
+            "bnode": "1100DEC10604",
+            "distance": 0.8103888863332245,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10604-1100DEA56851",
+            "anode": "1100DEC10604",
+            "bnode": "1100DEA56851",
+            "distance": 0.7345649918973245,
+            "directed": false
+        },
+        {
+            "id": "1100DEA56851-1100DEA05995",
+            "anode": "1100DEA56851",
+            "bnode": "1100DEA05995",
+            "distance": 0.7857978189844878,
+            "directed": false
+        },
+        {
+            "id": "1100DEA05995-1100DEC10622",
+            "anode": "1100DEA05995",
+            "bnode": "1100DEC10622",
+            "distance": 0.28935883586845135,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10622-1100DEC10621",
+            "anode": "1100DEC10622",
+            "bnode": "1100DEC10621",
+            "distance": 0.22977257516621077,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10621-1100DEC10619",
+            "anode": "1100DEC10621",
+            "bnode": "1100DEC10619",
+            "distance": 0.30897291842726105,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10619-1100DEC10618",
+            "anode": "1100DEC10619",
+            "bnode": "1100DEC10618",
+            "distance": 0.34076965471377235,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10618-1100DEC10232",
+            "anode": "1100DEC10618",
+            "bnode": "1100DEC10232",
+            "distance": 26.196594216723746,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10232-1100DEC10234",
+            "anode": "1100DEC10232",
+            "bnode": "1100DEC10234",
+            "distance": 0.26669378730853566,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10234-1100DEC10236",
+            "anode": "1100DEC10234",
+            "bnode": "1100DEC10236",
+            "distance": 0.33843571911883363,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10236-1100DEC10238",
+            "anode": "1100DEC10236",
+            "bnode": "1100DEC10238",
+            "distance": 0.26985257032636245,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10238-1100DEC10240",
+            "anode": "1100DEC10238",
+            "bnode": "1100DEC10240",
+            "distance": 0.3234474911526968,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10240-1100DEC10242",
+            "anode": "1100DEC10240",
+            "bnode": "1100DEC10242",
+            "distance": 0.3419456288527692,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10242-1100DEC10244",
+            "anode": "1100DEC10242",
+            "bnode": "1100DEC10244",
+            "distance": 0.3419674138048053,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10244-1100DEC10246",
+            "anode": "1100DEC10244",
+            "bnode": "1100DEC10246",
+            "distance": 0.23150602442623805,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10246-1100DEA09009",
+            "anode": "1100DEC10246",
+            "bnode": "1100DEA09009",
+            "distance": 0.2027440060412475,
+            "directed": false
+        },
+        {
+            "id": "1100DEA09009-1100DEC10248",
+            "anode": "1100DEA09009",
+            "bnode": "1100DEC10248",
+            "distance": 0.25141961988151756,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10598-1100DEC10600",
+            "anode": "1100DEC10598",
+            "bnode": "1100DEC10600",
+            "distance": 0.5284543110898698,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10600-1100DEA57077",
+            "anode": "1100DEC10600",
+            "bnode": "1100DEA57077",
+            "distance": 0.16210375957621764,
+            "directed": false
+        },
+        {
+            "id": "1100DEA57077-1100DEC10603",
+            "anode": "1100DEA57077",
+            "bnode": "1100DEC10603",
+            "distance": 0.23838041294832943,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10603-1100DEZ05268",
+            "anode": "1100DEC10603",
+            "bnode": "1100DEZ05268",
+            "distance": 0.28211792674512803,
+            "directed": false
+        },
+        {
+            "id": "1100DEZ05268-1100DEZ05270",
+            "anode": "1100DEZ05268",
+            "bnode": "1100DEZ05270",
+            "distance": 0.2441510574779693,
+            "directed": false
+        },
+        {
+            "id": "1100DEZ05270-1100DEC10604",
+            "anode": "1100DEZ05270",
+            "bnode": "1100DEC10604",
+            "distance": 0.8087115970613356,
+            "directed": false
+        },
+        {
+            "id": "1100DEA56851-1100DEC10605",
+            "anode": "1100DEA56851",
+            "bnode": "1100DEC10605",
+            "distance": 0.19968895813954055,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10605-1100DEC10606",
+            "anode": "1100DEC10605",
+            "bnode": "1100DEC10606",
+            "distance": 0.46491159980870433,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10606-1100DEA05995",
+            "anode": "1100DEC10606",
+            "bnode": "1100DEA05995",
+            "distance": 0.2823954374355909,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10618-1100DEC11502",
+            "anode": "1100DEC10618",
+            "bnode": "1100DEC11502",
+            "distance": 4.251899627119923,
+            "directed": false
+        },
+        {
+            "id": "1100DEC11502-1100DEC11500",
+            "anode": "1100DEC11502",
+            "bnode": "1100DEC11500",
+            "distance": 2.2773074321637763,
+            "directed": false
+        },
+        {
+            "id": "1100DEC11500-1100DEA11829",
+            "anode": "1100DEC11500",
+            "bnode": "1100DEA11829",
+            "distance": 1.6885255399634584,
+            "directed": false
+        },
+        {
+            "id": "1100DEA11829-1100DEC11494",
+            "anode": "1100DEA11829",
+            "bnode": "1100DEC11494",
+            "distance": 0.42959702058969557,
+            "directed": false
+        },
+        {
+            "id": "1100DEC11494-1100DEC11492",
+            "anode": "1100DEC11494",
+            "bnode": "1100DEC11492",
+            "distance": 2.0589969314512087,
+            "directed": false
+        },
+        {
+            "id": "1100DEC11492-1100DEC11491",
+            "anode": "1100DEC11492",
+            "bnode": "1100DEC11491",
+            "distance": 0.1871867946342074,
+            "directed": false
+        },
+        {
+            "id": "1100DEC11491-1100DEA11827",
+            "anode": "1100DEC11491",
+            "bnode": "1100DEA11827",
+            "distance": 0.3533272939964096,
+            "directed": false
+        },
+        {
+            "id": "1100DEA11827-1100DEC11487",
+            "anode": "1100DEA11827",
+            "bnode": "1100DEC11487",
+            "distance": 0.38412020273261116,
+            "directed": false
+        },
+        {
+            "id": "1100DEC11487-1100DEC11485",
+            "anode": "1100DEC11487",
+            "bnode": "1100DEC11485",
+            "distance": 1.8905929710397766,
+            "directed": false
+        },
+        {
+            "id": "1100DEC11485-1100DEC11483",
+            "anode": "1100DEC11485",
+            "bnode": "1100DEC11483",
+            "distance": 0.38336848474488244,
+            "directed": false
+        },
+        {
+            "id": "1100DEC11483-1100DEA57375",
+            "anode": "1100DEC11483",
+            "bnode": "1100DEA57375",
+            "distance": 0.7630161394425999,
+            "directed": false
+        },
+        {
+            "id": "1100DEA57375-1100DEC11482",
+            "anode": "1100DEA57375",
+            "bnode": "1100DEC11482",
+            "distance": 0.3109107929978705,
+            "directed": false
+        },
+        {
+            "id": "1100DEC11482-1100DEA11816",
+            "anode": "1100DEC11482",
+            "bnode": "1100DEA11816",
+            "distance": 0.2901529449980945,
+            "directed": false
+        },
+        {
+            "id": "1100DEA11816-1100DEC11480",
+            "anode": "1100DEA11816",
+            "bnode": "1100DEC11480",
+            "distance": 0.41690390623593543,
+            "directed": false
+        },
+        {
+            "id": "1100DEC11480-1100DEC11478",
+            "anode": "1100DEC11480",
+            "bnode": "1100DEC11478",
+            "distance": 0.46886176888090675,
+            "directed": false
+        },
+        {
+            "id": "1100DEC11478-1100DEC10524",
+            "anode": "1100DEC11478",
+            "bnode": "1100DEC10524",
+            "distance": 1.2739027064808093,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10524-1100DEC10232",
+            "anode": "1100DEC10524",
+            "bnode": "1100DEC10232",
+            "distance": 21.57284883534882,
+            "directed": false
+        },
+        {
+            "id": "1100DEA57159-1100DEC10232",
+            "anode": "1100DEA57159",
+            "bnode": "1100DEC10232",
+            "distance": 22.302339072807666,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10618-1100DEC10612",
+            "anode": "1100DEC10618",
+            "bnode": "1100DEC10612",
+            "distance": 0.5490759931783469,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10612-1100DEC11510",
+            "anode": "1100DEC10612",
+            "bnode": "1100DEC11510",
+            "distance": 2.32152598394354,
+            "directed": false
+        },
+        {
+            "id": "1100DEC11510-1100DEC10615",
+            "anode": "1100DEC11510",
+            "bnode": "1100DEC10615",
+            "distance": 0.34527979853088475,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10615-1100DEA56816",
+            "anode": "1100DEC10615",
+            "bnode": "1100DEA56816",
+            "distance": 0.3919486788428449,
+            "directed": false
+        },
+        {
+            "id": "1100DEA56816-1100DEC11505",
+            "anode": "1100DEA56816",
+            "bnode": "1100DEC11505",
+            "distance": 0.0605214371521102,
+            "directed": false
+        },
+        {
+            "id": "1100DEC11505-1100DEC10613",
+            "anode": "1100DEC11505",
+            "bnode": "1100DEC10613",
+            "distance": 0.06740393182598155,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10613-1100DEC10614",
+            "anode": "1100DEC10613",
+            "bnode": "1100DEC10614",
+            "distance": 0.39362537231523004,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10614-1100DEC11509",
+            "anode": "1100DEC10614",
+            "bnode": "1100DEC11509",
+            "distance": 0.34739886850121815,
+            "directed": false
+        },
+        {
+            "id": "1100DEC11509-1100DEC11502",
+            "anode": "1100DEC11509",
+            "bnode": "1100DEC11502",
+            "distance": 4.317699031666696,
+            "directed": false
+        },
+        {
+            "id": "1100DEC11500-1100DEC11498",
+            "anode": "1100DEC11500",
+            "bnode": "1100DEC11498",
+            "distance": 1.578605586633863,
+            "directed": false
+        },
+        {
+            "id": "1100DEC11498-1100DEA11829",
+            "anode": "1100DEC11498",
+            "bnode": "1100DEA11829",
+            "distance": 0.5688745998359592,
+            "directed": false
+        },
+        {
+            "id": "1100DEC11478-1100DEA05769",
+            "anode": "1100DEC11478",
+            "bnode": "1100DEA05769",
+            "distance": 0.2828548335119843,
+            "directed": false
+        },
+        {
+            "id": "1100DEA05769-1100DEC10524",
+            "anode": "1100DEA05769",
+            "bnode": "1100DEC10524",
+            "distance": 0.8682763256807792,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10231-1100DEC10230",
+            "anode": "1100DEC10231",
+            "bnode": "1100DEC10230",
+            "distance": 0.20905066062177008,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10230-1100DEC10184",
+            "anode": "1100DEC10230",
+            "bnode": "1100DEC10184",
+            "distance": 0.29834029025268827,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10184-1100DEC10085",
+            "anode": "1100DEC10184",
+            "bnode": "1100DEC10085",
+            "distance": 0.16795011397940596,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10085-110000002",
+            "anode": "1100DEC10085",
+            "bnode": "110000002",
+            "distance": 1.0033291685930794,
+            "directed": false
+        },
+        {
+            "id": "110000002-1100DEZ05269",
+            "anode": "110000002",
+            "bnode": "1100DEZ05269",
+            "distance": 22.892545546051778,
+            "directed": false
+        },
+        {
+            "id": "1100DEZ05269-1100DEZ05267",
+            "anode": "1100DEZ05269",
+            "bnode": "1100DEZ05267",
+            "distance": 0.2441510574779693,
+            "directed": false
+        },
+        {
+            "id": "1100DEZ05267-1100DEC10602",
+            "anode": "1100DEZ05267",
+            "bnode": "1100DEC10602",
+            "distance": 0.3375443048893344,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10602-1100DEC10601",
+            "anode": "1100DEC10602",
+            "bnode": "1100DEC10601",
+            "distance": 0.23706157285344198,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10601-1100DEC10599",
+            "anode": "1100DEC10601",
+            "bnode": "1100DEC10599",
+            "distance": 0.6111579434924302,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10599-1100DEC10596",
+            "anode": "1100DEC10599",
+            "bnode": "1100DEC10596",
+            "distance": 0.36616083969710905,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10596-1100DEC10594",
+            "anode": "1100DEC10596",
+            "bnode": "1100DEC10594",
+            "distance": 0.4093771946599368,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10594-1100DEC10592",
+            "anode": "1100DEC10594",
+            "bnode": "1100DEC10592",
+            "distance": 0.19570281301708492,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10592-1100DEC10588",
+            "anode": "1100DEC10592",
+            "bnode": "1100DEC10588",
+            "distance": 3.032319837372078,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10588-1100DEC10585",
+            "anode": "1100DEC10588",
+            "bnode": "1100DEC10585",
+            "distance": 0.7256105997306185,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10585-1100DEC10582",
+            "anode": "1100DEC10585",
+            "bnode": "1100DEC10582",
+            "distance": 0.3433963414327047,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10582-1100DEC10580",
+            "anode": "1100DEC10582",
+            "bnode": "1100DEC10580",
+            "distance": 1.0139423547408613,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10580-1100DEC10577",
+            "anode": "1100DEC10580",
+            "bnode": "1100DEC10577",
+            "distance": 1.9127348768960595,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10577-1100DEC10575",
+            "anode": "1100DEC10577",
+            "bnode": "1100DEC10575",
+            "distance": 1.3118937845005076,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10575-1100DEC10571",
+            "anode": "1100DEC10575",
+            "bnode": "1100DEC10571",
+            "distance": 0.44591774345553187,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10571-1100DEA57215",
+            "anode": "1100DEC10571",
+            "bnode": "1100DEA57215",
+            "distance": 0.9171589458253819,
+            "directed": false
+        },
+        {
+            "id": "1100DEA57215-1100DEC10569",
+            "anode": "1100DEA57215",
+            "bnode": "1100DEC10569",
+            "distance": 1.566609665530474,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10569-1100DEC10567",
+            "anode": "1100DEC10569",
+            "bnode": "1100DEC10567",
+            "distance": 0.3303504434499976,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10567-1100DEC10564",
+            "anode": "1100DEC10567",
+            "bnode": "1100DEC10564",
+            "distance": 0.6476567028087182,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10564-1100DEC10624",
+            "anode": "1100DEC10564",
+            "bnode": "1100DEC10624",
+            "distance": 0.6223911465927994,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10624-1100DEC10562",
+            "anode": "1100DEC10624",
+            "bnode": "1100DEC10562",
+            "distance": 0.7941658643449201,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10562-1100DEC10560",
+            "anode": "1100DEC10562",
+            "bnode": "1100DEC10560",
+            "distance": 0.3842156220731768,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10560-1100DEC10253",
+            "anode": "1100DEC10560",
+            "bnode": "1100DEC10253",
+            "distance": 0.7609310551443249,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10253-1100DEC10251",
+            "anode": "1100DEC10253",
+            "bnode": "1100DEC10251",
+            "distance": 0.3324268550211894,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10251-1100DEC10250",
+            "anode": "1100DEC10251",
+            "bnode": "1100DEC10250",
+            "distance": 0.4259154185821752,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10250-1100DEA09008",
+            "anode": "1100DEC10250",
+            "bnode": "1100DEA09008",
+            "distance": 0.48489011940947235,
+            "directed": false
+        },
+        {
+            "id": "1100DEA09008-1100DEC10247",
+            "anode": "1100DEA09008",
+            "bnode": "1100DEC10247",
+            "distance": 0.13956385783628053,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10247-1100DEC10245",
+            "anode": "1100DEC10247",
+            "bnode": "1100DEC10245",
+            "distance": 0.2543496867469989,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10245-1100DEC10243",
+            "anode": "1100DEC10245",
+            "bnode": "1100DEC10243",
+            "distance": 0.4127817801012908,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10243-1100DEC10241",
+            "anode": "1100DEC10243",
+            "bnode": "1100DEC10241",
+            "distance": 0.39566032754186226,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10241-1100DEC10239",
+            "anode": "1100DEC10241",
+            "bnode": "1100DEC10239",
+            "distance": 0.22554888166488918,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10239-1100DEC10237",
+            "anode": "1100DEC10239",
+            "bnode": "1100DEC10237",
+            "distance": 0.3358177215454752,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10237-1100DEC10235",
+            "anode": "1100DEC10237",
+            "bnode": "1100DEC10235",
+            "distance": 0.31665447869843555,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10235-1100DEC10233",
+            "anode": "1100DEC10235",
+            "bnode": "1100DEC10233",
+            "distance": 0.27071005241419976,
+            "directed": false
+        },
+        {
+            "id": "110000002-1100DEC10617",
+            "anode": "110000002",
+            "bnode": "1100DEC10617",
+            "distance": 26.440811133323493,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10617-1100DEA56823",
+            "anode": "1100DEC10617",
+            "bnode": "1100DEA56823",
+            "distance": 0.31549894653958954,
+            "directed": false
+        },
+        {
+            "id": "1100DEA56823-1100DEC10620",
+            "anode": "1100DEA56823",
+            "bnode": "1100DEC10620",
+            "distance": 0.33424362660144386,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10620-1100DEC10623",
+            "anode": "1100DEC10620",
+            "bnode": "1100DEC10623",
+            "distance": 0.2994618500340082,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10623-1100DEC10608",
+            "anode": "1100DEC10623",
+            "bnode": "1100DEC10608",
+            "distance": 0.2461179386667602,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10608-1100DEC10607",
+            "anode": "1100DEC10608",
+            "bnode": "1100DEC10607",
+            "distance": 0.2636355957644153,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10607-1100DEA56812",
+            "anode": "1100DEC10607",
+            "bnode": "1100DEA56812",
+            "distance": 0.4388579103253472,
+            "directed": false
+        },
+        {
+            "id": "1100DEA56812-1100DEA56852",
+            "anode": "1100DEA56812",
+            "bnode": "1100DEA56852",
+            "distance": 0.2278627385433616,
+            "directed": false
+        },
+        {
+            "id": "1100DEA56852-1100DEA56813",
+            "anode": "1100DEA56852",
+            "bnode": "1100DEA56813",
+            "distance": 0.7301573944802406,
+            "directed": false
+        },
+        {
+            "id": "1100DEA56813-1100DEZ05269",
+            "anode": "1100DEA56813",
+            "bnode": "1100DEZ05269",
+            "distance": 0.8049995684171233,
+            "directed": false
+        },
+        {
+            "id": "110000002-1100DEC10524",
+            "anode": "110000002",
+            "bnode": "1100DEC10524",
+            "distance": 22.017586648708217,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10524-1100DEA05767",
+            "anode": "1100DEC10524",
+            "bnode": "1100DEA05767",
+            "distance": 0.8895110832062562,
+            "directed": false
+        },
+        {
+            "id": "1100DEA05767-1100DEC11479",
+            "anode": "1100DEA05767",
+            "bnode": "1100DEC11479",
+            "distance": 0.6284815182131375,
+            "directed": false
+        },
+        {
+            "id": "1100DEC11479-1100DEC11481",
+            "anode": "1100DEC11479",
+            "bnode": "1100DEC11481",
+            "distance": 0.41690390623593543,
+            "directed": false
+        },
+        {
+            "id": "1100DEC11481-1100DEA11817",
+            "anode": "1100DEC11481",
+            "bnode": "1100DEA11817",
+            "distance": 0.2951703184547469,
+            "directed": false
+        },
+        {
+            "id": "1100DEA11817-1100DEA57374",
+            "anode": "1100DEA11817",
+            "bnode": "1100DEA57374",
+            "distance": 0.3058934195412182,
+            "directed": false
+        },
+        {
+            "id": "1100DEA57374-1100DEC11484",
+            "anode": "1100DEA57374",
+            "bnode": "1100DEC11484",
+            "distance": 0.7692990547628473,
+            "directed": false
+        },
+        {
+            "id": "1100DEC11484-1100DEA11821",
+            "anode": "1100DEC11484",
+            "bnode": "1100DEA11821",
+            "distance": 0.37708556942463517,
+            "directed": false
+        },
+        {
+            "id": "1100DEA11821-1100DEA11824",
+            "anode": "1100DEA11821",
+            "bnode": "1100DEA11824",
+            "distance": 1.886242979688156,
+            "directed": false
+        },
+        {
+            "id": "1100DEA11824-1100DEA11826",
+            "anode": "1100DEA11824",
+            "bnode": "1100DEA11826",
+            "distance": 0.37485135087748706,
+            "directed": false
+        },
+        {
+            "id": "1100DEA11826-1100DEC11490",
+            "anode": "1100DEA11826",
+            "bnode": "1100DEC11490",
+            "distance": 0.3756822913984907,
+            "directed": false
+        },
+        {
+            "id": "1100DEC11490-1100DEC11495",
+            "anode": "1100DEC11490",
+            "bnode": "1100DEC11495",
+            "distance": 2.2419163689506854,
+            "directed": false
+        },
+        {
+            "id": "1100DEC11495-1100DEC11496",
+            "anode": "1100DEC11495",
+            "bnode": "1100DEC11496",
+            "distance": 0.42959702058969557,
+            "directed": false
+        },
+        {
+            "id": "1100DEC11496-1100DEC11498",
+            "anode": "1100DEC11496",
+            "bnode": "1100DEC11498",
+            "distance": 0.5688745998359592,
+            "directed": false
+        },
+        {
+            "id": "1100DEC11498-1100DEC11500",
+            "anode": "1100DEC11498",
+            "bnode": "1100DEC11500",
+            "distance": 1.48999175590286,
+            "directed": false
+        },
+        {
+            "id": "1100DEC11500-1100DEC11501",
+            "anode": "1100DEC11500",
+            "bnode": "1100DEC11501",
+            "distance": 2.827181085374281,
+            "directed": false
+        },
+        {
+            "id": "1100DEC11501-1100DEC11508",
+            "anode": "1100DEC11501",
+            "bnode": "1100DEC11508",
+            "distance": 0.7419185568986543,
+            "directed": false
+        },
+        {
+            "id": "1100DEC11508-1100DEA57388",
+            "anode": "1100DEC11508",
+            "bnode": "1100DEA57388",
+            "distance": 2.0417757322528276,
+            "directed": false
+        },
+        {
+            "id": "1100DEA57388-1100DEC11510",
+            "anode": "1100DEA57388",
+            "bnode": "1100DEC11510",
+            "distance": 0.6373009813480089,
+            "directed": false
+        },
+        {
+            "id": "1100DEC11509-1100DEA56811",
+            "anode": "1100DEC11509",
+            "bnode": "1100DEA56811",
+            "distance": 2.31084772582695,
+            "directed": false
+        },
+        {
+            "id": "1100DEA56811-1100DEC10616",
+            "anode": "1100DEA56811",
+            "bnode": "1100DEC10616",
+            "distance": 0.261808001285996,
+            "directed": false
+        },
+        {
+            "id": "1100DEC10616-1100DEC10617",
+            "anode": "1100DEC10616",
+            "bnode": "1100DEC10617",
+            "distance": 0.2694615565382418,
+            "directed": false
+        }
+    ]
+}
